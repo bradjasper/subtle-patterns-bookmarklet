@@ -349,7 +349,7 @@ load_script = (url, callback) ->
 delay = (ms, fn) -> setTimeout(fn, ms)
 
 # Start
-load_script "http://code.jquery.com/jquery-1.8.3.min.js", ->
+load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", ->
 
     index = 0
     next = ->

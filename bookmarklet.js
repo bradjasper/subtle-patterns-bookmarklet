@@ -50,7 +50,7 @@
     return setTimeout(fn, ms);
   };
 
-  load_script("http://code.jquery.com/jquery-1.8.3.min.js", function() {
+  load_script("https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", function() {
     var index, next, prev, setup, update;
     index = 0;
     next = function() {
