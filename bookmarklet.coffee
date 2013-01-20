@@ -1,3 +1,5 @@
+SITE_URL = "127.0.0.1:8000"
+
 # Utility functions
 delay = (ms, fn) -> setTimeout(fn, ms)
 
@@ -23,6 +25,16 @@ load_script = (url, callback) ->
 
     script.src = url
     document.getElementsByTagName("head")[0].appendChild(script)
+
+load_css = (url) ->
+    "Load CSS from a remote URL"
+
+    style = document.createElement("link")
+    style.setAttribute("rel", "stylesheet")
+    style.setAttribute("type", "text/css")
+    style.setAttribute("href", url)
+
+    document.getElementsByTagName("head")[0].appendChild(style)
 
 load_rss = (url, success) ->
     """
@@ -72,13 +84,11 @@ class SubtlePatternsOverlay
     show: -> @el.show()
     hide: -> @el.hide()
     create: ->
-        @el = $("<div>").html("Loading...")
-        @el.css("z-index", "100")
-        @el.css("background", "#fefefe")
-        @el.css("position", "fixed")
-        @el.css("padding", "10px")
-        @el.css("bottom", "0px")
-        @el.css("left", "0px")
+        @el = $("<div>", id: "subtle_overlay")
+        $("<a>", "href": "#", "class": "previous").html("←").appendTo(@el).click => @previous()
+        $("<span>", "class": "index").appendTo(@el)
+        $("<a>", "href": "#", "class": "next").html("→").appendTo(@el).click => @next()
+        $("<span>", "class": "title").appendTo(@el)
         @el.appendTo("body")
 
     setup_events: ->
@@ -104,11 +114,11 @@ class SubtlePatternsOverlay
         pattern = @current_pattern()
         $("body").css("background-image", "url('#{pattern.img}')")
         $("body").css("background-repeat", "repeat")
-        @el.html("SubtlePattern: <a target='_blank' href='#{pattern.link}'>#{pattern.title}</a>")
+        @el.find(".index").html("#{@curr+1}/#{@patterns.length}")
+        @el.find(".title").html("<a target='_blank' href='#{pattern.link}'>#{pattern.title}</a>")
 
 # Kick everything off once jQuery is loaded
 load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", ->
+    load_css "http://#{SITE_URL}/bookmarklet.css"
     load_subtle_patterns (patterns) ->
-        overlay = new SubtlePatternsOverlay(patterns)
-        console.log overlay
-        overlay.setup()
+        new SubtlePatternsOverlay(patterns).setup()

@@ -1,0 +1,32 @@
+#subtle_overlay {
+  z-index: 100;
+  background: #fefefe;
+  position: fixed;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  box-shadow: 0px 0px 8px #999;
+  border-radius: 0 5px 0 0;
+}
+#subtle_overlay .next,
+#subtle_overlay .previous {
+  text-decoration: none;
+  font-weight: 800;
+  color: #999;
+}
+#subtle_overlay .next {
+  padding-right: 5px;
+}
+#subtle_overlay .previous {
+  padding-left: 5px;
+}
+#subtle_overlay .index {
+  padding: 5px;
+  color: #999;
+}
+#subtle_overlay .title {
+  padding: 3px 7px;
+  font-size: 15px;
+  display: inline-block;
+}
