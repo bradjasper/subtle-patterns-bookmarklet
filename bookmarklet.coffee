@@ -1,21 +1,7 @@
+# Utility functions
 delay = (ms, fn) -> setTimeout(fn, ms)
 String::beginsWith = (str) -> if @match(new RegExp "^#{str}") then true else false
 String::endsWith = (str) -> if @match(new RegExp "#{str}$") then true else false
-window.log = ->
-
-  log.history = log.history or []
-  log.history.push arguments
-  if @console
-    arguments.callee = arguments.callee.caller
-    console.log Array::slice.call(arguments)
-
-((b) ->
-  c = ->
-  d = "assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(",")
-  while a = d.pop()
-    b[a] = b[a] or c
-) window.console = window.console or {}
-
 load_script = (url, callback) ->
     """Load a script from a remote URL...with a callback when it's complete"""
     
@@ -44,6 +30,7 @@ load_rss = (url, success) ->
                 success(data)
             else
                 alert("There was an error loading the RSS feed #{url}")
+
 
 show_patterns = (patterns) ->
     index = 0
@@ -101,5 +88,5 @@ main = ->
 
         show_patterns(patterns)
 
-# Start
+# Kick everything off once jQuery is loaded
 load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", -> main()
