@@ -78,6 +78,7 @@ class SubtlePatternsOverlay
 
     setup: ->
         @create()
+        @setup_categories()
         @setup_events()
         @update()
         
@@ -85,11 +86,42 @@ class SubtlePatternsOverlay
     hide: -> @el.hide()
     create: ->
         @el = $("<div>", id: "subtle_overlay")
-        $("<a>", "href": "#", "class": "previous").html("←").appendTo(@el).click => @previous()
+        $("<select>", "class": "category").appendTo(@el)
+        $("<a>", "href": "#", "class": "previous").html("←").appendTo(@el)
         $("<span>", "class": "index").appendTo(@el)
-        $("<a>", "href": "#", "class": "next").html("→").appendTo(@el).click => @next()
+        $("<a>", "href": "#", "class": "next").html("→").appendTo(@el)
         $("<span>", "class": "title").appendTo(@el)
         @el.appendTo("body")
+
+    current_pattern: -> @filtered_patterns()[@curr]
+    update: =>
+        pattern = @current_pattern()
+        patterns = @filtered_patterns()
+        $("body").css("background-image", "url('#{pattern.img}')")
+        $("body").css("background-repeat", "repeat")
+        @el.find(".index").html("#{@curr+1}/#{patterns.length}")
+        @el.find(".title").html("<a target='_blank' href='#{pattern.link}'>#{pattern.title}</a>")
+
+    filtered_patterns: => (pattern for pattern in @patterns when @category == "all" or @category in pattern.categories)
+
+    setup_categories: ->
+        @categories = {}
+        @category = "all"
+        for pattern in @patterns
+            for category in pattern.categories
+                if category of @categories
+                    @categories[category] += 1
+                else
+                    @categories[category] = 1
+
+        sortable = ([key, val] for key, val of @categories)
+        sortable.sort((b, a) -> a[1] - b[1])
+
+        select = @el.find("select")
+        select.append("<option value='all'>All (#{@patterns.length})</option>")
+        for [category, count] in sortable
+            select.append("<option value='#{category}'>#{category} (#{count})</option>")
+
 
     setup_events: ->
         $(document).keydown (e) =>
@@ -97,8 +129,15 @@ class SubtlePatternsOverlay
                 when 37 then @previous()
                 when 39 then @next()
 
+        @el.find(".previous").click => @previous()
+        @el.find(".next").click => @next()
+        @el.find("select").change =>
+            @category = @el.find("select").val()
+            @curr = 0
+            @update()
+
     next: ->
-        if @curr < @patterns.length-1
+        if @curr < @filtered_patterns().length-1
             @curr += 1
             @update()
 
@@ -107,15 +146,8 @@ class SubtlePatternsOverlay
             @curr -= 1
             @update()
         else
-            @curr = @patterns.length-1
+            @curr = @filtered_patterns().length-1
 
-    current_pattern: -> @patterns[@curr]
-    update: ->
-        pattern = @current_pattern()
-        $("body").css("background-image", "url('#{pattern.img}')")
-        $("body").css("background-repeat", "repeat")
-        @el.find(".index").html("#{@curr+1}/#{@patterns.length}")
-        @el.find(".title").html("<a target='_blank' href='#{pattern.link}'>#{pattern.title}</a>")
 
 # Kick everything off once jQuery is loaded
 load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", ->
