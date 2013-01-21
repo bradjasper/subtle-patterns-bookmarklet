@@ -1,12 +1,12 @@
-#SITE_URL = "127.0.0.1:8000"
-SITE_URL = "raw.github.com/bradjasper/subtle-patterns-bookmarklet/master"
+# SubtlePatternsBookmarklet
+#
+# SubtlePatterns is a great website where you can find backgrounds for your website.
+# This bookmarklet allows you to preview the backgrounds from SubtlePatterns live on your site
+#
 
-# Utility functions
-delay = (ms, fn) -> setTimeout(fn, ms)
-
-# Dangerous to modify prototype, but it's just crazy these aren't standard
-String::beginsWith = (str) -> if @match(new RegExp "^#{str}") then true else false
-String::endsWith = (str) -> if @match(new RegExp "#{str}$") then true else false
+##
+## load_* helpers to dynamically add load in certain types of content
+##
 
 load_script = (url, callback) ->
     """
@@ -68,17 +68,23 @@ load_subtle_patterns = (success) ->
 
         success(patterns)
 
+##
+## Bookmarklet Overlay
+##
+#
 class SubtlePatternsOverlay
     """
-    This is the overlay the user see's and uses to control patterns
-
-    This could use Knockout or Backbone, but since it's a bookmarklet we'll keep it light
+    This is the overlay the user see's and uses to control patterns. This could use
+    Knockout or Angular, but since it's a bookmarklet we'll keep it light and old-school with jQuery
     """
 
     constructor: (@patterns) ->
         @curr = 0
 
     setup: ->
+        """
+        Handle initial setup outside of constructor
+        """
         @create()
         @setup_categories()
         @setup_events()
@@ -86,33 +92,57 @@ class SubtlePatternsOverlay
         
     show: -> @el.show()
     hide: -> @el.hide()
+
     create: ->
+        """
+        Create the overlay for the first time
+        """
         @el = $("<div>", id: "subtle_overlay")
 
-        $("<div>", "class": "header").html("Subtle Patterns Bookmarklet").appendTo(@el)
+        $("<div>", "class": "header").html("<a href='http://subtlepatterns.com/' target='_blank'>Subtle Patterns</a> Bookmarklet").appendTo(@el)
         $("<select>", "class": "category").appendTo(@el)
         $("<a>", "href": "#", "class": "previous", "title": "You can also use your left and right arrow keys to switch patterns").html("←").appendTo(@el)
         $("<span>", "class": "index").appendTo(@el)
         $("<a>", "href": "#", "class": "next", "title": "You can also use your left and right arrow keys to switch patterns").html("→").appendTo(@el)
         $("<span>", "class": "title").appendTo(@el)
 
-        $('<div class="bradjasper">by <a href="http://bradjasper.com">Brad Jasper</a></div>').appendTo(@el)
+        $('<div class="bradjasper">by <a href="http://bradjasper.com" target="_blank">Brad Jasper</a></div>').appendTo(@el)
         @el.appendTo("body")
 
-    current_pattern: -> @filtered_patterns()[@curr]
+    current_pattern: ->
+        """
+        Return the currently selected pattern
+        """
+        @category_patterns()[@curr]
+
     update: =>
+        """
+        Update the currently selected pattern. This is generally called on first
+        initialization and any time a next() or previous() call is made.
+        """
         pattern = @current_pattern()
-        patterns = @filtered_patterns()
+
+        # TODO: This might be too brittle to work across lots of websites...
         $("body").css("background-image", "url('#{pattern.img}')")
         $("body").css("background-repeat", "repeat")
-        @el.find(".index").html("#{@curr+1}/#{patterns.length}")
+
+        @el.find(".index").html("#{@curr+1}/#{@category_patterns().length}")
         @el.find(".title").html("<a target='_blank' href='#{pattern.link}' title='#{pattern.description}'>#{pattern.title}</a>")
 
-    filtered_patterns: => (pattern for pattern in @patterns when @category == "all" or @category in pattern.categories)
+    category_patterns: =>
+        """
+        Return all of the patterns for the active category
+        """
+        (pattern for pattern in @patterns when @category == "all" or @category in pattern.categories)
 
     setup_categories: ->
+        """
+        Build the category <select> box
+        """
+
         @categories = {}
         @category = "all"
+
         for pattern in @patterns
             for category in pattern.categories
                 if category of @categories
@@ -130,6 +160,10 @@ class SubtlePatternsOverlay
 
 
     setup_events: ->
+        """
+        Setup event handlers for all different actions
+        """
+
         $(document).keydown (e) =>
             switch e.keyCode
                 when 37 then @previous()
@@ -143,20 +177,24 @@ class SubtlePatternsOverlay
             @update()
 
     next: ->
-        if @curr < @filtered_patterns().length-1
+        if @curr < @category_patterns().length-1
             @curr += 1
             @update()
+        else # loop
+            @curr = 0
 
     previous: ->
         if @curr > 0
             @curr -= 1
             @update()
-        else
-            @curr = @filtered_patterns().length-1
+        else # loop
+            @curr = @category_patterns().length-1
 
 
 # Kick everything off once jQuery is loaded
 load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", ->
-    load_css "http://#{SITE_URL}/bookmarklet.css"
+    #load_css "http://127.0.0.1:8000/bookmarklet.css"
+    load_css "http://raw.github.com/bradjasper/subtle-patterns-bookmarklet/master/bookmarklet.css"
     load_subtle_patterns (patterns) ->
-        new SubtlePatternsOverlay(patterns).setup()
+        overlay = new SubtlePatternsOverlay(patterns)
+        overlay.setup()
