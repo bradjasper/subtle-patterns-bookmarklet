@@ -1,4 +1,5 @@
-SITE_URL = "127.0.0.1:8000"
+#SITE_URL = "127.0.0.1:8000"
+SITE_URL = "raw.github.com/bradjasper/subtle-patterns-bookmarklet/master"
 
 # Utility functions
 delay = (ms, fn) -> setTimeout(fn, ms)
@@ -62,6 +63,7 @@ load_subtle_patterns = (success) ->
                     img: img
                     title: entry.title
                     link: entry.link
+                    description: entry.contentSnippet
                     categories: entry.categories[1...]
 
         success(patterns)
@@ -86,11 +88,15 @@ class SubtlePatternsOverlay
     hide: -> @el.hide()
     create: ->
         @el = $("<div>", id: "subtle_overlay")
+
+        $("<div>", "class": "header").html("Subtle Patterns Bookmarklet").appendTo(@el)
         $("<select>", "class": "category").appendTo(@el)
-        $("<a>", "href": "#", "class": "previous").html("←").appendTo(@el)
+        $("<a>", "href": "#", "class": "previous", "title": "You can also use your left and right arrow keys to switch patterns").html("←").appendTo(@el)
         $("<span>", "class": "index").appendTo(@el)
-        $("<a>", "href": "#", "class": "next").html("→").appendTo(@el)
+        $("<a>", "href": "#", "class": "next", "title": "You can also use your left and right arrow keys to switch patterns").html("→").appendTo(@el)
         $("<span>", "class": "title").appendTo(@el)
+
+        $('<div class="bradjasper">by <a href="http://bradjasper.com">Brad Jasper</a></div>').appendTo(@el)
         @el.appendTo("body")
 
     current_pattern: -> @filtered_patterns()[@curr]
@@ -100,7 +106,7 @@ class SubtlePatternsOverlay
         $("body").css("background-image", "url('#{pattern.img}')")
         $("body").css("background-repeat", "repeat")
         @el.find(".index").html("#{@curr+1}/#{patterns.length}")
-        @el.find(".title").html("<a target='_blank' href='#{pattern.link}'>#{pattern.title}</a>")
+        @el.find(".title").html("<a target='_blank' href='#{pattern.link}' title='#{pattern.description}'>#{pattern.title}</a>")
 
     filtered_patterns: => (pattern for pattern in @patterns when @category == "all" or @category in pattern.categories)
 

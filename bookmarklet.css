@@ -9,6 +9,17 @@
   box-shadow: 0px 0px 8px #999;
   border-radius: 0 5px 0 0;
 }
+#subtle_overlay .header {
+  font-weight: bold;
+}
+#subtle_overlay .bradjasper {
+  font-size: 11px;
+  margin-top: 5px;
+  color: #666;
+}
+#subtle_overlay .bradjasper a {
+  color: #666;
+}
 #subtle_overlay .next,
 #subtle_overlay .previous {
   text-decoration: none;

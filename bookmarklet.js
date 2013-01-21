@@ -4,7 +4,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  SITE_URL = "127.0.0.1:8000";
+  SITE_URL = "raw.github.com/bradjasper/subtle-patterns-bookmarklet/master";
 
   delay = function(ms, fn) {
     return setTimeout(fn, ms);
@@ -88,6 +88,7 @@
             img: img,
             title: entry.title,
             link: entry.link,
+            description: entry.contentSnippet,
             categories: entry.categories.slice(1)
           });
         }
@@ -127,23 +128,29 @@
       this.el = $("<div>", {
         id: "subtle_overlay"
       });
+      $("<div>", {
+        "class": "header"
+      }).html("Subtle Patterns Bookmarklet").appendTo(this.el);
       $("<select>", {
         "class": "category"
       }).appendTo(this.el);
       $("<a>", {
         "href": "#",
-        "class": "previous"
+        "class": "previous",
+        "title": "You can also use your left and right arrow keys to switch patterns"
       }).html("←").appendTo(this.el);
       $("<span>", {
         "class": "index"
       }).appendTo(this.el);
       $("<a>", {
         "href": "#",
-        "class": "next"
+        "class": "next",
+        "title": "You can also use your left and right arrow keys to switch patterns"
       }).html("→").appendTo(this.el);
       $("<span>", {
         "class": "title"
       }).appendTo(this.el);
+      $('<div class="bradjasper">by <a href="http://bradjasper.com">Brad Jasper</a></div>').appendTo(this.el);
       return this.el.appendTo("body");
     };
 
@@ -158,7 +165,7 @@
       $("body").css("background-image", "url('" + pattern.img + "')");
       $("body").css("background-repeat", "repeat");
       this.el.find(".index").html("" + (this.curr + 1) + "/" + patterns.length);
-      return this.el.find(".title").html("<a target='_blank' href='" + pattern.link + "'>" + pattern.title + "</a>");
+      return this.el.find(".title").html("<a target='_blank' href='" + pattern.link + "' title='" + pattern.description + "'>" + pattern.title + "</a>");
     };
 
     SubtlePatternsOverlay.prototype.filtered_patterns = function() {
