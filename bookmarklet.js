@@ -232,7 +232,7 @@
   })();
 
   load_script("https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", function() {
-    load_css("http://127.0.0.1:8000/bookmarklet.css?cb=" + (Math.random()));
+    load_css("http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=" + (Math.random()));
     return load_subtle_patterns(function(patterns) {
       var overlay;
       overlay = new SubtlePatternsOverlay(patterns);
