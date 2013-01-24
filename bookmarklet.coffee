@@ -97,17 +97,31 @@ class SubtlePatternsOverlay
         """
         Create the overlay for the first time
         """
-        @el = $("<div>", id: "subtle_overlay")
 
-        $("<div>", "class": "header").html("<a href='http://subtlepatterns.com/' target='_blank'>Subtle Patterns</a> Bookmarklet").appendTo(@el)
-        $("<select>", "class": "category").appendTo(@el)
-        $("<a>", "href": "#", "class": "previous", "title": "You can also use your left and right arrow keys to switch patterns").html("←").appendTo(@el)
-        $("<span>", "class": "index").appendTo(@el)
-        $("<a>", "href": "#", "class": "next", "title": "You can also use your left and right arrow keys to switch patterns").html("→").appendTo(@el)
-        $("<span>", "class": "title").appendTo(@el)
+        # Life is too short to generate HTML in Javascript
+        @el = $("""
+            <div id="subtle_overlay">
+                <span class="title">
+                    <a href="#" target="_blank" class="name"></a>
+                    <a title="Download this pattern" href="#" target="_blank" class="download">(download)</a>
+                </span>
+                <div class="controls">
+                    <a href="#" class="previous">&#x25C0;</a>
+                    <span class="counter">
+                        <span class="curr"></span>/<span class="total"></span>
+                    </span>
+                    <a href="#" class="next">&#x25B6;</a>
+                </div>
+                <select class="category">
+                </select>
+                <div class="about">
+                    <a href="http://subtlepatterns.com" target="_blank">SubtlePatterns</a> bookmarklet by
+                    <a href="http://bradjasper.com" target="_blank">Brad Jasper</a>
+                </div>
+            </div>
+        """)
 
-        $('<div class="bradjasper">by <a href="http://bradjasper.com" target="_blank">Brad Jasper</a></div>').appendTo(@el)
-        @el.appendTo("body")
+        @el.hide().appendTo("body").slideDown()
 
     current_pattern: ->
         """
@@ -126,8 +140,11 @@ class SubtlePatternsOverlay
         $("body").css("background-image", "url('#{pattern.img}')")
         $("body").css("background-repeat", "repeat")
 
-        @el.find(".index").html("#{@curr+1}/#{@category_patterns().length}")
-        @el.find(".title").html("<a target='_blank' href='#{pattern.link}' title='#{pattern.description}'>#{pattern.title}</a>")
+        @el.find(".curr").html("#{@curr+1}")
+        @el.find(".total").html("#{@category_patterns().length}")
+
+        @el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title)
+        @el.find(".title .download").attr("href", pattern.img)
 
     category_patterns: =>
         """
@@ -179,22 +196,22 @@ class SubtlePatternsOverlay
     next: ->
         if @curr < @category_patterns().length-1
             @curr += 1
-            @update()
         else # loop
             @curr = 0
+        @update()
 
     previous: ->
         if @curr > 0
             @curr -= 1
-            @update()
         else # loop
             @curr = @category_patterns().length-1
+        @update()
 
 
 # Kick everything off once jQuery is loaded
 load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", ->
-    #load_css "http://127.0.0.1:8000/bookmarklet.css"
-    load_css "http://raw.github.com/bradjasper/subtle-patterns-bookmarklet/master/bookmarklet.css"
+    load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
+    #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
     load_subtle_patterns (patterns) ->
         overlay = new SubtlePatternsOverlay(patterns)
         overlay.setup()
