@@ -55,15 +55,20 @@
   load_subtle_patterns = function(success) {
     "Load patterns from SubtlePatterns via RSS";
     return load_rss("http://feeds.feedburner.com/SubtlePatterns", function(data) {
-      var entry, img, patterns, _i, _len, _ref;
+      var content, download, entry, img, patterns, _i, _len, _ref;
       patterns = [];
       _ref = data.responseData.feed.entries;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         entry = _ref[_i];
-        img = $("<div>").html(entry.content).find("img[src$='.png']").attr("src");
-        if (img) {
+        content = $(entry.content.replace(" src=", " data-src="));
+        console.log(content);
+        img = content.find("img[data-src$='.png']").attr("data-src");
+        download = content.find("a[href$='.zip']").attr("href");
+        console.log(download);
+        if (img && download) {
           patterns.push({
             img: img,
+            download: download,
             title: entry.title,
             link: entry.link,
             description: entry.contentSnippet,
@@ -105,7 +110,7 @@
 
     SubtlePatternsOverlay.prototype.create = function() {
       "Create the overlay for the first time";
-      this.el = $("<div id=\"subtle_overlay\">\n    <span class=\"title\">\n        <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        <a title=\"Download this pattern\" href=\"#\" target=\"_blank\" class=\"download\">(download)</a>\n    </span>\n    <div class=\"controls\">\n        <a href=\"#\" class=\"previous\">&#x25C0;</a>\n        <span class=\"counter\">\n            <span class=\"curr\"></span>/<span class=\"total\"></span>\n        </span>\n        <a href=\"#\" class=\"next\">&#x25B6;</a>\n    </div>\n    <select class=\"category\">\n    </select>\n    <div class=\"about\">\n        <a href=\"http://subtlepatterns.com\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n        <a href=\"http://bradjasper.com\" target=\"_blank\">Brad Jasper</a>\n    </div>\n</div>");
+      this.el = $("<div id=\"subtle_overlay\">\n    <span class=\"title\">\n        <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        <a title=\"Download this pattern\" href=\"#\" target=\"_blank\" class=\"download\">(download)</a>\n    </span>\n    <div class=\"controls\">\n        <a href=\"#\" class=\"previous\">&#x25C0;</a>\n        <span class=\"counter\">\n            <span class=\"curr\"></span>/<span class=\"total\"></span>\n        </span>\n        <a href=\"#\" class=\"next\">&#x25B6;</a>\n    </div>\n    <select class=\"category\">\n        <option value=\"all\">All (" + this.patterns.length + ")</option>\n    </select>\n    <div class=\"about\">\n        <a href=\"http://subtlepatterns.com\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n        <a href=\"http://bradjasper.com\" target=\"_blank\">Brad Jasper</a>\n    </div>\n</div>");
       return this.el.hide().appendTo("body").slideDown();
     };
 
@@ -124,7 +129,7 @@
       this.el.find(".curr").html("" + (this.curr + 1));
       this.el.find(".total").html("" + (this.category_patterns().length));
       this.el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title);
-      return this.el.find(".title .download").attr("href", pattern.img);
+      return this.el.find(".title .download").attr("href", pattern.download);
     };
 
     SubtlePatternsOverlay.prototype.category_patterns = function() {
@@ -175,7 +180,6 @@
         return a[1] - b[1];
       });
       select = this.el.find("select");
-      select.append("<option value='all'>All (" + this.patterns.length + ")</option>");
       _results = [];
       for (_k = 0, _len2 = sortable.length; _k < _len2; _k++) {
         _ref2 = sortable[_k], category = _ref2[0], count = _ref2[1];

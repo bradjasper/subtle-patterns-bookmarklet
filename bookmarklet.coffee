@@ -57,10 +57,17 @@ load_subtle_patterns = (success) ->
     load_rss "http://feeds.feedburner.com/SubtlePatterns", (data) ->
         patterns = []
         for entry in data.responseData.feed.entries
-            img = $("<div>").html(entry.content).find("img[src$='.png']").attr("src")
-            if img
+            # This is a hack that lets us use jQuery's selector engine without loading
+            # all of the images into the document
+            content = $(entry.content.replace(" src=", " data-src="))
+            console.log content
+            img = content.find("img[data-src$='.png']").attr("data-src")
+            download = content.find("a[href$='.zip']").attr("href")
+            console.log download
+            if img and download
                 patterns.push
                     img: img
+                    download: download
                     title: entry.title
                     link: entry.link
                     description: entry.contentSnippet
@@ -113,6 +120,7 @@ class SubtlePatternsOverlay
                     <a href="#" class="next">&#x25B6;</a>
                 </div>
                 <select class="category">
+                    <option value="all">All (#{@patterns.length})</option>
                 </select>
                 <div class="about">
                     <a href="http://subtlepatterns.com" target="_blank">SubtlePatterns</a> bookmarklet by
@@ -144,7 +152,7 @@ class SubtlePatternsOverlay
         @el.find(".total").html("#{@category_patterns().length}")
 
         @el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title)
-        @el.find(".title .download").attr("href", pattern.img)
+        @el.find(".title .download").attr("href", pattern.download)
 
     category_patterns: =>
         """
@@ -171,7 +179,6 @@ class SubtlePatternsOverlay
         sortable.sort((b, a) -> a[1] - b[1])
 
         select = @el.find("select")
-        select.append("<option value='all'>All (#{@patterns.length})</option>")
         for [category, count] in sortable
             select.append("<option value='#{category}'>#{category} (#{count})</option>")
 

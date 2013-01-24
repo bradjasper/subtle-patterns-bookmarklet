@@ -1,5 +1,6 @@
 #subtle_overlay {
-  background: #f3f3f3;
+  background: #e8e8e8;
+  border: 3px solid #fefefe;
   z-index: 99;
   position: fixed;
   bottom: 0;
@@ -8,8 +9,7 @@
   padding: 5px 8px;
   border-radius: 5px 5px 0 0;
   box-shadow: 0px 0px 8px #999;
-  border: 2px solid #efefef;
-  width: 160px;
+  width: 170px;
   text-align: center;
 }
 #subtle_overlay .title {
@@ -26,6 +26,9 @@
   font-size: 11px;
   text-decoration: none;
   color: #666;
+}
+#subtle_overlay .preloader {
+  display: none;
 }
 #subtle_overlay .controls {
   text-align: center;
@@ -55,7 +58,7 @@
 }
 #subtle_overlay .about {
   font-size: 11px;
-  line-height: 15px;
+  line-height: 13px;
   color: #777;
 }
 #subtle_overlay .about a {
