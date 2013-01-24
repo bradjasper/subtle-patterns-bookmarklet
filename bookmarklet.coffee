@@ -60,10 +60,8 @@ load_subtle_patterns = (success) ->
             # This is a hack that lets us use jQuery's selector engine without loading
             # all of the images into the document
             content = $(entry.content.replace(" src=", " data-src="))
-            console.log content
             img = content.find("img[data-src$='.png']").attr("data-src")
             download = content.find("a[href$='.zip']").attr("href")
-            console.log download
             if img and download
                 patterns.push
                     img: img
