@@ -5,10 +5,7 @@ javascript:(function()%7Bvar%20newscript%3Ddocument.createElement(%27script%27)%
 ```
 
 ## Install
-<a href="http://bradjasper.com/subtle_patterns_bookmarklet/install.html">Head over to this page</a> where you can drag and drop the bookmarklet on to your bookmarks bar.
+<a href="http://bradjasper.com/subtle-patterns-bookmarklet/">Head over to this page</a> where you can drag and drop the bookmarklet on to your bookmarks bar.
 
 ## Usage
 Press left and right to move between patterns. The current pattern is displayed in the lower left corner of the browser.
-
-## Similar
-http://raphaeleidus.com/2011/06/29/background-patterns-bookmarklet
