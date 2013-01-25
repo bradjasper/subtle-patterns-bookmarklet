@@ -108,7 +108,7 @@
 
     SubtlePatternsOverlay.prototype.create = function() {
       "Create the overlay for the first time";
-      this.el = $("<div id=\"subtle_overlay\">\n    <span class=\"title\">\n        <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        <a title=\"Download this pattern\" href=\"#\" target=\"_blank\" class=\"download\">(download)</a>\n    </span>\n    <div class=\"controls\">\n        <a href=\"#\" class=\"previous\">&#x25C0;</a>\n        <span class=\"counter\">\n            <span class=\"curr\"></span>/<span class=\"total\"></span>\n        </span>\n        <a href=\"#\" class=\"next\">&#x25B6;</a>\n    </div>\n    <select class=\"category\">\n        <option value=\"all\">All (" + this.patterns.length + ")</option>\n    </select>\n    <div class=\"about\">\n        <a href=\"http://subtlepatterns.com\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n        <a href=\"http://bradjasper.com\" target=\"_blank\">Brad Jasper</a>\n    </div>\n</div>");
+      this.el = $("<div id=\"subtle_overlay\">\n    <span class=\"title\">\n        <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        <a title=\"Download this pattern\" href=\"#\" target=\"_blank\" class=\"download_pattern\">(download)</a>\n    </span>\n    <div class=\"controls\">\n        <a href=\"#\" class=\"previous\">&#x25C0;</a>\n        <span class=\"counter\">\n            <span class=\"curr\"></span>/<span class=\"total\"></span>\n        </span>\n        <a href=\"#\" class=\"next\">&#x25B6;</a>\n    </div>\n    <select class=\"category\">\n        <option value=\"all\">All (" + this.patterns.length + ")</option>\n    </select>\n    <div class=\"about\">\n        <a href=\"http://subtlepatterns.com\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n        <a href=\"http://bradjasper.com\" target=\"_blank\">Brad Jasper</a>\n    </div>\n</div>");
       return this.el.hide().appendTo("body").slideDown();
     };
 
@@ -127,7 +127,7 @@
       this.el.find(".curr").html("" + (this.curr + 1));
       this.el.find(".total").html("" + (this.category_patterns().length));
       this.el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title);
-      return this.el.find(".title .download").attr("href", pattern.download);
+      return this.el.find(".title .download_pattern").attr("href", pattern.download);
     };
 
     SubtlePatternsOverlay.prototype.category_patterns = function() {

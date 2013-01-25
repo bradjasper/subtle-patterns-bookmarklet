@@ -56,6 +56,11 @@
 }
 #subtle_overlay .category {
   margin: 5px 0 10px 0;
+  /* Make the bookmarklet look better on SubtlePatterns.com */
+
+  background-color: inherit !important;
+  border: 1px solid #cccccc !important;
+  width: 100%;
 }
 #subtle_overlay .about {
   font-size: 11px;

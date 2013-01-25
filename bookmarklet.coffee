@@ -108,7 +108,7 @@ class SubtlePatternsOverlay
             <div id="subtle_overlay">
                 <span class="title">
                     <a href="#" target="_blank" class="name"></a>
-                    <a title="Download this pattern" href="#" target="_blank" class="download">(download)</a>
+                    <a title="Download this pattern" href="#" target="_blank" class="download_pattern">(download)</a>
                 </span>
                 <div class="controls">
                     <a href="#" class="previous">&#x25C0;</a>
@@ -150,7 +150,7 @@ class SubtlePatternsOverlay
         @el.find(".total").html("#{@category_patterns().length}")
 
         @el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title)
-        @el.find(".title .download").attr("href", pattern.download)
+        @el.find(".title .download_pattern").attr("href", pattern.download)
 
     category_patterns: =>
         """
