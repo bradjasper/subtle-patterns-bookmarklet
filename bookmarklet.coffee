@@ -59,7 +59,7 @@ load_subtle_patterns = (success) ->
         for entry in data.responseData.feed.entries
             # This is a hack that lets us use jQuery's selector engine without loading
             # all of the images into the document
-            content = $(entry.content.replace(" src=", " data-src="))
+            content = $(entry.content.replace(/<img src=/g, "<img data-src="))
             img = content.find("img[data-src$='.png']").attr("data-src")
             download = content.find("a[href$='.zip']").attr("href")
             if img and download

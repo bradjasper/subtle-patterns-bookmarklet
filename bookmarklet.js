@@ -60,7 +60,7 @@
       _ref = data.responseData.feed.entries;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         entry = _ref[_i];
-        content = $(entry.content.replace(" src=", " data-src="));
+        content = $(entry.content.replace(/<img src=/g, "<img data-src="));
         img = content.find("img[data-src$='.png']").attr("data-src");
         download = content.find("a[href$='.zip']").attr("href");
         if (img && download) {

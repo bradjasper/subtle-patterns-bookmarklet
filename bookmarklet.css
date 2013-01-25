@@ -26,6 +26,7 @@
   font-size: 11px;
   text-decoration: none;
   color: #666;
+  display: block;
 }
 #subtle_overlay .preloader {
   display: none;
