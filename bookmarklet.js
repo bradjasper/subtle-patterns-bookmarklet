@@ -55,15 +55,18 @@
   load_subtle_patterns = function(success) {
     "Load patterns from SubtlePatterns via RSS";
     return load_rss("http://feeds.feedburner.com/SubtlePatterns", function(data) {
-      var entry, img, patterns, _i, _len, _ref;
+      var content, download, entry, img, patterns, _i, _len, _ref;
       patterns = [];
       _ref = data.responseData.feed.entries;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         entry = _ref[_i];
-        img = $("<div>").html(entry.content).find("img[src$='.png']").attr("src");
-        if (img) {
+        content = $(entry.content.replace(/<img src=/g, "<img data-src="));
+        img = content.find("img[data-src$='.png']").attr("data-src");
+        download = content.find("a[href$='.zip']").attr("href");
+        if (img && download) {
           patterns.push({
             img: img,
+            download: download,
             title: entry.title,
             link: entry.link,
             description: entry.contentSnippet,
@@ -105,33 +108,8 @@
 
     SubtlePatternsOverlay.prototype.create = function() {
       "Create the overlay for the first time";
-      this.el = $("<div>", {
-        id: "subtle_overlay"
-      });
-      $("<div>", {
-        "class": "header"
-      }).html("<a href='http://subtlepatterns.com/' target='_blank'>Subtle Patterns</a> Bookmarklet").appendTo(this.el);
-      $("<select>", {
-        "class": "category"
-      }).appendTo(this.el);
-      $("<a>", {
-        "href": "#",
-        "class": "previous",
-        "title": "You can also use your left and right arrow keys to switch patterns"
-      }).html("←").appendTo(this.el);
-      $("<span>", {
-        "class": "index"
-      }).appendTo(this.el);
-      $("<a>", {
-        "href": "#",
-        "class": "next",
-        "title": "You can also use your left and right arrow keys to switch patterns"
-      }).html("→").appendTo(this.el);
-      $("<span>", {
-        "class": "title"
-      }).appendTo(this.el);
-      $('<div class="bradjasper">by <a href="http://bradjasper.com" target="_blank">Brad Jasper</a></div>').appendTo(this.el);
-      return this.el.appendTo("body");
+      this.el = $("<div id=\"subtle_overlay\">\n    <span class=\"title\">\n        <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        <a title=\"Download this pattern\" href=\"#\" target=\"_blank\" class=\"download_pattern\">(download)</a>\n    </span>\n    <div class=\"controls\">\n        <a href=\"#\" class=\"previous\">&#x25C0;</a>\n        <span class=\"counter\">\n            <span class=\"curr\"></span>/<span class=\"total\"></span>\n        </span>\n        <a href=\"#\" class=\"next\">&#x25B6;</a>\n    </div>\n    <select class=\"category\">\n        <option value=\"all\">All (" + this.patterns.length + ")</option>\n    </select>\n    <div class=\"about\">\n        <a href=\"http://subtlepatterns.com\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n        <a href=\"http://bradjasper.com\" target=\"_blank\">Brad Jasper</a>\n    </div>\n</div>");
+      return this.el.hide().appendTo("body").slideDown();
     };
 
     SubtlePatternsOverlay.prototype.current_pattern = function() {
@@ -146,8 +124,10 @@
       pattern = this.current_pattern();
       $("body").css("background-image", "url('" + pattern.img + "')");
       $("body").css("background-repeat", "repeat");
-      this.el.find(".index").html("" + (this.curr + 1) + "/" + (this.category_patterns().length));
-      return this.el.find(".title").html("<a target='_blank' href='" + pattern.link + "' title='" + pattern.description + "'>" + pattern.title + "</a>");
+      this.el.find(".curr").html("" + (this.curr + 1));
+      this.el.find(".total").html("" + (this.category_patterns().length));
+      this.el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title);
+      return this.el.find(".title .download_pattern").attr("href", pattern.download);
     };
 
     SubtlePatternsOverlay.prototype.category_patterns = function() {
@@ -198,7 +178,6 @@
         return a[1] - b[1];
       });
       select = this.el.find("select");
-      select.append("<option value='all'>All (" + this.patterns.length + ")</option>");
       _results = [];
       for (_k = 0, _len2 = sortable.length; _k < _len2; _k++) {
         _ref2 = sortable[_k], category = _ref2[0], count = _ref2[1];
@@ -235,19 +214,19 @@
     SubtlePatternsOverlay.prototype.next = function() {
       if (this.curr < this.category_patterns().length - 1) {
         this.curr += 1;
-        return this.update();
       } else {
-        return this.curr = 0;
+        this.curr = 0;
       }
+      return this.update();
     };
 
     SubtlePatternsOverlay.prototype.previous = function() {
       if (this.curr > 0) {
         this.curr -= 1;
-        return this.update();
       } else {
-        return this.curr = this.category_patterns().length - 1;
+        this.curr = this.category_patterns().length - 1;
       }
+      return this.update();
     };
 
     return SubtlePatternsOverlay;
@@ -255,7 +234,7 @@
   })();
 
   load_script("https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", function() {
-    load_css("http://raw.github.com/bradjasper/subtle-patterns-bookmarklet/master/bookmarklet.css");
+    load_css("http://127.0.0.1:8000/bookmarklet.css?cb=" + (Math.random()));
     return load_subtle_patterns(function(patterns) {
       var overlay;
       overlay = new SubtlePatternsOverlay(patterns);
