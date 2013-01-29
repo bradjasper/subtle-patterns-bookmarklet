@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+## Take a SubtlePatterns YAML file and convert it to usable Javascript
+
+import os
+import yaml
+import json
+
+PATTERN_URL = "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/"
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+YAML_INPUT = os.path.join(BASE_DIR, "subtlepatterns.yaml")
+JS_OUTPUT = os.path.join(BASE_DIR, "subtlepatterns.js")
+
+patterns = yaml.load(open(YAML_INPUT).read())
+
+with open(JS_OUTPUT, "w") as file:
+    print "Writing %d patterns to JavaScript" % len(patterns)
+    for pattern in patterns:
+        
+        # relative path -> fully qualified path
+        # we host our own patterns to lighten the burden on SubtlePatterns.com servers
+        pattern["image"] = "%s%s" % (PATTERN_URL, pattern["image"])
+
+        # write jsonp callback with content
+        file.write("subtlepatterns_bookmarklet_cb(%s);" % json.dumps(patterns))
