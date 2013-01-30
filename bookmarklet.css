@@ -40,9 +40,9 @@
   padding: 4px;
   padding-bottom: 0;
   text-align: center;
-  -webkit-box-shadow: 0 1px 2px #333333;
-  -moz-box-shadow: 0 1px 2px #333333;
-  box-shadow: 0 1px 2px #333333;
+  -webkit-box-shadow: 0 1px 2px #888888;
+  -moz-box-shadow: 0 1px 2px #888888;
+  box-shadow: 0 1px 2px #888888;
 }
 #subtlepatterns_overlay .wrapper {
   background-color: #fdfdfd;
