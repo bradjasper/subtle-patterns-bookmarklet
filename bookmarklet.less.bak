@@ -1,0 +1,79 @@
+#subtle_overlay {
+    background: #e8e8e8;
+    border: 3px solid #fefefe;
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    left: 50px;
+    display: block;
+    padding: 5px 8px;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0px 0px 8px #999;
+    width: 170px;
+    text-align: center;
+
+    .title {
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        padding: 5px;
+
+        a {
+            color: #222;
+        }
+
+        .download {
+            font-size: 11px;
+            text-decoration: none;
+            color: #666;
+            display: block;
+        }
+    }
+
+    .preloader {
+        display: none;    
+    }
+
+    .controls {
+        text-align: center;
+        padding: 10px;
+        color: #666;
+
+        .previous, .next {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 35px;
+            color: #666;
+            vertical-align: middle;
+            font-family: Helvetica, 'DejaVu Sans', 'Arial Unicode MS', 'Lucida Sans Unicode', sans-serif;
+            text-shadow: 0 0 1px #aaa;
+
+            &:hover {
+                color: #888;
+            }
+
+            &:active {
+                color: #666;
+            }
+        }
+    }
+
+    .category {
+        margin: 5px 0 10px 0;
+        /* Make the bookmarklet look better on SubtlePatterns.com */
+        background-color: inherit !important;
+        border: 1px solid rgb(204, 204, 204) !important;
+        width: 100%;
+    }
+
+    .about {
+        font-size: 11px;
+        line-height: 13px;
+        color: #777;
+        a {
+            color: #777;
+        }
+
+    }
+}

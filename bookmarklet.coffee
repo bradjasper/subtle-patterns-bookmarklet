@@ -35,24 +35,27 @@ class SubtlePatternsOverlay
 
         # Life is too short to generate HTML in Javascript
         @el = $("""
-            <div id="subtle_overlay">
-                <span class="title">
-                    <a href="#" target="_blank" class="name"></a>
-                    <a title="Download this pattern" href="#" target="_blank" class="download_pattern">(download)</a>
-                </span>
-                <div class="controls">
-                    <a href="#" class="previous">&#x25C0;</a>
-                    <span class="counter">
-                        <span class="curr"></span>/<span class="total"></span>
+            <div id="subtlepatterns_overlay">
+                <div class="wrapper">
+                    <span class="title">
+                        <a href="#" target="_blank" class="name"></a>
                     </span>
-                    <a href="#" class="next">&#x25B6;</a>
-                </div>
-                <select class="category">
-                    <option value="all">All (#{@patterns.length})</option>
-                </select>
-                <div class="about">
-                    <a href="http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">SubtlePatterns</a> bookmarklet by
-                    <a href="http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">Brad Jasper</a>
+                    <div class="controls">
+                        <a href="#" class="previous"><img src="http://127.0.0.1:8000/left_arrow.png" /></a>
+                        <span class="counter">
+                            <span class="curr"></span>/<span class="total"></span>
+                        </span>
+                        <a href="#" class="next"><img src="http://127.0.0.1:8000/right_arrow.png" /></a>
+                    </div>
+                    <div class="categories">
+                        <select class="category">
+                            <option value="all">All (#{@patterns.length})</option>
+                        </select>
+                    </div>
+                    <div class="about">
+                        <a href="http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">SubtlePatterns</a> bookmarklet by
+                        <a href="http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">Brad Jasper</a>
+                    </div>
                 </div>
             </div>
         """)
@@ -82,7 +85,6 @@ class SubtlePatternsOverlay
         pattern_link = "#{pattern.link}?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet"
 
         @el.find(".title .name").attr("href", pattern_link).attr("title", pattern.description).html(pattern.title)
-        @el.find(".title .download_pattern").attr("href", pattern.download)
 
     category_patterns: =>
         """
