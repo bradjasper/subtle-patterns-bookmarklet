@@ -73,7 +73,7 @@ class SubtlePatternsOverlay
         pattern = @current_pattern()
 
         # TODO: This might be too brittle to work across lots of websites...
-        $("body").css("background-image", "url('#{pattern.image}')")
+        $("body").css("background-image", "url('#{pattern.mirror_image}')")
         $("body").css("background-repeat", "repeat")
 
         @el.find(".curr").html("#{@curr+1}")
@@ -153,7 +153,10 @@ load_css = (url) ->
 
     document.getElementsByTagName("head")[0].appendChild(style)
 
-load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
-#load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
-overlay = new SubtlePatternsOverlay(patterns)
-overlay.setup()
+if window.SUBTLEPATTERNS
+    load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
+    #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
+    overlay = new SubtlePatternsOverlay(SUBTLEPATTERNS)
+    overlay.setup()
+else
+    alert("Something went wrong, I can't find the patterns")

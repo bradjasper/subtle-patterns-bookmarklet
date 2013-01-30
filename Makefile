@@ -37,7 +37,6 @@ download_patterns:
 	done
 
 build_static:
-
 	echo "Building static assets"
 	for file in "${BASE_DIR}/jquery.min.js" \
 				"${MIRROR_DIR}/subtlepatterns.js" \
