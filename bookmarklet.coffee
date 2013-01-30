@@ -149,6 +149,7 @@ load_css = (url) ->
 
 if window.SUBTLEPATTERNS
     load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
+    #load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
     overlay = new SubtlePatternsOverlay(SUBTLEPATTERNS)
     overlay.setup()
 else
