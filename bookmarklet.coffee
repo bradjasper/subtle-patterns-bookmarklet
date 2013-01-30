@@ -149,6 +149,8 @@ load_css = (url) ->
 
     document.getElementsByTagName("head")[0].appendChild(style)
 
+window.SubtlePatternsOverlay = SubtlePatternsOverlay
+
 if window.SUBTLEPATTERNS
     load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
     #load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
