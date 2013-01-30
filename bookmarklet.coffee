@@ -1,16 +1,7 @@
-# SubtlePatternsBookmarklet
-#
-# SubtlePatterns is a great website where you can find backgrounds for your website.
-# This bookmarklet allows you to preview the backgrounds from SubtlePatterns live on your site
-#
-
-##
-## Bookmarklet Overlay
-##
 class SubtlePatternsOverlay
     """
     This is the overlay the user see's and uses to control patterns. This could use
-    Knockout or Angular, but since it's a bookmarklet we'll keep it light and old-school with jQuery
+    Knockout or Angular, but since it's a bookmarklet we'll keep it light with jQuery
     """
 
     constructor: (@patterns) ->
@@ -41,11 +32,11 @@ class SubtlePatternsOverlay
                         <a href="#" target="_blank" class="name"></a>
                     </span>
                     <div class="controls">
-                        <a href="#" class="previous"><img src="http://127.0.0.1:8000/left_arrow.png" /></a>
+                        <a href="#" class="previous"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/left_arrow.png" /></a>
                         <span class="counter">
                             <span class="curr"></span>/<span class="total"></span>
                         </span>
-                        <a href="#" class="next"><img src="http://127.0.0.1:8000/right_arrow.png" /></a>
+                        <a href="#" class="next"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/right_arrow.png" /></a>
                     </div>
                     <div class="categories">
                         <select class="category">
@@ -157,8 +148,7 @@ load_css = (url) ->
     document.getElementsByTagName("head")[0].appendChild(style)
 
 if window.SUBTLEPATTERNS
-    load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
-    #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
+    load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
     overlay = new SubtlePatternsOverlay(SUBTLEPATTERNS)
     overlay.setup()
 else
