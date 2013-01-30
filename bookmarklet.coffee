@@ -7,7 +7,7 @@ class SubtlePatternsOverlay
     constructor: (@patterns) ->
         @curr = 0
 
-    setup: (kwargs) ->
+    setup: (kwargs={}) ->
         """
         Handle initial setup outside of constructor
         """
@@ -52,7 +52,6 @@ class SubtlePatternsOverlay
             </div>
         """)
 
-        alert(@container)
         @el.hide().appendTo(@container).slideDown()
 
     current_pattern: ->
@@ -77,7 +76,8 @@ class SubtlePatternsOverlay
 
         pattern_link = "#{pattern.link}?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet"
 
-        @el.find(".title .name").attr("href", pattern_link).attr("title", pattern.description).html(pattern.title)
+        description = "#{pattern.description} (#{pattern.categories.join('/')})"
+        @el.find(".title .name").attr("href", pattern_link).attr("title", description).html(pattern.title)
 
     category_patterns: =>
         """
@@ -152,8 +152,8 @@ load_css = (url) ->
 window.SubtlePatternsOverlay = SubtlePatternsOverlay
 
 if window.SUBTLEPATTERNS
-    load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
-    #load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
+    #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
+    load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
     overlay = new SubtlePatternsOverlay(SUBTLEPATTERNS)
     overlay.setup()
 else

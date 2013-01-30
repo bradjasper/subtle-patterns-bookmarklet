@@ -1,5 +1,12 @@
 @import "mixins.less";
 
+body {
+    transition: background-image .25s ease-in-out;
+    -webkit-transition: background-image .25s ease-in-out;
+    -moz-transition: background-image .25s ease-in-out;
+    -o-transition: background-image .25s ease-in-out;
+}
+
 #subtlepatterns_overlay {
     z-index: 99;
     position: fixed;
@@ -15,6 +22,7 @@
     padding-bottom: 0;
     text-align: center;
     .box-shadow(0 1px 2px #888);
+
 
     .wrapper {
         .gradientBar(#ffffff, #f9fafb);
