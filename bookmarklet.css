@@ -1,0 +1,103 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* User Added */
+#subtlepatterns_overlay {
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  font-family: "Helvetica Neue", Helvetica, Tahoma, Arial;
+  position: fixed;
+  bottom: 0;
+  left: 50px;
+  width: 180px;
+  border-radius: 5px 5px 0 0;
+  background: #d6d6d6;
+  padding: 4px;
+  padding-bottom: 0;
+  text-align: center;
+  -webkit-box-shadow: 0 1px 2px #333333;
+  -moz-box-shadow: 0 1px 2px #333333;
+  box-shadow: 0 1px 2px #333333;
+}
+#subtlepatterns_overlay .wrapper {
+  background-color: #fdfdfd;
+  background-image: -moz-linear-gradient(top, #ffffff, #f9fafb);
+  background-image: -ms-linear-gradient(top, #ffffff, #f9fafb);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f9fafb));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f9fafb);
+  background-image: -o-linear-gradient(top, #ffffff, #f9fafb);
+  background-image: linear-gradient(top, #ffffff, #f9fafb);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f9fafb', GradientType=0);
+  border-color: #f9fafb #f9fafb #cbd4dc;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border: 1px solid #c3c3c4;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+}
+#subtlepatterns_overlay .title {
+  padding: 12px 0 6px 0;
+  display: block;
+}
+#subtlepatterns_overlay .title a {
+  color: #222;
+}
+#subtlepatterns_overlay .title .name {
+  font-weight: bold;
+  font-size: 16px;
+}
+#subtlepatterns_overlay .controls {
+  padding: 6px;
+}
+#subtlepatterns_overlay .counter {
+  vertical-align: top;
+  display: inline-block;
+  padding-top: 4px;
+}
+#subtlepatterns_overlay .categories {
+  padding: 6px;
+}
+#subtlepatterns_overlay .categories .category {
+  /* Make the bookmarklet look better on SubtlePatterns.com */
+
+  background-color: inherit !important;
+  border: 1px solid #cccccc !important;
+  width: 100%;
+}
+#subtlepatterns_overlay .about {
+  text-align: left;
+  padding: 6px 6px 0 6px;
+  font-size: 11px;
+  line-height: 14px;
+  color: #666;
+}
+#subtlepatterns_overlay .about a {
+  color: #666;
+}
