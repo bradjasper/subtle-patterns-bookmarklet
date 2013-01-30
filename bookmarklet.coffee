@@ -97,6 +97,7 @@ class SubtlePatternsOverlay
         @category = "all"
 
         for pattern in @patterns
+            console.log pattern
             for category in pattern.categories
                 if category of @categories
                     @categories[category] += 1
@@ -154,6 +155,5 @@ load_css = (url) ->
 
 load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
 #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
-overlay = new SubtlePatternsOverlay(subtlepatterns_data)
+overlay = new SubtlePatternsOverlay(patterns)
 overlay.setup()
-alert(overlay)

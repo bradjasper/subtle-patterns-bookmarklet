@@ -16,9 +16,5 @@ def transform_pattern(pattern):
     return pattern
 
 patterns = yaml.load(sys.stdin.read())
-
-print "Writing %d patterns to JavaScript" % len(patterns)
-
 transformed_patterns = map(transform_pattern, patterns)
-
-sys.stdout.write("%s" % json.dumps(transformed_patterns))
+sys.stdout.write("window.SUBTLEPATTERNS = %s;" % json.dumps(transformed_patterns))

@@ -4,6 +4,7 @@ BIN_DIR=${BASE_DIR}/bin
 MIRROR_DIR=${BASE_DIR}/subtlepatterns_mirror
 HTML_DIR=${MIRROR_DIR}/html
 PATTERNS_DIR=${MIRROR_DIR}/patterns
+ALLJS="${BASE_DIR}/all.js"
 
 mirror_html:
 	$(error Warning: This is an expensive operation that hits SubtlePatterns.com. Only do it once––then save it. Remove this warning to continue)
@@ -34,3 +35,13 @@ download_patterns:
 			wget -P "${PATTERNS_DIR}" $$pattern; \
 		fi \
 	done
+
+build_static:
+
+	echo "Building static assets"
+	for file in "${BASE_DIR}/jquery.min.js" \
+				"${MIRROR_DIR}/subtlepatterns.js" \
+				"${BASE_DIR}/bookmarklet.js"; do \
+			cat $$file; echo; \
+	done | jsmin > ${ALLJS}
+
