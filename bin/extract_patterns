@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+## Take a SubtlePatterns YAML file and grab pattern urls (so we can download them)
+
+import sys
+import yaml
+
+patterns = yaml.load(sys.stdin.read())
+
+for pattern in patterns:
+    sys.stdout.write("%s\n" % pattern["image"])

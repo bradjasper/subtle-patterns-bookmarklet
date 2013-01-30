@@ -2,18 +2,13 @@
 
 ## Convert SubtlePatterns site into usable YAML file
 
+import sys
 import os
-import glob
 import re
 import yaml
 
 from pyquery import PyQuery as Q
 
-BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-HTML_PATTERN = os.path.join(BASE_DIR, "html/subtlepatterns_*.html")
-YAML_OUTPUT = os.path.join(BASE_DIR, "subtlepatterns.yaml")
-
-print HTML_PATTERN
 
 def get_patterns_from_doc(doc):
     for post in doc("#content .post"):
@@ -24,20 +19,21 @@ def get_patterns_from_doc(doc):
             "download": qpost(".download").attr("href"),
             "description": qpost(".entry-content > p").eq(0).text(),
             "author": re.search("^Made by (.*).", qpost(".entry-content > p").eq(1).html()).groups()[0],
-            "image": os.path.basename(re.search("background\-image: url\('?(.*?)'?\)", qpost(".patternpreview").attr("style")).groups()[0]),
+            "image": re.search("background\-image: url\('?(.*?)'?\)", qpost(".patternpreview").attr("style")).groups()[0],
         }
 
 def get_patterns_from_filename(filename):
     with open(filename) as file:
         return get_patterns_from_doc(Q(unicode(file.read().decode("utf8"))))
 
-patterns = []
+if __name__ == "__main__":
 
-for filename in glob.glob(HTML_PATTERN):
-    for pattern in get_patterns_from_filename(filename):
-        print "Adding pattern", pattern["title"]
-        patterns.append(pattern)
+    assert len(sys.argv) > 1, "usage: process_html <file1 file2 file...>"
 
-with open(YAML_OUTPUT, "w") as file:
-    print "Writing %d patterns" % len(patterns)
-    file.write(yaml.safe_dump(patterns, default_flow_style=False))
+    patterns = []
+
+    for filename in sys.argv[1:]:
+        for pattern in get_patterns_from_filename(filename):
+            patterns.append(pattern)
+
+    sys.stdout.write(yaml.safe_dump(patterns, default_flow_style=False).decode("utf8"))

@@ -4,75 +4,9 @@
 # This bookmarklet allows you to preview the backgrounds from SubtlePatterns live on your site
 #
 
-load_script = (url, callback) ->
-    """
-    Load a script from a remote URL...with a callback when it's complete
-    """
-    script = document.createElement("script")
-    script.type = "text/javascript"
-
-    if script.readyState
-        script.onreadystatechange = ->
-            if script.readyState == "loaded" or script.readyState == "complete"
-                script.onreadystatechange = null
-                callback()
-
-    else
-        script.onload = -> callback()
-
-    script.src = url
-    document.getElementsByTagName("head")[0].appendChild(script)
-
-load_css = (url) ->
-    "Load CSS from a remote URL"
-
-    style = document.createElement("link")
-    style.setAttribute("rel", "stylesheet")
-    style.setAttribute("type", "text/css")
-    style.setAttribute("href", url)
-
-    document.getElementsByTagName("head")[0].appendChild(style)
-
-load_rss = (url, success) ->
-    """
-    Leverage Google's AJAX API to turn an RSS feed into JSON
-    """
-    $.ajax
-        url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url)
-        dataType: 'json'
-        success: (data) ->
-            if data.responseStatus is 200
-                success(data)
-            else
-                alert("There was an error loading the RSS feed #{url}")
-
-load_subtle_patterns = (success) ->
-    """
-    Load patterns from SubtlePatterns via RSS
-    """
-    load_rss "http://feeds.feedburner.com/SubtlePatterns", (data) ->
-        patterns = []
-        for entry in data.responseData.feed.entries
-            # This is a hack that lets us use jQuery's selector engine without loading
-            # all of the images into the document
-            content = $(entry.content.replace(/<img src=/g, "<img data-src="))
-            img = content.find("img[data-src$='.png']").attr("data-src")
-            download = content.find("a[href$='.zip']").attr("href")
-            if img and download
-                patterns.push
-                    img: img
-                    download: download
-                    title: entry.title
-                    link: entry.link
-                    description: entry.contentSnippet
-                    categories: entry.categories[1...]
-
-        success(patterns)
-
 ##
 ## Bookmarklet Overlay
 ##
-#
 class SubtlePatternsOverlay
     """
     This is the overlay the user see's and uses to control patterns. This could use
@@ -139,7 +73,7 @@ class SubtlePatternsOverlay
         pattern = @current_pattern()
 
         # TODO: This might be too brittle to work across lots of websites...
-        $("body").css("background-image", "url('#{pattern.img}')")
+        $("body").css("background-image", "url('#{pattern.image}')")
         $("body").css("background-repeat", "repeat")
 
         @el.find(".curr").html("#{@curr+1}")
@@ -208,11 +142,18 @@ class SubtlePatternsOverlay
             @curr = @category_patterns().length-1
         @update()
 
+load_css = (url) ->
+    "Load CSS from a remote URL"
 
-# Kick everything off once jQuery is loaded
-load_script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", ->
-    #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
-    load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
-    load_subtle_patterns (patterns) ->
-        overlay = new SubtlePatternsOverlay(patterns)
-        overlay.setup()
+    style = document.createElement("link")
+    style.setAttribute("rel", "stylesheet")
+    style.setAttribute("type", "text/css")
+    style.setAttribute("href", url)
+
+    document.getElementsByTagName("head")[0].appendChild(style)
+
+load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
+#load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
+overlay = new SubtlePatternsOverlay(subtlepatterns_data)
+overlay.setup()
+alert(overlay)
