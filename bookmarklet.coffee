@@ -7,10 +7,11 @@ class SubtlePatternsOverlay
     constructor: (@patterns) ->
         @curr = 0
 
-    setup: ->
+    setup: (kwargs) ->
         """
         Handle initial setup outside of constructor
         """
+        @container = kwargs.container or "body"
         @create()
         @setup_categories()
         @setup_events()
@@ -51,7 +52,8 @@ class SubtlePatternsOverlay
             </div>
         """)
 
-        @el.hide().appendTo("body").slideDown()
+        alert(@container)
+        @el.hide().appendTo(@container).slideDown()
 
     current_pattern: ->
         """
