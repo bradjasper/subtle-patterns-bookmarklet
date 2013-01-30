@@ -51,8 +51,8 @@ class SubtlePatternsOverlay
                     <option value="all">All (#{@patterns.length})</option>
                 </select>
                 <div class="about">
-                    <a href="http://subtlepatterns.com" target="_blank">SubtlePatterns</a> bookmarklet by
-                    <a href="http://bradjasper.com" target="_blank">Brad Jasper</a>
+                    <a href="http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">SubtlePatterns</a> bookmarklet by
+                    <a href="http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">Brad Jasper</a>
                 </div>
             </div>
         """)
@@ -79,7 +79,9 @@ class SubtlePatternsOverlay
         @el.find(".curr").html("#{@curr+1}")
         @el.find(".total").html("#{@category_patterns().length}")
 
-        @el.find(".title .name").attr("href", pattern.link).attr("title", pattern.description).html(pattern.title)
+        pattern_link = "#{pattern.link}?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet"
+
+        @el.find(".title .name").attr("href", pattern_link).attr("title", pattern.description).html(pattern.title)
         @el.find(".title .download_pattern").attr("href", pattern.download)
 
     category_patterns: =>
@@ -97,7 +99,6 @@ class SubtlePatternsOverlay
         @category = "all"
 
         for pattern in @patterns
-            console.log pattern
             for category in pattern.categories
                 if category of @categories
                     @categories[category] += 1
