@@ -1,0 +1,83 @@
+@import "mixins.less";
+
+#subtlepatterns_bookmarklet {
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial;
+    bottom: 0;
+    left: 50px;
+    width: 180px;
+    border-radius: 5px 5px 0 0;
+    background: #d6d6d6;
+    padding: 4px;
+    padding-bottom: 0;
+    text-align: center;
+    .box-shadow(0 1px 2px #888);
+
+
+    .wrapper {
+        .gradientBar(#ffffff, #f9fafb);
+        border: 1px solid #c3c3c4;
+        .box-shadow();
+        padding-bottom: 10px;
+    }
+
+    .title {
+        padding: 12px 0 6px 0;
+        display: block;
+
+        a {
+            color: #222;
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+
+    .controls {
+        padding: 6px;
+    }
+
+    .counter {
+        vertical-align: top;
+        display: inline-block;
+        padding-top: 4px;
+    }
+
+    .categories {
+        padding: 6px;
+
+        .category {
+            /* Make the bookmarklet look better on SubtlePatterns.com */
+            background-color: inherit !important;
+            border: 1px solid rgb(204, 204, 204) !important;
+            width: 100%;
+        }
+
+    }
+
+    .about {
+        text-align: left;
+        padding: 6px 6px 0 6px;
+        font-size: 11px;
+        line-height: 14px;
+        color: #666;
+        a {
+            color: #666;
+        }
+    }
+
+}
+
+.spb-dark {
+
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: #fefefe;
+  }
+
+
+}

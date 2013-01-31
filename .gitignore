@@ -1,5 +1,7 @@
 Makefile
 .DS_Store
-env
-subtlepatterns_mirror
 bookmarklet.js
+mixins.css
+env/
+subtlepatterns.com/html/*
+subtlepatterns.com/patterns/*
