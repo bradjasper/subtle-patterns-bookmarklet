@@ -43,11 +43,11 @@ class SubtlePatternsBookmarklet
                         <a href="#" target="_blank" class="name"></a>
                     </span>
                     <div class="controls">
-                        <a href="#" class="previous"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/left_arrow.png" /></a>
+                        <a href="#" class="previous"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png" /></a>
                         <span class="counter">
                             <span class="curr"></span>/<span class="total"></span>
                         </span>
-                        <a href="#" class="next"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/right_arrow.png" /></a>
+                        <a href="#" class="next"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png" /></a>
                     </div>
                     <div class="categories">
                         <select class="category">
