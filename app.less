@@ -1,11 +1,14 @@
 .bookmarklet_container {
-  margin: 50px 0 30px 0;
+  margin: 30px auto 30px auto;
+  min-height: 180px;
+  width: 180px;
+  position: relative;
 }
 
-#subtlepatterns_overlay.homepage {
-  position: static;
+#subtlepatterns_bookmarklet.homepage {
   left: auto;
-  bottom: auto;
+  position: absolute;
+  bottom: 0;
   margin: 0 auto;
   padding-bottom: 4px;
   border-radius: 5px;
@@ -22,6 +25,7 @@
 body {
   padding-top: 20px;
   padding-bottom: 40px;
+  background: url("http://bradjasper.com/subtle-patterns-bookmarklet/patterns/old_mathematics.png") repeat;
 }
 
 .bookmarklet_button {
@@ -47,11 +51,11 @@ body {
 .information {
   margin-top: 100px;
   color: #333;
+  font-size: 15px;
 }
 
 .footer {
   margin-top: 50px;
-  color: #666;
 }
 
 /* Custom container */

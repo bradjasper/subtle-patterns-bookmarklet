@@ -26,7 +26,7 @@
   box-sizing: border-box;
 }
 /* User Added */
-#subtlepatterns_overlay {
+#subtlepatterns_bookmarklet {
   z-index: 99;
   position: fixed;
   bottom: 0;
@@ -43,7 +43,7 @@
   -moz-box-shadow: 0 1px 2px #888888;
   box-shadow: 0 1px 2px #888888;
 }
-#subtlepatterns_overlay .wrapper {
+#subtlepatterns_bookmarklet .wrapper {
   background-color: #fdfdfd;
   background-image: -moz-linear-gradient(top, #ffffff, #f9fafb);
   background-image: -ms-linear-gradient(top, #ffffff, #f9fafb);
@@ -61,42 +61,42 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding-bottom: 10px;
 }
-#subtlepatterns_overlay .title {
+#subtlepatterns_bookmarklet .title {
   padding: 12px 0 6px 0;
   display: block;
 }
-#subtlepatterns_overlay .title a {
+#subtlepatterns_bookmarklet .title a {
   color: #222;
 }
-#subtlepatterns_overlay .title .name {
+#subtlepatterns_bookmarklet .title .name {
   font-weight: bold;
   font-size: 16px;
 }
-#subtlepatterns_overlay .controls {
+#subtlepatterns_bookmarklet .controls {
   padding: 6px;
 }
-#subtlepatterns_overlay .counter {
+#subtlepatterns_bookmarklet .counter {
   vertical-align: top;
   display: inline-block;
   padding-top: 4px;
 }
-#subtlepatterns_overlay .categories {
+#subtlepatterns_bookmarklet .categories {
   padding: 6px;
 }
-#subtlepatterns_overlay .categories .category {
+#subtlepatterns_bookmarklet .categories .category {
   /* Make the bookmarklet look better on SubtlePatterns.com */
 
   background-color: inherit !important;
   border: 1px solid #cccccc !important;
   width: 100%;
 }
-#subtlepatterns_overlay .about {
+#subtlepatterns_bookmarklet .about {
   text-align: left;
   padding: 6px 6px 0 6px;
   font-size: 11px;
   line-height: 14px;
   color: #666;
 }
-#subtlepatterns_overlay .about a {
+#subtlepatterns_bookmarklet .about a {
   color: #666;
 }

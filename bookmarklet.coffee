@@ -1,6 +1,6 @@
 class SubtlePatternsBookmarklet
     """
-    This is the overlay the user see's and uses to control patterns. This could use
+    This is the bookmarklet the user see's and uses to control patterns. This could use
     Knockout or Angular, but since it's a bookmarklet we'll keep it light with jQuery
     """
 
@@ -29,12 +29,12 @@ class SubtlePatternsBookmarklet
 
     create: ->
         """
-        Create the overlay for the first time
+        Create the bookmarklet for the first time
         """
 
         # Life is too short to generate HTML in Javascript
         @el = $("""
-            <div id="subtlepatterns_overlay" class="#{@klass}">
+            <div id="subtlepatterns_bookmarklet" class="#{@klass}">
                 <div class="wrapper">
                     <span class="title">
                         <a href="#" target="_blank" class="name"></a>
