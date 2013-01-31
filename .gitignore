@@ -1,7 +1,5 @@
 Makefile
 .DS_Store
-bookmarklet.js
-mixins.css
 env/
 subtlepatterns.com/html/*
 subtlepatterns.com/patterns/*
