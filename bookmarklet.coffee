@@ -16,6 +16,12 @@ class SubtlePatternsBookmarklet
         @create()
         @setup_categories()
         @setup_events()
+
+        # Setup default pattern
+        if kwargs.default
+            for pattern, i in @patterns
+                @curr = i if pattern.title == kwargs.default
+
         @update()
         
     show: -> @el.show()

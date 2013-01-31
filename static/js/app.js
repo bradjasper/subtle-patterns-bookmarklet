@@ -6,7 +6,8 @@
     overlay = new SubtlePatternsBookmarklet(SUBTLEPATTERNS);
     overlay.setup({
       container: ".bookmarklet_container",
-      klass: "homepage"
+      klass: "homepage",
+      "default": "Old Mathematics"
     });
   }
 
