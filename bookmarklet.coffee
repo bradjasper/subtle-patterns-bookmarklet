@@ -23,6 +23,9 @@ class SubtlePatternsBookmarklet
                 @curr = i if pattern.title == kwargs.default
 
         @update()
+
+        if kwargs.callback
+          kwargs.callback()
         
     show: -> @el.show()
     hide: -> @el.hide()
@@ -85,6 +88,8 @@ class SubtlePatternsBookmarklet
 
         description = "#{pattern.description} (#{pattern.categories.join('/')})"
         @el.find(".title .name").attr("href", pattern_link).attr("title", description).html(pattern.title)
+
+        @el.trigger("update")
 
     category_patterns: =>
         """

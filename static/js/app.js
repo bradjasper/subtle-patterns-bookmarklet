@@ -11,11 +11,26 @@
     overlay.setup({
       container: ".bookmarklet_container",
       klass: "homepage",
-      "default": "Old Mathematics"
-    });
-    $(".bookmarklet_button a").click(function() {
-      alert("Drag this button to your bookmarks bar");
-      return false;
+      "default": "Old Mathematics",
+      callback: function() {
+        $(".bookmarklet_button a").click(function() {
+          alert("Drag this button to your bookmarks bar");
+          return false;
+        });
+        return $("#subtlepatterns_bookmarklet").on("update", function() {
+          var category;
+          return $("body").attr("class", ((function() {
+            var _i, _len, _ref, _results;
+            _ref = overlay.current_pattern().categories;
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              category = _ref[_i];
+              _results.push("spb-" + category);
+            }
+            return _results;
+          })()).join(" "));
+        });
+      }
     });
   }
 

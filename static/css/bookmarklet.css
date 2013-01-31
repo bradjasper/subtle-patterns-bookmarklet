@@ -100,3 +100,12 @@
 #subtlepatterns_bookmarklet .about a {
   color: #666;
 }
+.spb-dark h1,
+.spb-dark h2,
+.spb-dark h3,
+.spb-dark h4,
+.spb-dark h5,
+.spb-dark h6,
+.spb-dark p {
+  color: #fefefe;
+}
