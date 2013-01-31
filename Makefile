@@ -4,13 +4,16 @@ BIN_DIR=${BASE_DIR}/bin
 MIRROR_DIR=${BASE_DIR}/subtlepatterns_mirror
 HTML_DIR=${MIRROR_DIR}/html
 PATTERNS_DIR=${MIRROR_DIR}/patterns
-ALLJS="${BASE_DIR}/all.js"
+STATIC_DIR=${BASE_DIR}/static
+JS_DIR=${STATIC_DIR}/js
+CSS_DIR=${STATIC_DIR}/css
+ALLJS="${JS_DIR}/all.js"
 
 mirror_html:
 	$(error Warning: This is an expensive operation that hits SubtlePatterns.com. Only do it once––then save it. Remove this warning to continue)
 	echo "Mirroring SubtlePatterns.com HTML to ${HTML_DIR}"
 	rm -rf ${HTML_DIR}/index.html*
-	cd ${HTML_DIR} && wget -w 1 http://subtlepatterns.com/page/{1..35}/
+	cd ${HTML_DIR} && wget -w 10 http://subtlepatterns.com/page/{1..35}/
 
 process:
 	make process_html
@@ -36,11 +39,11 @@ download_patterns:
 		fi \
 	done
 
-static:
+static_files:
 	echo "Building static assets"
-	for file in "${BASE_DIR}/jquery.min.js" \
+	for file in "${JS_DIR}/jquery.min.js" \
 				"${MIRROR_DIR}/subtlepatterns.js" \
-				"${BASE_DIR}/bookmarklet.js"; do \
+				"${JS_DIR}/bookmarklet.js" \
+				"${JS_DIR}/loader.js"; do \
 			cat $$file; echo; \
 	done | jsmin > ${ALLJS}
-

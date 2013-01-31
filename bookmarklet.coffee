@@ -1,4 +1,4 @@
-class SubtlePatternsOverlay
+class SubtlePatternsBookmarklet
     """
     This is the overlay the user see's and uses to control patterns. This could use
     Knockout or Angular, but since it's a bookmarklet we'll keep it light with jQuery
@@ -12,6 +12,7 @@ class SubtlePatternsOverlay
         Handle initial setup outside of constructor
         """
         @container = kwargs.container or "body"
+        @klass = kwargs.klass or ""
         @create()
         @setup_categories()
         @setup_events()
@@ -27,7 +28,7 @@ class SubtlePatternsOverlay
 
         # Life is too short to generate HTML in Javascript
         @el = $("""
-            <div id="subtlepatterns_overlay">
+            <div id="subtlepatterns_overlay" class="#{@klass}">
                 <div class="wrapper">
                     <span class="title">
                         <a href="#" target="_blank" class="name"></a>
@@ -139,22 +140,4 @@ class SubtlePatternsOverlay
             @curr = @category_patterns().length-1
         @update()
 
-load_css = (url) ->
-    "Load CSS from a remote URL"
-
-    style = document.createElement("link")
-    style.setAttribute("rel", "stylesheet")
-    style.setAttribute("type", "text/css")
-    style.setAttribute("href", url)
-
-    document.getElementsByTagName("head")[0].appendChild(style)
-
-window.SubtlePatternsOverlay = SubtlePatternsOverlay
-
-if window.SUBTLEPATTERNS
-    #load_css "http://bradjasper.com/subtle-patterns-bookmarklet/bookmarklet.css?cb=#{Math.random()}"
-    load_css "http://127.0.0.1:8000/bookmarklet.css?cb=#{Math.random()}"
-    overlay = new SubtlePatternsOverlay(SUBTLEPATTERNS)
-    overlay.setup()
-else
-    alert("Something went wrong, I can't find the patterns")
+window.SubtlePatternsBookmarklet = SubtlePatternsBookmarklet
