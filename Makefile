@@ -1,7 +1,7 @@
 SHELL:=/bin/bash
 BASE_DIR=`pwd`
 BIN_DIR=${BASE_DIR}/bin
-MIRROR_DIR=${BASE_DIR}/subtlepatterns_mirror
+MIRROR_DIR=${BASE_DIR}/subtlepatterns.com
 HTML_DIR=${MIRROR_DIR}/html
 PATTERNS_DIR=${MIRROR_DIR}/patterns
 STATIC_DIR=${BASE_DIR}/static
