@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-body {
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-.bookmarklet {
-  cursor: move;
-}
-=======
 .bookmarklet_container {
   margin: 30px auto 30px auto;
   min-height: 180px;
@@ -57,7 +48,7 @@ body {
 .footer {
   margin-top: 50px;
 }
->>>>>>> master
+
 /* Custom container */
 .container-narrow {
   margin: 0 auto;
