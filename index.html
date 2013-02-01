@@ -1,1 +1,88 @@
-www/index.html
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>SubtlePatterns Bookmarklet - Preview backgrounds on your website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="SubtlePatterns Bookmarklet allows you to preview backgrounds for your website quickly and easily">
+        <meta name="author" content="Brad Jasper">
+        <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/bookmarklet.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/app.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+        <div class="container-narrow">
+            <div class="masthead">
+                <span class="pull-left">
+                   <h3 class="muted">SubtlePatterns Bookmarklet</h3>
+                </span>
+
+               <span class="pull-right share-buttons">
+                 <div class="addthis_toolbox addthis_default_style ">
+                 <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                 <a class="addthis_button_tweet"></a>
+                 <a class="addthis_button_google_plusone"></a>
+                 </div>
+                 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5109f4f52140af95" async="async"></script>
+              </span>
+
+              <div class="clear"></div>
+            </div>
+
+            <hr>
+
+            <div class="jumbotron">
+                 <h1>Subtle&shy;Patterns on your website</h1>
+
+                 <br />
+                 <p class="lead">Preview the amazing patterns from <a href="http://subtlepatterns.com">SubtlePatterns.com</a> directly on your website</p>
+
+           </div>
+           <div class="content">
+
+                <img src="/static/img/try-it-out.png" class="try-it-out visible-desktop" />
+                <div class="bookmarklet_container">
+                </div>
+
+                <div class="bookmarklet_button">
+                  <a class="btn btn-large btn-success" href="javascript:(function()%7Bvar%20newscript%3Ddocument.createElement(%27script%27)%3Bnewscript.type%3D%27text/javascript%27%3Bnewscript.async%3Dtrue%3Bnewscript.src%3D%27http://bradjasper.com/static/js/all.js%3Fcb%3D%27%20%2B%20Math.random()%3B(document.getElementsByTagName(%27head%27)%5B0%5D%7C%7Cdocument.getElementsByTagName(%27body%27)%5B0%5D).appendChild(newscript)%3B%7D)()%3B">SubtlePatterns Bookmarklet
+                      <br>
+                  </a>
+                  <small>Drag this button to your bookmarks toolbar to preview backgrounds any website</small>
+                </div>
+          </div>
+
+          <div class="information">
+          <h3>What is this?</h3>
+            <p>Finding good background patterns for your website can be a pain. <a href="http://subtlepatterns.com">SubtlePatterns.com</a> is a great website that makes this a lot easier by offering free patterns you can use. This bookmarklet lets you preview these patterns directly on your website, so you can quickly find the best one for your needs.
+            <br />
+            <br />
+              <strong>Tip:</strong> Use your left and right arrow keys to navigate between patterns (you can try it right now)
+            </p>
+          </div>
+
+          <div class="footer">
+          <p class="pull-left">
+            Made by <a href="http://bradjasper.com">Brad Jasper</a><br />
+            Code on <a href="https://github.com/bradjasper/subtle-patterns-bookmarklet">GitHub</a>
+          </p>
+          <p class="pull-right">
+            Patterns from <a href="http://subtlepatterns.com">SubtlePatterns</a>
+          </p>
+          </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.min.js"></script>
+        <script src="/static/js/subtlepatterns.js"></script>
+        <script src="/static/js/bookmarklet.js"></script>
+        <script src="/static/js/app.js"></script>
+    </body>
+
+</html>
