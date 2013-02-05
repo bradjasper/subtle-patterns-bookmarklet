@@ -1,16 +1,16 @@
 class SubtlePatternsBookmarklet
-    """
+    ###
     This is the bookmarklet the user see's and uses to control patterns. This could use
     Knockout or Angular, but since it's a bookmarklet we'll keep it light with jQuery
-    """
+    ###
 
     constructor: (@patterns) ->
         @curr = 0
 
     setup: (kwargs={}) ->
-        """
+        ###
         Handle initial setup outside of constructor
-        """
+        ###
         @container = kwargs.container or "body"
         @klass = kwargs.klass or ""
         @create()
@@ -31,9 +31,9 @@ class SubtlePatternsBookmarklet
     hide: -> @el.hide()
 
     create: ->
-        """
+        ###
         Create the bookmarklet for the first time
-        """
+        ###
 
         # Life is too short to generate HTML in Javascript
         @el = $("""
@@ -65,16 +65,16 @@ class SubtlePatternsBookmarklet
         @el.hide().appendTo(@container).slideDown()
 
     current_pattern: ->
-        """
+        ###
         Return the currently selected pattern
-        """
+        ###
         @category_patterns()[@curr]
 
     update: =>
-        """
+        ###
         Update the currently selected pattern. This is generally called on first
         initialization and any time a next() or previous() call is made.
-        """
+        ###
         pattern = @current_pattern()
 
         # TODO: This might be too brittle to work across lots of websites...
@@ -92,15 +92,15 @@ class SubtlePatternsBookmarklet
         @el.trigger("update")
 
     category_patterns: =>
-        """
+        ###
         Return all of the patterns for the active category
-        """
+        ###
         (pattern for pattern in @patterns when @category == "all" or @category in pattern.categories)
 
     setup_categories: ->
-        """
+        ###
         Build the category <select> box
-        """
+        ###
 
         @categories = {}
         @category = "all"
@@ -121,9 +121,9 @@ class SubtlePatternsBookmarklet
 
 
     setup_events: ->
-        """
+        ###
         Setup event handlers for all different actions
-        """
+        ###
 
         $(document).keydown (e) =>
             switch e.keyCode
