@@ -48,6 +48,7 @@ class SubtlePatternsBookmarklet
                             <span class="curr"></span>/<span class="total"></span>
                         </span>
                         <a href="#" class="next"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png" /></a>
+                        <br /><a href="#" class="random">random</a>
                     </div>
                     <div class="categories">
                         <select class="category">
@@ -136,6 +137,9 @@ class SubtlePatternsBookmarklet
         @el.find(".next").click (e) =>
             e.preventDefault()
             @next()
+        @el.find(".random").click (e) =>
+            e.preventDefault()
+            @random()
         @el.find("select").change =>
             @category = @el.find("select").val()
             @curr = 0
@@ -153,6 +157,10 @@ class SubtlePatternsBookmarklet
             @curr -= 1
         else # loop
             @curr = @category_patterns().length-1
+        @update()
+
+    random: ->
+        @curr = Math.floor(Math.random() * @category_patterns().length)
         @update()
 
 window.SubtlePatternsBookmarklet = SubtlePatternsBookmarklet
