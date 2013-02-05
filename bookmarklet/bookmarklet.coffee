@@ -130,8 +130,12 @@ class SubtlePatternsBookmarklet
                 when 37 then @previous()
                 when 39 then @next()
 
-        @el.find(".previous").click => @previous()
-        @el.find(".next").click => @next()
+        @el.find(".previous").click (e) =>
+            e.preventDefault()
+            @previous()
+        @el.find(".next").click (e) =>
+            e.preventDefault()
+            @next()
         @el.find("select").change =>
             @category = @el.find("select").val()
             @curr = 0
