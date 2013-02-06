@@ -1,12 +1,21 @@
 SHELL:=/bin/bash
 BASE_DIR=`pwd`
+SRC_DIR=${BASE_DIR}/src
 STATIC_DIR=${BASE_DIR}/static
 JS_DIR=${STATIC_DIR}/js
+CSS_DIR=${STATIC_DIR}/css
 
-all: static_files
+all: build combine
 
-static_files:
-	echo "Building static assets"
+build:
+	# Compile Coffeescript
+	ls ${SRC_DIR}/*.coffee | xargs coffee --output ${JS_DIR} --compile;
+
+	# Compile Less
+	lessc ${SRC_DIR}/bookmarklet.less ${CSS_DIR}/bookmarklet.css
+
+combine:
+	# Build static assets
 	for file in "${JS_DIR}/jquery.min.js" \
 				"${JS_DIR}/subtlepatterns.js" \
 				"${JS_DIR}/bookmarklet.js"; do \
