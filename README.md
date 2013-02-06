@@ -7,3 +7,21 @@ Go to the <a href="http://bradjasper.com/subtle-patterns-bookmarklet/">SubtlePat
 
 ## Usage
 Click left/right arrows to move between patterns (or use left and right arrow keys)
+
+## Todo
+- Preload images
+- Custom CSS selector (mouse select?)
+- Display meta information (size, dimensions, categories) -> title for now?
+- Update select box to shorter version
+- Toggle to original pattern
+- Keyboard shortcut menu
+- Random pattern button
+- Better code layout (so more people can jump in)
+
+- HTTPS?
+- Browser Extension?
+
+- iPad install: http://iosbookmarklets.com/tutorials/subtle-patterns-bookmarklet-ipad/
+- Fix title
+- Fix copy
+- Add watch on GitHub button
