@@ -1,8 +1,10 @@
+###
+Subtle Patterns Bookmarklet
+
+This is the main bookmarklet overlay the user sees and controls.
+###
+
 class SubtlePatternsBookmarklet
-    ###
-    This is the bookmarklet the user see's and uses to control patterns. This could use
-    Knockout or Angular, but since it's a bookmarklet we'll keep it light with jQuery
-    ###
 
     constructor: (@patterns) ->
         @curr = 0
@@ -43,11 +45,11 @@ class SubtlePatternsBookmarklet
                         <a href="#" target="_blank" class="name"></a>
                     </span>
                     <div class="controls">
-                        <a href="#" class="previous"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png" /></a>
+                        <a href="javascript:void(0)" class="previous"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png" /></a>
                         <span class="counter">
                             <span class="curr"></span>/<span class="total"></span>
                         </span>
-                        <a href="#" class="next"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png" /></a>
+                        <a href="javascript:void(0)" class="next"><img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png" /></a>
                     </div>
                     <div class="categories">
                         <select class="category">
@@ -72,7 +74,7 @@ class SubtlePatternsBookmarklet
 
     update: =>
         ###
-        Update the currently selected pattern. This is generally called on first
+        Update the UI to reflect a change in behavior. This is generally called on first
         initialization and any time a next() or previous() call is made.
         ###
         pattern = @current_pattern()
@@ -112,6 +114,7 @@ class SubtlePatternsBookmarklet
                 else
                     @categories[category] = 1
 
+        # Sort categories by most patterns
         sortable = ([key, val] for key, val of @categories)
         sortable.sort((b, a) -> a[1] - b[1])
 
@@ -127,21 +130,26 @@ class SubtlePatternsBookmarklet
 
         $(document).keydown (e) =>
             switch e.keyCode
-                when 37 then @previous()
-                when 39 then @next()
+                when 37 then @previous() # left arrow
+                when 39 then @next()     # right arrow
 
         @el.find(".previous").click (e) =>
             e.preventDefault()
             @previous()
+
         @el.find(".next").click (e) =>
             e.preventDefault()
             @next()
+
         @el.find("select").change =>
             @category = @el.find("select").val()
             @curr = 0
             @update()
 
     next: ->
+        ###
+        Switch to the next pattern
+        ###
         if @curr < @category_patterns().length-1
             @curr += 1
         else # loop
@@ -149,10 +157,15 @@ class SubtlePatternsBookmarklet
         @update()
 
     previous: ->
+        ###
+        Switch to the previous pattern
+        ###
         if @curr > 0
             @curr -= 1
         else # loop
             @curr = @category_patterns().length-1
         @update()
 
+# Export the bookmarklet so we can use it from other Coffeescript modules
+# Know a better way to do when combining multiple files? Please email me! bjasper@gmail.com
 window.SubtlePatternsBookmarklet = SubtlePatternsBookmarklet
