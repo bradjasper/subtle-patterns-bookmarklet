@@ -18,7 +18,8 @@ combine:
 	# Build static assets
 	for file in "${JS_DIR}/jquery.min.js" \
 				"${JS_DIR}/subtlepatterns.js" \
-				"${JS_DIR}/bookmarklet.js"; do \
+				"${JS_DIR}/bookmarklet.js" \
+				"${JS_DIR}/loader.js"; do \
 			cat $$file; echo; \
 	done | jsmin > "${JS_DIR}/all.js"
 
