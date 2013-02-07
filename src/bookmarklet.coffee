@@ -61,6 +61,7 @@ class SubtlePatternsBookmarklet
                         <a href="http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">Brad Jasper</a>
                     </div>
                 </div>
+                <img class="preload" style="display: none;" />
             </div>
         """)
 
@@ -92,6 +93,13 @@ class SubtlePatternsBookmarklet
         @el.find(".title .name").attr("href", pattern_link).attr("title", description).html(pattern.title)
 
         @el.trigger("update")
+
+    preload: (index) ->
+        image = @category_patterns()[index].mirror_image
+        console.log image
+        @el.find("img.preload").attr("src", image)
+        console.log @el.find("img.preload").attr("src")
+        # do it
 
     category_patterns: =>
         ###
@@ -130,8 +138,8 @@ class SubtlePatternsBookmarklet
 
         $(document).keydown (e) =>
             switch e.keyCode
-                when 37 then @previous() # left arrow
-                when 39 then @next()     # right arrow
+                when 37 then @previous() # left arrow key
+                when 39 then @next()     # right arrow key
 
         @el.find(".previous").click (e) =>
             e.preventDefault()
@@ -146,26 +154,32 @@ class SubtlePatternsBookmarklet
             @curr = 0
             @update()
 
+    next_index: ->
+        if @curr < @category_patterns().length-1
+            return @curr + 1
+        return 0 # loop
+
+    previous_index: ->
+        if @curr > 0
+            return @curr - 1
+        return @category_patterns().length-1 # loop
+
     next: ->
         ###
         Switch to the next pattern
         ###
-        if @curr < @category_patterns().length-1
-            @curr += 1
-        else # loop
-            @curr = 0
+        @curr = @next_index()
         @update()
+        @preload(@next_index())
 
     previous: ->
         ###
         Switch to the previous pattern
         ###
-        if @curr > 0
-            @curr -= 1
-        else # loop
-            @curr = @category_patterns().length-1
+        @curr = @previous_index()
         @update()
+        @preload(@previous_index())
 
 # Export the bookmarklet so we can use it from other Coffeescript modules
-# Know a better way to do when combining multiple files? Please email me! bjasper@gmail.com
+# Know a better way to do this when combining multiple files? Email me! bjasper@gmail.com
 window.SubtlePatternsBookmarklet = SubtlePatternsBookmarklet

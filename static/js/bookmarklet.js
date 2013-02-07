@@ -64,7 +64,7 @@ This is the main bookmarklet overlay the user sees and controls.
       /*
               Create the bookmarklet for the first time
       */
-      this.el = $("<div id=\"subtlepatterns_bookmarklet\" class=\"" + this.klass + "\">\n    <div class=\"wrapper\">\n        <span class=\"title\">\n            <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        </span>\n        <div class=\"controls\">\n            <a href=\"javascript:void(0)\" class=\"previous\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png\" /></a>\n            <span class=\"counter\">\n                <span class=\"curr\"></span>/<span class=\"total\"></span>\n            </span>\n            <a href=\"javascript:void(0)\" class=\"next\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png\" /></a>\n        </div>\n        <div class=\"categories\">\n            <select class=\"category\">\n                <option value=\"all\">All (" + this.patterns.length + ")</option>\n            </select>\n        </div>\n        <div class=\"about\">\n            <a href=\"http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n            <a href=\"http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">Brad Jasper</a>\n        </div>\n    </div>\n</div>");
+      this.el = $("<div id=\"subtlepatterns_bookmarklet\" class=\"" + this.klass + "\">\n    <div class=\"wrapper\">\n        <span class=\"title\">\n            <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        </span>\n        <div class=\"controls\">\n            <a href=\"javascript:void(0)\" class=\"previous\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png\" /></a>\n            <span class=\"counter\">\n                <span class=\"curr\"></span>/<span class=\"total\"></span>\n            </span>\n            <a href=\"javascript:void(0)\" class=\"next\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png\" /></a>\n        </div>\n        <div class=\"categories\">\n            <select class=\"category\">\n                <option value=\"all\">All (" + this.patterns.length + ")</option>\n            </select>\n        </div>\n        <div class=\"about\">\n            <a href=\"http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n            <a href=\"http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">Brad Jasper</a>\n        </div>\n    </div>\n    <img class=\"preload\" style=\"display: none;\" />\n</div>");
       return this.el.hide().appendTo(this.container).slideDown();
     };
 
@@ -91,6 +91,14 @@ This is the main bookmarklet overlay the user sees and controls.
       description = "" + pattern.description + " (" + (pattern.categories.join('/')) + ")";
       this.el.find(".title .name").attr("href", pattern_link).attr("title", description).html(pattern.title);
       return this.el.trigger("update");
+    };
+
+    SubtlePatternsBookmarklet.prototype.preload = function(index) {
+      var image;
+      image = this.category_patterns()[index].mirror_image;
+      console.log(image);
+      this.el.find("img.preload").attr("src", image);
+      return console.log(this.el.find("img.preload").attr("src"));
     };
 
     SubtlePatternsBookmarklet.prototype.category_patterns = function() {
@@ -182,28 +190,36 @@ This is the main bookmarklet overlay the user sees and controls.
       });
     };
 
+    SubtlePatternsBookmarklet.prototype.next_index = function() {
+      if (this.curr < this.category_patterns().length - 1) {
+        return this.curr + 1;
+      }
+      return 0;
+    };
+
+    SubtlePatternsBookmarklet.prototype.previous_index = function() {
+      if (this.curr > 0) {
+        return this.curr - 1;
+      }
+      return this.category_patterns().length - 1;
+    };
+
     SubtlePatternsBookmarklet.prototype.next = function() {
       /*
               Switch to the next pattern
       */
-      if (this.curr < this.category_patterns().length - 1) {
-        this.curr += 1;
-      } else {
-        this.curr = 0;
-      }
-      return this.update();
+      this.curr = this.next_index();
+      this.update();
+      return this.preload(this.next_index());
     };
 
     SubtlePatternsBookmarklet.prototype.previous = function() {
       /*
               Switch to the previous pattern
       */
-      if (this.curr > 0) {
-        this.curr -= 1;
-      } else {
-        this.curr = this.category_patterns().length - 1;
-      }
-      return this.update();
+      this.curr = this.previous_index();
+      this.update();
+      return this.preload(this.previous_index());
     };
 
     return SubtlePatternsBookmarklet;
