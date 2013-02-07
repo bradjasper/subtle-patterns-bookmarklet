@@ -96,10 +96,7 @@ class SubtlePatternsBookmarklet
 
     preload: (index) ->
         image = @category_patterns()[index].mirror_image
-        console.log image
         @el.find("img.preload").attr("src", image)
-        console.log @el.find("img.preload").attr("src")
-        # do it
 
     category_patterns: =>
         ###

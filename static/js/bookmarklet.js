@@ -64,7 +64,7 @@ This is the main bookmarklet overlay the user sees and controls.
       /*
               Create the bookmarklet for the first time
       */
-      this.el = $("<div id=\"subtlepatterns_bookmarklet\" class=\"" + this.klass + "\">\n    <div class=\"wrapper\">\n        <span class=\"title\">\n            <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        </span>\n        <div class=\"controls\">\n            <a href=\"javascript:void(0)\" class=\"previous\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png\" /></a>\n            <span class=\"counter\">\n                <span class=\"curr\"></span>/<span class=\"total\"></span>\n            </span>\n            <a href=\"javascript:void(0)\" class=\"next\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png\" /></a>\n        </div>\n        <div class=\"categories\">\n            <select class=\"category\">\n                <option value=\"all\">All (" + this.patterns.length + ")</option>\n            </select>\n        </div>\n        <div class=\"about\">\n            <a href=\"http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n            <a href=\"http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">Brad Jasper</a>\n        </div>\n    </div>\n    <img class=\"preloader\" style=\"display: none;\" />\n</div>");
+      this.el = $("<div id=\"subtlepatterns_bookmarklet\" class=\"" + this.klass + "\">\n    <div class=\"wrapper\">\n        <span class=\"title\">\n            <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        </span>\n        <div class=\"controls\">\n            <a href=\"javascript:void(0)\" class=\"previous\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png\" /></a>\n            <span class=\"counter\">\n                <span class=\"curr\"></span>/<span class=\"total\"></span>\n            </span>\n            <a href=\"javascript:void(0)\" class=\"next\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png\" /></a>\n        </div>\n        <div class=\"categories\">\n            <select class=\"category\">\n                <option value=\"all\">All (" + this.patterns.length + ")</option>\n            </select>\n        </div>\n        <div class=\"about\">\n            <a href=\"http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n            <a href=\"http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">Brad Jasper</a>\n        </div>\n    </div>\n    <img class=\"preload\" style=\"display: none;\" />\n</div>");
       return this.el.hide().appendTo(this.container).slideDown();
     };
 
@@ -96,9 +96,7 @@ This is the main bookmarklet overlay the user sees and controls.
     SubtlePatternsBookmarklet.prototype.preload = function(index) {
       var image;
       image = this.category_patterns()[index].mirror_image;
-      console.log(image);
-      this.el.find("img.preloader").attr("src", image);
-      return console.log(this.el.find("img.preloader").attr("src"));
+      return this.el.find("img.preload").attr("src", image);
     };
 
     SubtlePatternsBookmarklet.prototype.category_patterns = function() {
