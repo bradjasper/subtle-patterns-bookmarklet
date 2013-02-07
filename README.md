@@ -13,4 +13,5 @@ The bookmarklet is under a MIT license and the patterns are under a <a href="htt
 
 ## About
 Created by Brad Jasper
+
 Thanks to SubtlePatterns.com for the awesome background patterns
