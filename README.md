@@ -8,14 +8,9 @@ Go to the <a href="http://bradjasper.com/subtle-patterns-bookmarklet/">SubtlePat
 ## Usage
 Click left/right arrows to move between patterns (or use left and right arrow keys)
 
-## Todo
-- Custom CSS selector (mouse select?)
-- Update select box to shorter version
-- Display meta information (size, dimensions, categories) -> title for now?
-- Toggle to original pattern
-- Keyboard shortcut menu
-- Random pattern button
-- iPad install: http://iosbookmarklets.com/tutorials/subtle-patterns-bookmarklet-ipad/
-- Fix copy
-- Add watch on GitHub button
-- Add link to Chrome extension
+## License
+The bookmarklet is under a MIT license and the patterns are under a <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+
+## About
+Created by Brad Jasper
+Thanks to SubtlePatterns.com for the awesome background patterns
