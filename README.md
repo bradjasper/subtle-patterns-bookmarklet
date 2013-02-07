@@ -25,3 +25,5 @@ Click left/right arrows to move between patterns (or use left and right arrow ke
 - Fix title
 - Fix copy
 - Add watch on GitHub button
+- Add link to Chrome extension
+- Mixpanel tracking
