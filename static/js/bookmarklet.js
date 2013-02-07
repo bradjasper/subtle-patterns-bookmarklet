@@ -96,9 +96,7 @@ This is the main bookmarklet overlay the user sees and controls.
     SubtlePatternsBookmarklet.prototype.preload = function(index) {
       var image;
       image = this.category_patterns()[index].mirror_image;
-      console.log(image);
-      this.el.find("img.preload").attr("src", image);
-      return console.log(this.el.find("img.preload").attr("src"));
+      return this.el.find("img.preload").attr("src", image);
     };
 
     SubtlePatternsBookmarklet.prototype.category_patterns = function() {
