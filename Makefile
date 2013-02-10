@@ -9,10 +9,14 @@ all: build combine
 
 build:
 	# Compile Coffeescript
-	ls ${SRC_DIR}/*.coffee | xargs coffee --output ${JS_DIR} --compile;
+	ls *.coffee ${SRC_DIR}/*.coffee | xargs coffee --output ${JS_DIR} --compile;
 
 	# Compile Less
 	lessc ${SRC_DIR}/bookmarklet.less ${CSS_DIR}/bookmarklet.css
+	if [ -f app.less ]; \
+	then \
+	  lessc app.less ${CSS_DIR}/app.css; \
+	fi
 
 combine:
 	# Build static assets

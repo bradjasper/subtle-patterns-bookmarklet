@@ -11,6 +11,14 @@ Click left/right arrows to move between patterns (or use left and right arrow ke
 ## License
 The bookmarklet is under a MIT license and the patterns are under a <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
 
+## Contributing
+Run make to compile the CoffeeScript and Less files.
+
+Run a static HTTP server one level up with
+
+    python -m SimpleHTTPServer
+
+
 ## About
 Created by Brad Jasper
 

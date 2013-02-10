@@ -43,11 +43,11 @@ body {
   background-image: -o-linear-gradient(top, #80bb3f, #73a839);
   background-image: linear-gradient(to bottom, #80bb3f, #73a839);
   background-repeat: repeat-x;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff80bb3f', endColorstr='#ff73a839', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff80bb3f', endColorstr='#ff73a839', GradientType=0);
   border-color: #73a839 #73a839 #4c6f26;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #73a839;
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   cursor: move;
   padding: 14px 23px;
 }
@@ -95,7 +95,7 @@ body {
 }
 .jumbotron h1 {
   font-size: 72px;
-  line-height: 1;
+  line-height: 72px;
 }
 .jumbotron .btn {
   font-size: 21px;
@@ -107,6 +107,9 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+.spb-dark {
+  color: #f0f0f0;
+}
 .spb-dark h1,
 .spb-dark h2,
 .spb-dark h3,
@@ -115,6 +118,9 @@ body {
 .spb-dark h6,
 .spb-dark p {
   color: #f0f0f0;
+}
+.spb-dark * {
+  color: normal;
 }
 @media (max-width: 480px) {
   h1,

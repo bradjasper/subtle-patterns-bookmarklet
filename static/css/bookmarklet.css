@@ -78,6 +78,7 @@
   vertical-align: top;
   display: inline-block;
   padding-top: 4px;
+  color: #333;
 }
 #subtlepatterns_bookmarklet .categories {
   padding: 6px;
@@ -98,4 +99,5 @@
 }
 #subtlepatterns_bookmarklet .about a {
   color: #666;
+  text-decoration: underline !important;
 }
