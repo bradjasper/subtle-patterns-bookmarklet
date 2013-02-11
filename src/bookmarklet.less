@@ -1,5 +1,100 @@
 @import "mixins.less";
 
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  width: 170px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-menu .divider {
+  *width: 100%;
+  height: 1px;
+  margin: 9px 1px;
+  *margin: -5px 0 5px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+}
+
+.dropdown-menu li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  outline: 0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.dropdown-menu .disabled > a,
+.dropdown-menu .disabled > a:hover {
+  color: #999999;
+}
+
+.dropdown-menu .disabled > a:hover {
+  text-decoration: none;
+  cursor: default;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
 #subtlepatterns_bookmarklet {
     z-index: 99;
     position: fixed;
@@ -20,10 +115,11 @@
         border: 1px solid #c3c3c4;
         .box-shadow();
         padding-bottom: 10px;
+        position: relative;
     }
 
     .title {
-        padding: 12px 0 6px 0;
+        padding: 22px 0 6px 0;
         display: block;
 
         a {
@@ -62,8 +158,8 @@
     .about {
         text-align: left;
         padding: 6px 6px 0 6px;
-        font-size: 11px;
-        line-height: 14px;
+        font-size: 10px;
+        line-height: 12px;
         color: #666;
         a {
             color: #666;
@@ -71,4 +167,64 @@
         }
     }
 
+    .toolbar {
+        display: none;
+        position: absolute;
+        bottom: 15px;
+        right: 4px;
+        > a {
+          margin-left: 3px;
+        }
+    }
+
+    .menu {
+      list-style: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 1px 6px;
+      border: 1px solid #444;
+      border-width: 0 0 1px 1px;
+      .gradientBar(#fff, #e6e6e6);
+      .border-radius(0 0 0 5px);
+
+      .menu_icon {
+        .opacity(70);
+      }
+
+      &:hover {
+        .gradientBar(#fff, #d6d6d6);
+      }
+
+
+      li ul {
+        .box-shadow(1px 1px 5px #666);
+        position: absolute;
+        top: 22px;
+        left: 0;
+        background: white;
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 5px;
+        width: 180px;
+
+        li {
+          text-align: left;
+          font-size: 12px;
+
+          .cancel_change_selector {
+            display: none;
+          }
+        }
+      }
+
+    }
+}
+
+#spb_element_selector {
+  border: 3px dashed #666;
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
 }

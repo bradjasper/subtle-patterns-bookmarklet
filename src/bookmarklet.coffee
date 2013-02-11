@@ -63,11 +63,29 @@ class SubtlePatternsBookmarklet
                         <a href="http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">SubtlePatterns</a> bookmarklet by
                         <a href="http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">Brad Jasper</a>
                    </div>
-                   <a href="javascript:void(0)" class="change_selector">Change Selector</a>
+
+                    <ul class="menu">
+                      <li>
+                        <a href="javascript:void(0)" class="menu_icon">
+                          <img src="/subtle-patterns-bookmarklet/static/img/wheel.png" width="10" />
+                        </a>
+                        <ul class="submenu dropdown-menu">
+                          <li>
+                            <a href="javascript:void(0)" class="change_selector">Change background selector</a>
+                            <a href="javascript:void(0)" class="cancel_change_selector">Cancel change background selector</a>
+                          </li>
+                          <li><a href="javascript:void(0)" class="keyboard_shortcuts">Show Keyboard Shortcuts</a></li>
+                          <li><a href="javascript:void(0)" class="close_bookmarklet">Close Bookmarklet</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+
                 </div>
                 <img class="preload" style="display: none;" />
             </div>
         """)
+
+        $('<div id="spb_element_selector"></div>').appendTo("body")
 
         @el.hide().appendTo(@parent).slideDown()
 
@@ -108,6 +126,7 @@ class SubtlePatternsBookmarklet
         Return all of the patterns for the active category
         ###
         (pattern for pattern in @patterns when @category == "all" or @category in pattern.categories)
+
 
     setup_categories: ->
         ###
@@ -155,33 +174,51 @@ class SubtlePatternsBookmarklet
             @category = @el.find("select").val()
             @curr = 0
             @update()
-
+            
         @el.find(".change_selector").click (e) =>
             e.preventDefault()
 
-            pattern = @current_pattern()
-
-            selector = new ElementSelector
+            @element_selector = new ElementSelector
                 over: (e) =>
-                    console.log e.target
                     target = $(e.target)
-                    target.attr("border-styles", target.css("border") or "none").css("border", "3px dashed #666")
+
+                    offset = target.offset()
+
+                    $("#spb_element_selector").show().css
+                      top: offset.top
+                      left: offset.left
+                      width: target.outerWidth() - 6
+                      height: target.outerHeight() - 6
 
                 out: (e) =>
                     target = $(e.target)
-                    target.css("border", "0px solid #000")
+                    $("#spb_element_selector").hide()
 
                 click: (e) =>
-                    e.preventDefault()
-
                     target = $(e.target)
-                    target.css("border", target.attr("border-styles"))
 
-                    selector.stop()
-                    selector.out(e)
+                    @element_selector.out(e)
+                    @element_selector.stop()
                     @update_selector(target)
 
-            selector.start()
+                start: =>
+                  $("#spb_element_selector").show()
+                  @el.find(".change_selector").hide()
+                  @el.find(".cancel_change_selector").show()
+
+                stop: =>
+                  @el.find(".cancel_change_selector").hide()
+                  @el.find(".change_selector").show()
+                  $("#spb_element_selector").hide()
+
+            @element_selector.start()
+
+        @el.find(".cancel_change_selector").click (e) =>
+            @element_selector.stop()
+
+        @el.find(".menu .menu_icon").click (e) =>
+          @el.find(".menu .submenu").fadeToggle()
+            
 
     update_selector: (selector) =>
             @events.before_change_selector() if @events.before_change_selector
@@ -228,38 +265,36 @@ class SubtlePatternsBookmarklet
 ## default selector from "body" to something else that might be more appropriate
 ##
 class ElementSelector
-    constructor: (kwargs={}) ->
-        @over = kwargs.over or (e) =>
-        @out = kwargs.out or (e) =>
-        @click = kwargs.click or (e) =>
+    constructor: (@events={}) ->
 
-        @_over = (e) =>
-          @target = (e)
-          @over(e)
+    click: (e) =>
+        @events.click(e) if @events.click
 
-        @_out = (e) =>
-          @target = null
-          @out(e)
+    over: (e) =>
+        @target = e
+        @events.over(e) if @events.over
+
+    out: (e) =>
+      @target = e
+      @events.out(e) if @events.out
+
+    keyup: (e) => @stop() if e.keyCode == 27  # escape key
 
     start: =>
         document.addEventListener("click", @click, true)
         document.addEventListener("keyup", @keyup, true)
-        document.addEventListener("mouseout", @_out, true)
-        document.addEventListener("mouseover", @_over, true)
-
-
-    keyup: (e) =>
-        if e.keyCode == 27  # escape key
-
-            @stop()
-            if @target
-              @_out(@target)
+        document.addEventListener("mouseout", @out, true)
+        document.addEventListener("mouseover", @over, true)
+        @events.start() if @events.start
 
     stop: =>
-        document.removeEventListener("mouseover", @_over, true)
-        document.removeEventListener("mouseout", @_out, true)
+        document.removeEventListener("mouseover", @over, true)
+        document.removeEventListener("mouseout", @out, true)
         document.removeEventListener("click", @click, true)
         document.removeEventListener("keyup", @keyup, true)
+        if @target and @events.out
+            @events.out(@target)
+        @events.stop() if @events.stop
         
 # Export the bookmarklet so we can use it from other Coffeescript modules
 # Know a better way to do this when combining multiple files? Email me! bjasper@gmail.com

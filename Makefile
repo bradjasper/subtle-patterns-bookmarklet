@@ -13,17 +13,14 @@ build:
 
 	# Compile Less
 	lessc ${SRC_DIR}/bookmarklet.less ${CSS_DIR}/bookmarklet.css
-	if [ -f app.less ]; \
-	then \
-	  lessc app.less ${CSS_DIR}/app.css; \
-	fi
+
+	# Compile website css if it's around
+	if [ -f app.less ]; then lessc app.less ${CSS_DIR}/app.css; fi
+
+	# Combine bookmarklet css
+	cat ${CSS_DIR}/hint.min.css > ${CSS_DIR}/all.css
+	cat ${CSS_DIR}/bookmarklet.css >> ${CSS_DIR}/all.css
 
 combine:
 	# Build static assets
-	for file in "${JS_DIR}/jquery.min.js" \
-				"${JS_DIR}/subtlepatterns.js" \
-				"${JS_DIR}/bookmarklet.js" \
-				"${JS_DIR}/loader.js"; do \
-			cat $$file; echo; \
-	done | jsmin > "${JS_DIR}/all.js"
-
+	cd ${JS_DIR} && cat jquery.min.js subtlepatterns.js bookmarklet.js loader.js | jsmin > all.js
