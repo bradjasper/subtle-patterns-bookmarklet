@@ -64,21 +64,22 @@ class SubtlePatternsBookmarklet
                         <a href="http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet" target="_blank">Brad Jasper</a>
                    </div>
 
-                    <ul class="menu">
-                      <li>
-                        <a href="javascript:void(0)" class="menu_icon">
-                          <img src="/subtle-patterns-bookmarklet/static/img/wheel.png" width="10" />
-                        </a>
-                        <ul class="submenu dropdown-menu">
+                    <div class="menu_wrapper">
+                        <ul class="menu">
                           <li>
-                            <a href="javascript:void(0)" class="change_selector">Change background selector</a>
-                            <a href="javascript:void(0)" class="cancel_change_selector">Cancel change background selector</a>
+                            <a href="javascript:void(0)" class="menu_icon">
+                              <img src="http://127.0.0.1:8000/subtle-patterns-bookmarklet/static/img/wheel.png" width="10" />
+                            </a>
+                            <ul class="submenu dropdown-menu">
+                              <li>
+                                <a href="javascript:void(0)" class="change_selector">Change background selector</a>
+                              </li>
+                              <li><a href="javascript:void(0)" class="close_bookmarklet">Close Bookmarklet</a></li>
+                            </ul>
                           </li>
-                          <li><a href="javascript:void(0)" class="keyboard_shortcuts">Show Keyboard Shortcuts</a></li>
-                          <li><a href="javascript:void(0)" class="close_bookmarklet">Close Bookmarklet</a></li>
                         </ul>
-                      </li>
-                    </ul>
+                        <a href="javascript:void(0)" class="cancel_change_selector">cancel selector</a>
+                    </div>
 
                 </div>
                 <img class="preload" style="display: none;" />
@@ -162,6 +163,13 @@ class SubtlePatternsBookmarklet
                 when 37 then @previous() # left arrow key
                 when 39 then @next()     # right arrow key
 
+        @el.find(".menu .menu_icon").click (e) =>
+            e.stopPropagation()
+            @el.find(".menu .submenu").fadeToggle()
+
+        $("html").click (e) =>
+            @el.find(".menu .submenu").fadeOut()
+
         @el.find(".previous").click (e) =>
             e.preventDefault()
             @previous()
@@ -175,6 +183,10 @@ class SubtlePatternsBookmarklet
             @curr = 0
             @update()
             
+        @el.find(".close_bookmarklet").click (e) =>
+            @el.slideUp()
+            @revert_background()
+
         @el.find(".change_selector").click (e) =>
             e.preventDefault()
 
@@ -195,35 +207,33 @@ class SubtlePatternsBookmarklet
                     $("#spb_element_selector").hide()
 
                 click: (e) =>
-                    target = $(e.target)
-
                     @element_selector.out(e)
                     @element_selector.stop()
-                    @update_selector(target)
+
+                    # Only update the selector if they didn't click the cancel change selector link
+                    if e.target != @el.find(".cancel_change_selector").get(0)
+                        @update_selector($(e.target))
 
                 start: =>
                   $("#spb_element_selector").show()
-                  @el.find(".change_selector").hide()
-                  @el.find(".cancel_change_selector").show()
+                  @el.find(".menu").fadeOut =>
+                      @el.find(".cancel_change_selector").fadeIn()
 
                 stop: =>
-                  @el.find(".cancel_change_selector").hide()
-                  @el.find(".change_selector").show()
                   $("#spb_element_selector").hide()
+                  @el.find(".cancel_change_selector").fadeOut =>
+                      @el.find(".menu").fadeIn()
 
             @element_selector.start()
 
-        @el.find(".cancel_change_selector").click (e) =>
-            @element_selector.stop()
 
-        @el.find(".menu .menu_icon").click (e) =>
-          @el.find(".menu .submenu").fadeToggle()
-            
+    revert_background: =>
+            @selector.css("background-image", @original_background)
 
     update_selector: (selector) =>
             @events.before_change_selector() if @events.before_change_selector
 
-            @selector.css("background-image", @original_background)
+            @revert_background()
             @selector = selector
             @original_background = @selector.css("background-image")
 
@@ -292,8 +302,10 @@ class ElementSelector
         document.removeEventListener("mouseout", @out, true)
         document.removeEventListener("click", @click, true)
         document.removeEventListener("keyup", @keyup, true)
-        if @target and @events.out
-            @events.out(@target)
+
+        # If there's an active target, call the mouseout callback before stopping
+        @events.out(@target) if @target and @events.out
+
         @events.stop() if @events.stop
         
 # Export the bookmarklet so we can use it from other Coffeescript modules

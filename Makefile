@@ -23,4 +23,5 @@ build:
 
 combine:
 	# Build static assets
-	cd ${JS_DIR} && cat jquery.min.js subtlepatterns.js bookmarklet.js loader.js | jsmin > all.js
+	cd ${JS_DIR} && awk 'FNR==1{print ""}1' jquery.min.js subtlepatterns.js bookmarklet.js loader.js | jsmin > all.js 
+

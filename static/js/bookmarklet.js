@@ -17,6 +17,8 @@ This is the main bookmarklet overlay the user sees and controls.
     function SubtlePatternsBookmarklet() {
       this.update_selector = __bind(this.update_selector, this);
 
+      this.revert_background = __bind(this.revert_background, this);
+
       this.category_patterns = __bind(this.category_patterns, this);
 
       this.update = __bind(this.update, this);
@@ -69,7 +71,7 @@ This is the main bookmarklet overlay the user sees and controls.
       /*
               Create the bookmarklet for the first time
       */
-      this.el = $("<div id=\"subtlepatterns_bookmarklet\" class=\"" + this.klass + "\">\n    <div class=\"wrapper\">\n        <span class=\"title\">\n            <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        </span>\n        <div class=\"controls\">\n            <a href=\"javascript:void(0)\" class=\"previous\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png\" /></a>\n            <span class=\"counter\">\n                <span class=\"curr\"></span>/<span class=\"total\"></span>\n            </span>\n            <a href=\"javascript:void(0)\" class=\"next\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png\" /></a>\n        </div>\n        <div class=\"categories\">\n            <select class=\"category\">\n                <option value=\"all\">All (" + this.patterns.length + ")</option>\n            </select>\n        </div>\n        <div class=\"about\">\n            <a href=\"http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n            <a href=\"http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">Brad Jasper</a>\n       </div>\n\n        <ul class=\"menu\">\n          <li>\n            <a href=\"javascript:void(0)\" class=\"menu_icon\">\n              <img src=\"/subtle-patterns-bookmarklet/static/img/wheel.png\" width=\"10\" />\n            </a>\n            <ul class=\"submenu dropdown-menu\">\n              <li>\n                <a href=\"javascript:void(0)\" class=\"change_selector\">Change background selector</a>\n                <a href=\"javascript:void(0)\" class=\"cancel_change_selector\">Cancel change background selector</a>\n              </li>\n              <li><a href=\"javascript:void(0)\" class=\"keyboard_shortcuts\">Show Keyboard Shortcuts</a></li>\n              <li><a href=\"javascript:void(0)\" class=\"close_bookmarklet\">Close Bookmarklet</a></li>\n            </ul>\n          </li>\n        </ul>\n\n    </div>\n    <img class=\"preload\" style=\"display: none;\" />\n</div>");
+      this.el = $("<div id=\"subtlepatterns_bookmarklet\" class=\"" + this.klass + "\">\n    <div class=\"wrapper\">\n        <span class=\"title\">\n            <a href=\"#\" target=\"_blank\" class=\"name\"></a>\n        </span>\n        <div class=\"controls\">\n            <a href=\"javascript:void(0)\" class=\"previous\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/left_arrow.png\" /></a>\n            <span class=\"counter\">\n                <span class=\"curr\"></span>/<span class=\"total\"></span>\n            </span>\n            <a href=\"javascript:void(0)\" class=\"next\"><img src=\"http://bradjasper.com/subtle-patterns-bookmarklet/static/img/right_arrow.png\" /></a>\n        </div>\n        <div class=\"categories\">\n            <select class=\"category\">\n                <option value=\"all\">All (" + this.patterns.length + ")</option>\n            </select>\n        </div>\n        <div class=\"about\">\n            <a href=\"http://subtlepatterns.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">SubtlePatterns</a> bookmarklet by\n            <a href=\"http://bradjasper.com/?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet\" target=\"_blank\">Brad Jasper</a>\n       </div>\n\n        <div class=\"menu_wrapper\">\n            <ul class=\"menu\">\n              <li>\n                <a href=\"javascript:void(0)\" class=\"menu_icon\">\n                  <img src=\"http://127.0.0.1:8000/subtle-patterns-bookmarklet/static/img/wheel.png\" width=\"10\" />\n                </a>\n                <ul class=\"submenu dropdown-menu\">\n                  <li>\n                    <a href=\"javascript:void(0)\" class=\"change_selector\">Change background selector</a>\n                  </li>\n                  <li><a href=\"javascript:void(0)\" class=\"close_bookmarklet\">Close Bookmarklet</a></li>\n                </ul>\n              </li>\n            </ul>\n            <a href=\"javascript:void(0)\" class=\"cancel_change_selector\">cancel selector</a>\n        </div>\n\n    </div>\n    <img class=\"preload\" style=\"display: none;\" />\n</div>");
       $('<div id="spb_element_selector"></div>').appendTo("body");
       return this.el.hide().appendTo(this.parent).slideDown();
     };
@@ -184,6 +186,13 @@ This is the main bookmarklet overlay the user sees and controls.
             return _this.next();
         }
       });
+      this.el.find(".menu .menu_icon").click(function(e) {
+        e.stopPropagation();
+        return _this.el.find(".menu .submenu").fadeToggle();
+      });
+      $("html").click(function(e) {
+        return _this.el.find(".menu .submenu").fadeOut();
+      });
       this.el.find(".previous").click(function(e) {
         e.preventDefault();
         return _this.previous();
@@ -197,7 +206,11 @@ This is the main bookmarklet overlay the user sees and controls.
         _this.curr = 0;
         return _this.update();
       });
-      this.el.find(".change_selector").click(function(e) {
+      this.el.find(".close_bookmarklet").click(function(e) {
+        _this.el.slideUp();
+        return _this.revert_background();
+      });
+      return this.el.find(".change_selector").click(function(e) {
         e.preventDefault();
         _this.element_selector = new ElementSelector({
           over: function(e) {
@@ -217,38 +230,38 @@ This is the main bookmarklet overlay the user sees and controls.
             return $("#spb_element_selector").hide();
           },
           click: function(e) {
-            var target;
-            target = $(e.target);
             _this.element_selector.out(e);
             _this.element_selector.stop();
-            return _this.update_selector(target);
+            if (e.target !== _this.el.find(".cancel_change_selector").get(0)) {
+              return _this.update_selector($(e.target));
+            }
           },
           start: function() {
             $("#spb_element_selector").show();
-            _this.el.find(".change_selector").hide();
-            return _this.el.find(".cancel_change_selector").show();
+            return _this.el.find(".menu").fadeOut(function() {
+              return _this.el.find(".cancel_change_selector").fadeIn();
+            });
           },
           stop: function() {
-            _this.el.find(".cancel_change_selector").hide();
-            _this.el.find(".change_selector").show();
-            return $("#spb_element_selector").hide();
+            $("#spb_element_selector").hide();
+            return _this.el.find(".cancel_change_selector").fadeOut(function() {
+              return _this.el.find(".menu").fadeIn();
+            });
           }
         });
         return _this.element_selector.start();
       });
-      this.el.find(".cancel_change_selector").click(function(e) {
-        return _this.element_selector.stop();
-      });
-      return this.el.find(".menu .menu_icon").click(function(e) {
-        return _this.el.find(".menu .submenu").fadeToggle();
-      });
+    };
+
+    SubtlePatternsBookmarklet.prototype.revert_background = function() {
+      return this.selector.css("background-image", this.original_background);
     };
 
     SubtlePatternsBookmarklet.prototype.update_selector = function(selector) {
       if (this.events.before_change_selector) {
         this.events.before_change_selector();
       }
-      this.selector.css("background-image", this.original_background);
+      this.revert_background();
       this.selector = selector;
       this.original_background = this.selector.css("background-image");
       if (this.events.after_change_selector) {

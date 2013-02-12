@@ -26,6 +26,7 @@
   box-sizing: border-box;
 }
 /* User Added */
+/* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -161,6 +162,7 @@
 }
 #subtlepatterns_bookmarklet .controls {
   padding: 6px;
+  position: static !important;
 }
 #subtlepatterns_bookmarklet .counter {
   vertical-align: top;
@@ -198,14 +200,16 @@
 #subtlepatterns_bookmarklet .toolbar > a {
   margin-left: 3px;
 }
-#subtlepatterns_bookmarklet .menu {
-  list-style: none;
+#subtlepatterns_bookmarklet .menu_wrapper {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 1px 6px;
-  border: 1px solid #444;
-  border-width: 0 0 1px 1px;
+}
+#subtlepatterns_bookmarklet .menu_wrapper .menu {
+  list-style: none;
+  padding: 3px !important;
+  margin: 0 !important;
+  line-height: 15px !important;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
@@ -221,11 +225,11 @@
   -moz-border-radius: 0 0 0 5px;
   border-radius: 0 0 0 5px;
 }
-#subtlepatterns_bookmarklet .menu .menu_icon {
+#subtlepatterns_bookmarklet .menu_wrapper .menu .menu_icon {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
-#subtlepatterns_bookmarklet .menu:hover {
+#subtlepatterns_bookmarklet .menu_wrapper .menu:hover {
   background-color: #efefef;
   background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
   background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
@@ -238,7 +242,10 @@
   border-color: #d6d6d6 #d6d6d6 #b0b0b0;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-#subtlepatterns_bookmarklet .menu li ul {
+#subtlepatterns_bookmarklet .menu_wrapper .menu > li {
+  width: auto !important;
+}
+#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul {
   -webkit-box-shadow: 1px 1px 5px #666666;
   -moz-box-shadow: 1px 1px 5px #666666;
   box-shadow: 1px 1px 5px #666666;
@@ -250,14 +257,23 @@
   list-style: none;
   margin: 0;
   padding: 5px;
-  width: 180px;
+  width: 200px;
 }
-#subtlepatterns_bookmarklet .menu li ul li {
+#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li {
   text-align: left;
   font-size: 12px;
+  color: #666 !important;
+  width: auto !important;
 }
-#subtlepatterns_bookmarklet .menu li ul li .cancel_change_selector {
+#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li a {
+  text-decoration: none !important;
+}
+#subtlepatterns_bookmarklet .menu_wrapper .cancel_change_selector {
   display: none;
+  text-decoration: none;
+  color: #666;
+  font-size: 11px;
+  margin-right: 3px;
 }
 #spb_element_selector {
   border: 3px dashed #666;
