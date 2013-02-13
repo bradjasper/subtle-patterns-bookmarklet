@@ -65,6 +65,7 @@ class SubtlePatternsBookmarklet
 
         @selector.css("background-image", "url('#{pattern.mirror_image}')")
         @selector.css("background-repeat", "repeat")
+        @selector.css("background-size", "auto")
 
         @el.find(".curr").html("#{@curr+1}")
         @el.find(".total").html("#{@category_patterns().length}")

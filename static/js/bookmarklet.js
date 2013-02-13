@@ -3025,6 +3025,7 @@
       pattern = this.current_pattern();
       this.selector.css("background-image", "url('" + pattern.mirror_image + "')");
       this.selector.css("background-repeat", "repeat");
+      this.selector.css("background-size", "auto");
       this.el.find(".curr").html("" + (this.curr + 1));
       this.el.find(".total").html("" + (this.category_patterns().length));
       pattern_link = "" + pattern.link + "?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet";
