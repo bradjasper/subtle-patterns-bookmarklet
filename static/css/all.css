@@ -211,40 +211,13 @@
 }
 #subtlepatterns_bookmarklet .menu_wrapper .menu {
   list-style: none;
-  padding: 3px !important;
+  padding: 0 3px !important;
   margin: 0 !important;
   line-height: 15px !important;
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(top, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
-  border-color: #e6e6e6 #e6e6e6 #c0c0c0;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  -webkit-border-radius: 0 0 0 5px;
-  -moz-border-radius: 0 0 0 5px;
-  border-radius: 0 0 0 5px;
 }
 #subtlepatterns_bookmarklet .menu_wrapper .menu .menu_icon {
   opacity: 0.7;
   filter: alpha(opacity=70);
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu:hover {
-  background-color: #efefef;
-  background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
-  background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#d6d6d6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #d6d6d6);
-  background-image: -o-linear-gradient(top, #ffffff, #d6d6d6);
-  background-image: linear-gradient(top, #ffffff, #d6d6d6);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#d6d6d6', GradientType=0);
-  border-color: #d6d6d6 #d6d6d6 #b0b0b0;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 #subtlepatterns_bookmarklet .menu_wrapper .menu > li {
   width: auto !important;
@@ -284,4 +257,5 @@
   position: absolute;
   z-index: 100;
   pointer-events: none;
+  display: none;
 }

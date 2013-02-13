@@ -32,8 +32,8 @@ class SubtlePatternsBookmarklet
         if @events.finished_setup
           @events.finished_setup()
         
-    show: -> @el.show()
-    hide: -> @el.hide()
+    show: -> @el.slideDown()
+    hide: -> @el.slideUp()
 
     create: ->
         ###
@@ -88,7 +88,8 @@ class SubtlePatternsBookmarklet
 
         $('<div id="spb_element_selector"></div>').appendTo("body")
 
-        @el.hide().appendTo(@parent).slideDown()
+        @el.hide().appendTo(@parent)
+        @show()
 
     current_pattern: ->
         ###
@@ -184,8 +185,10 @@ class SubtlePatternsBookmarklet
             @update()
             
         @el.find(".close_bookmarklet").click (e) =>
-            @el.slideUp()
             @revert_background()
+            @hide()
+            $("#subtlepatterns_bookmarklet").remove()
+            $(document).unbind("keydown")
 
         @el.find(".change_selector").click (e) =>
             e.preventDefault()
@@ -229,15 +232,15 @@ class SubtlePatternsBookmarklet
 
     revert_background: =>
             @selector.css("background-image", @original_background)
+            @events.revert_background() if @events.revert_background
 
     update_selector: (selector) =>
-            @events.before_change_selector() if @events.before_change_selector
-
             @revert_background()
+
             @selector = selector
             @original_background = @selector.css("background-image")
 
-            @events.after_change_selector() if @events.after_change_selector
+            @events.update_selector() if @events.update_selector
 
             @update()
 
@@ -266,3 +269,5 @@ class SubtlePatternsBookmarklet
         @curr = @previous_index()
         @update()
         @preload(@previous_index())
+
+window.SubtlePatternsBookmarklet = SubtlePatternsBookmarklet

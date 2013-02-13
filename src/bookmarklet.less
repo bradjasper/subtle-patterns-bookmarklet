@@ -24,21 +24,21 @@
     }
 
     .title {
-        padding: 22px 0 6px 0;
-        display: block;
+    padding: 22px 0 6px 0;
+    display: block;
 
-        a {
-            color: #222;
-        }
-
-        .name {
-            font-weight: bold;
-            font-size: 16px;
-        }
+    a {
+        color: #222;
     }
 
-    .controls {
-        padding: 6px;
+    .name {
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+.controls {
+    padding: 6px;
         position: static !important;
     }
 
@@ -90,20 +90,13 @@
 
         .menu {
           list-style: none;
-          padding: 3px !important;
+          padding: 0 3px !important;
           margin: 0 !important;
           line-height: 15px !important;
-          .gradientBar(#fff, #e6e6e6);
-          .border-radius(0 0 0 5px);
 
           .menu_icon {
             .opacity(70);
           }
-
-          &:hover {
-            .gradientBar(#fff, #d6d6d6);
-          }
-
 
           > li {
               width: auto !important;
@@ -150,4 +143,5 @@
   position: absolute;
   z-index: 100;
   pointer-events: none;
+  display: none;
 }

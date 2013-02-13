@@ -1,3 +1,4 @@
+delay = (ms, fn) -> setTimeout(fn, ms)
 # Add pattern class names to selector
 # This isn't part of the bookmarklet and is only used on
 # the website to switch constrast between background and text
@@ -10,7 +11,7 @@ remove_overlay_classes = (overlay) ->
     classes = overlay.selector.attr("class") or ""
     overlay.selector.attr("class", classes.replace(/\s?spb-\w+/g, ""))
 
-if window.SUBTLEPATTERNS
+if window.SubtlePatternsBookmarklet
     overlay = new SubtlePatternsBookmarklet()
     overlay.setup
         patterns: SUBTLEPATTERNS
@@ -19,13 +20,14 @@ if window.SUBTLEPATTERNS
         default: "Old Mathematics"
         events:
             finished_setup: ->
-              $(".bookmarklet_button a").click ->
-                alert("Drag this button to your bookmarks bar")
-                return false
+                $(".bookmarklet_button a").click ->
+                    alert("Drag this button to your bookmarks bar")
+                    return false
 
-            before_change_selector: ->
-                remove_overlay_classes(overlay)
+                overlay.el.find(".close_bookmarklet").click ->
+                    delay 500, -> overlay.show()
 
-            after_update: ->
+            revert_background: -> remove_overlay_classes(overlay)
+            update_selector: ->
               remove_overlay_classes(overlay)
               add_overlay_classes(overlay)

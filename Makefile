@@ -9,14 +9,13 @@ all: build
 
 build:
 	# Compile Coffeescript
-	coffee --output ${JS_DIR} --compile app.coffee
+	coffee --output ${JS_DIR} --compile app.coffee ${SRC_DIR}/loader.coffee
 	coffee --join ${JS_DIR}/bookmarklet.js --compile ${SRC_DIR}/subtlepatterns.coffee \
 													 ${SRC_DIR}/element_selector.coffee \
-													 ${SRC_DIR}/overlay.coffee \
-													 ${SRC_DIR}/loader.coffee
+													 ${SRC_DIR}/overlay.coffee
 
-	cat ${JS_DIR}/jquery.min.js ${JS_DIR}/bookmarklet.js | jsmin > ${JS_DIR}/all.js
-	cat ${JS_DIR}/all.js ${JS_DIR}/app.js | jsmin > ${JS_DIR}/app.min.js
+	cat ${JS_DIR}/jquery.min.js ${JS_DIR}/bookmarklet.js ${JS_DIR}/loader.js | jsmin > ${JS_DIR}/all.js
+	cat ${JS_DIR}/jquery.min.js ${JS_DIR}/bookmarklet.js ${JS_DIR}/app.js | jsmin > ${JS_DIR}/app.min.js
 
 	# Compile Less
 	lessc ${SRC_DIR}/bookmarklet.less ${CSS_DIR}/bookmarklet.css
