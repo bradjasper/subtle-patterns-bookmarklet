@@ -1,3 +1,5 @@
+delay = (ms, fn) -> setTimeout(fn, ms)
+
 ###
 Subtle Patterns Bookmarklet
 
@@ -187,8 +189,9 @@ class SubtlePatternsBookmarklet
         @el.find(".close_bookmarklet").click (e) =>
             @revert_background()
             @hide()
-            $("#subtlepatterns_bookmarklet").remove()
-            $(document).unbind("keydown")
+            delay 500,
+                @el.remove()
+                $(document).unbind("keydown")
 
         @el.find(".change_selector").click (e) =>
             e.preventDefault()

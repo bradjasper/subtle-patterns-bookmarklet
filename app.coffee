@@ -1,4 +1,3 @@
-delay = (ms, fn) -> setTimeout(fn, ms)
 # Add pattern class names to selector
 # This isn't part of the bookmarklet and is only used on
 # the website to switch constrast between background and text
@@ -11,7 +10,7 @@ remove_overlay_classes = (overlay) ->
     classes = overlay.selector.attr("class") or ""
     overlay.selector.attr("class", classes.replace(/\s?spb-\w+/g, ""))
 
-if window.SubtlePatternsBookmarklet
+create_bookmarklet = ->
     overlay = new SubtlePatternsBookmarklet()
     overlay.setup
         patterns: SUBTLEPATTERNS
@@ -25,9 +24,17 @@ if window.SubtlePatternsBookmarklet
                     return false
 
                 overlay.el.find(".close_bookmarklet").click ->
-                    delay 500, -> overlay.show()
+                    # hacky to recreate the bookmarklet
+                    create_bookmarklet()
 
             revert_background: -> remove_overlay_classes(overlay)
             update_selector: ->
               remove_overlay_classes(overlay)
               add_overlay_classes(overlay)
+
+    return overlay
+
+if window.SubtlePatternsBookmarklet
+    create_bookmarklet()
+else
+    alert("Something went wrong...can't find the bookmarklet")
