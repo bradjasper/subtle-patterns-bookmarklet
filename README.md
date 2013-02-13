@@ -21,5 +21,4 @@ Run a static HTTP server one level up with
 
 ## About
 Created by Brad Jasper
-
 Thanks to SubtlePatterns.com for the awesome background patterns

@@ -147,10 +147,9 @@
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding-bottom: 10px;
-  position: relative;
 }
 #subtlepatterns_bookmarklet .title {
-  padding: 22px 0 6px 0;
+  padding: 12px 0 6px 0;
   display: block;
 }
 #subtlepatterns_bookmarklet .title a {
@@ -162,13 +161,11 @@
 }
 #subtlepatterns_bookmarklet .controls {
   padding: 6px;
-  position: static !important;
 }
 #subtlepatterns_bookmarklet .counter {
   vertical-align: top;
   display: inline-block;
   padding-top: 4px;
-  color: #333;
 }
 #subtlepatterns_bookmarklet .categories {
   padding: 6px;
@@ -183,75 +180,10 @@
 #subtlepatterns_bookmarklet .about {
   text-align: left;
   padding: 6px 6px 0 6px;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 11px;
+  line-height: 14px;
   color: #666;
 }
 #subtlepatterns_bookmarklet .about a {
   color: #666;
-  text-decoration: underline !important;
-}
-#subtlepatterns_bookmarklet .toolbar {
-  display: none;
-  position: absolute;
-  bottom: 15px;
-  right: 4px;
-}
-#subtlepatterns_bookmarklet .toolbar > a {
-  margin-left: 3px;
-}
-#subtlepatterns_bookmarklet .menu_wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu {
-  list-style: none;
-  padding: 0 3px !important;
-  margin: 0 !important;
-  line-height: 15px !important;
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu .menu_icon {
-  opacity: 0.7;
-  filter: alpha(opacity=70);
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu > li {
-  width: auto !important;
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul {
-  -webkit-box-shadow: 1px 1px 5px #666666;
-  -moz-box-shadow: 1px 1px 5px #666666;
-  box-shadow: 1px 1px 5px #666666;
-  position: absolute;
-  top: 22px;
-  left: 0;
-  background: white;
-  display: none;
-  list-style: none;
-  margin: 0;
-  padding: 5px;
-  width: 200px;
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li {
-  text-align: left;
-  font-size: 12px;
-  color: #666 !important;
-  width: auto !important;
-}
-#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li a {
-  text-decoration: none !important;
-}
-#subtlepatterns_bookmarklet .menu_wrapper .cancel_change_selector {
-  display: none;
-  text-decoration: none;
-  color: #666;
-  font-size: 11px;
-  margin-right: 3px;
-}
-#spb_element_selector {
-  border: 3px dashed #666;
-  position: absolute;
-  z-index: 100;
-  pointer-events: none;
-  display: none;
 }

@@ -17,12 +17,12 @@ This script is the master controller, it kicks everything off
     return document.getElementsByTagName("head")[0].appendChild(style);
   };
 
-  load_css("http://127.0.0.1:8000/subtle-patterns-bookmarklet/static/css/all.css?cb=" + (Math.random()));
-
-  overlay = new SubtlePatternsBookmarklet();
-
-  overlay.setup({
-    patterns: SUBTLEPATTERNS
-  });
+  if (window.SUBTLEPATTERNS) {
+    load_css("http://bradjasper.com/subtle-patterns-bookmarklet/static/css/bookmarklet.css?cb=" + (Math.random()));
+    overlay = new SubtlePatternsBookmarklet(SUBTLEPATTERNS);
+    overlay.setup();
+  } else {
+    alert("Something went wrong, I can't find the SubtlePatterns. Please e-mail bjasper@gmail.com");
+  }
 
 }).call(this);
