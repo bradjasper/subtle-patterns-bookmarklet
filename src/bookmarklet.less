@@ -20,30 +20,33 @@
         border: 1px solid #c3c3c4;
         .box-shadow();
         padding-bottom: 10px;
+        position: relative;
     }
 
     .title {
-        padding: 12px 0 6px 0;
-        display: block;
+    padding: 22px 0 6px 0;
+    display: block;
 
-        a {
-            color: #222;
-        }
-
-        .name {
-            font-weight: bold;
-            font-size: 16px;
-        }
+    a {
+        color: #222;
     }
 
-    .controls {
-        padding: 6px;
+    .name {
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+.controls {
+    padding: 6px;
+        position: static !important;
     }
 
     .counter {
         vertical-align: top;
         display: inline-block;
         padding-top: 4px;
+        color: #333;
     }
 
     .categories {
@@ -61,11 +64,84 @@
     .about {
         text-align: left;
         padding: 6px 6px 0 6px;
-        font-size: 11px;
-        line-height: 14px;
+        font-size: 10px;
+        line-height: 12px;
         color: #666;
         a {
             color: #666;
+            text-decoration: underline !important;
         }
     }
+
+    .toolbar {
+        display: none;
+        position: absolute;
+        bottom: 15px;
+        right: 4px;
+        > a {
+          margin-left: 3px;
+        }
+    }
+
+    .menu_wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        .menu {
+          list-style: none;
+          padding: 0 2px !important;
+          margin: 0 !important;
+          line-height: 15px !important;
+
+          .menu_icon {
+            .opacity(70);
+          }
+
+          > li {
+              width: auto !important;
+            
+            > ul {
+                .box-shadow(1px 1px 5px #666);
+                position: absolute;
+                top: 22px;
+                left: 0;
+                background: white;
+                display: none;
+                list-style: none;
+                margin: 0;
+                padding: 5px;
+                width: 200px;
+
+                > li {
+                  text-align: left;
+                  font-size: 12px;
+                  color: #666 !important;
+                  width: auto !important;
+                  a {
+                      text-decoration: none !important;
+                  }
+                }
+            }
+
+          }
+
+        }
+
+        .cancel_change_selector {
+            display: none;
+            text-decoration: none;
+            color: #666;
+            font-size: 11px;
+            margin-right: 3px;
+        }
+    }
+}
+
+#spb_element_selector {
+  border: 3px dashed #666;
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  display: none;
 }
