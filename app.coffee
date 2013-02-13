@@ -27,10 +27,11 @@ create_bookmarklet = ->
                     # hacky to recreate the bookmarklet
                     create_bookmarklet()
 
-            revert_background: -> remove_overlay_classes(overlay)
-            update_selector: ->
-              remove_overlay_classes(overlay)
-              add_overlay_classes(overlay)
+            revert_background: ->
+                remove_overlay_classes(overlay)
+            after_update: ->
+                remove_overlay_classes(overlay)
+                add_overlay_classes(overlay)
 
     return overlay
 

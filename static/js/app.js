@@ -44,7 +44,7 @@
         revert_background: function() {
           return remove_overlay_classes(overlay);
         },
-        update_selector: function() {
+        after_update: function() {
           remove_overlay_classes(overlay);
           return add_overlay_classes(overlay);
         }
