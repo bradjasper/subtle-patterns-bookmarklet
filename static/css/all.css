@@ -211,7 +211,7 @@
 }
 #subtlepatterns_bookmarklet .menu_wrapper .menu {
   list-style: none;
-  padding: 0 2px !important;
+  padding: 3px !important;
   margin: 0 !important;
   line-height: 15px !important;
 }
