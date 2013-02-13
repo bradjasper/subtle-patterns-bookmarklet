@@ -2852,77 +2852,6 @@
     }
   ];
 
-  ElementSelector = (function() {
-
-    function ElementSelector(events) {
-      this.events = events != null ? events : {};
-      this.stop = __bind(this.stop, this);
-
-      this.start = __bind(this.start, this);
-
-      this.keyup = __bind(this.keyup, this);
-
-      this.out = __bind(this.out, this);
-
-      this.over = __bind(this.over, this);
-
-      this.click = __bind(this.click, this);
-
-    }
-
-    ElementSelector.prototype.click = function(e) {
-      if (this.events.click) {
-        return this.events.click(e);
-      }
-    };
-
-    ElementSelector.prototype.over = function(e) {
-      this.target = e;
-      if (this.events.over) {
-        return this.events.over(e);
-      }
-    };
-
-    ElementSelector.prototype.out = function(e) {
-      this.target = e;
-      if (this.events.out) {
-        return this.events.out(e);
-      }
-    };
-
-    ElementSelector.prototype.keyup = function(e) {
-      if (e.keyCode === 27) {
-        return this.stop();
-      }
-    };
-
-    ElementSelector.prototype.start = function() {
-      document.addEventListener("click", this.click, true);
-      document.addEventListener("keyup", this.keyup, true);
-      document.addEventListener("mouseout", this.out, true);
-      document.addEventListener("mouseover", this.over, true);
-      if (this.events.start) {
-        return this.events.start();
-      }
-    };
-
-    ElementSelector.prototype.stop = function() {
-      document.removeEventListener("mouseover", this.over, true);
-      document.removeEventListener("mouseout", this.out, true);
-      document.removeEventListener("click", this.click, true);
-      document.removeEventListener("keyup", this.keyup, true);
-      if (this.target && this.events.out) {
-        this.events.out(this.target);
-      }
-      if (this.events.stop) {
-        return this.events.stop();
-      }
-    };
-
-    return ElementSelector;
-
-  })();
-
   /*
   Subtle Patterns Bookmarklet
   
@@ -3224,6 +3153,79 @@
 
   })();
 
+  ElementSelector = (function() {
+
+    function ElementSelector(events) {
+      this.events = events != null ? events : {};
+      this.stop = __bind(this.stop, this);
+
+      this.start = __bind(this.start, this);
+
+      this.keyup = __bind(this.keyup, this);
+
+      this.out = __bind(this.out, this);
+
+      this.over = __bind(this.over, this);
+
+      this.click = __bind(this.click, this);
+
+    }
+
+    ElementSelector.prototype.click = function(e) {
+      if (this.events.click) {
+        return this.events.click(e);
+      }
+    };
+
+    ElementSelector.prototype.over = function(e) {
+      this.target = e;
+      if (this.events.over) {
+        return this.events.over(e);
+      }
+    };
+
+    ElementSelector.prototype.out = function(e) {
+      this.target = e;
+      if (this.events.out) {
+        return this.events.out(e);
+      }
+    };
+
+    ElementSelector.prototype.keyup = function(e) {
+      if (e.keyCode === 27) {
+        return this.stop();
+      }
+    };
+
+    ElementSelector.prototype.start = function() {
+      document.addEventListener("click", this.click, true);
+      document.addEventListener("keyup", this.keyup, true);
+      document.addEventListener("mouseout", this.out, true);
+      document.addEventListener("mouseover", this.over, true);
+      if (this.events.start) {
+        return this.events.start();
+      }
+    };
+
+    ElementSelector.prototype.stop = function() {
+      document.removeEventListener("mouseover", this.over, true);
+      document.removeEventListener("mouseout", this.out, true);
+      document.removeEventListener("click", this.click, true);
+      document.removeEventListener("keyup", this.keyup, true);
+      if (this.target && this.events.out) {
+        this.events.out(this.target);
+      }
+      if (this.events.stop) {
+        return this.events.stop();
+      }
+    };
+
+    return ElementSelector;
+
+  })();
+
+  window.SubtlePatternsBookmarklet = SubtlePatternsBookmarklet;
+
   /*
   This script is the master controller, it kicks everything off
   */
@@ -3238,12 +3240,14 @@
     return document.getElementsByTagName("head")[0].appendChild(style);
   };
 
-  load_css("http://127.0.0.1:8000/subtle-patterns-bookmarklet/static/css/all.css?cb=" + (Math.random()));
-
-  overlay = new SubtlePatternsBookmarklet();
-
-  overlay.setup({
-    patterns: SUBTLEPATTERNS
-  });
+  if (window.SUBTLEPATTERNS) {
+    load_css("http://127.0.0.1:8000/subtle-patterns-bookmarklet/static/css/all.css?cb=" + (Math.random()));
+    overlay = new SubtlePatternsBookmarklet();
+    overlay.setup({
+      patterns: SUBTLEPATTERNS
+    });
+  } else {
+    alert("Something went wrong, I can't find the SubtlePatterns. Please e-mail bjasper@gmail.com");
+  }
 
 }).call(this);
