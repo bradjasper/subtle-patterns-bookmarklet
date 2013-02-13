@@ -70,7 +70,7 @@ class SubtlePatternsBookmarklet
                         <ul class="menu">
                           <li>
                             <a href="javascript:void(0)" class="menu_icon">
-                              <img src="http://127.0.0.1:8000/subtle-patterns-bookmarklet/static/img/wheel.png" width="10" />
+                              <img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/wheel.png" width="11" />
                             </a>
                             <ul class="submenu dropdown-menu">
                               <li>
