@@ -2943,6 +2943,10 @@
 
       this.revert_background = __bind(this.revert_background, this);
 
+      this.toggle = __bind(this.toggle, this);
+
+      this.random = __bind(this.random, this);
+
       this.category_patterns = __bind(this.category_patterns, this);
 
       this.update = __bind(this.update, this);
@@ -3098,6 +3102,25 @@
       return _results;
     };
 
+    SubtlePatternsBookmarklet.prototype.random = function() {
+      /*
+              Pick random background from category
+      */
+      this.curr = Math.floor(Math.random() * this.category_patterns().length);
+      return this.update();
+    };
+
+    SubtlePatternsBookmarklet.prototype.toggle = function() {
+      /*
+              Toggle the current background on/off
+      */
+      if ($(this.selector).css("background-image") === this.original_background) {
+        return this.update();
+      } else {
+        return this.revert_background();
+      }
+    };
+
     SubtlePatternsBookmarklet.prototype.setup_events = function() {
       /*
               Setup event handlers for all different actions
@@ -3110,6 +3133,10 @@
             return _this.previous();
           case 39:
             return _this.next();
+          case 82:
+            return _this.random();
+          case 84:
+            return _this.toggle();
         }
       });
       this.el.find(".menu .menu_icon").click(function(e) {

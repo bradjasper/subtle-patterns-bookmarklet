@@ -39,6 +39,8 @@ class SubtlePatternsBookmarklet
         ###
         Create the bookmarklet for the first time
         ###
+
+        # Grab HTML from other file
         @el = $(subtlepatterns_bookmarklet_overlay).addClass(@klass)
         @el.hide().appendTo(@parent)
         @show()
@@ -110,6 +112,23 @@ class SubtlePatternsBookmarklet
             select.append("<option value='#{category}'>#{category} (#{count})</option>")
 
 
+    random: =>
+        ###
+        Pick random background from category
+        ###
+        @curr = Math.floor(Math.random()*@category_patterns().length)
+        @update()
+
+    toggle: =>
+        ###
+        Toggle the current background on/off
+        ###
+        if $(@selector).css("background-image") == @original_background
+            @update()
+        else
+            @revert_background()
+
+
     setup_events: ->
         ###
         Setup event handlers for all different actions
@@ -119,6 +138,8 @@ class SubtlePatternsBookmarklet
             switch e.keyCode
                 when 37 then @previous() # left arrow key
                 when 39 then @next()     # right arrow key
+                when 82 then @random()    # "r" key
+                when 84 then @toggle()    # "t" key
 
         @el.find(".menu .menu_icon").click (e) =>
             e.stopPropagation()
