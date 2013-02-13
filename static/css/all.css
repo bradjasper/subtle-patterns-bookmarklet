@@ -248,6 +248,33 @@
   font-size: 11px;
   margin-right: 3px;
 }
+#subtlepatterns_bookmarklet_keyboard_shortcuts {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  right: 35%;
+  bottom: 35%;
+  z-index: 99;
+  background: #000;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  color: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px 25px;
+}
+#subtlepatterns_bookmarklet_keyboard_shortcuts table th {
+  width: 30px;
+  color: #dd0;
+  font-family: "courier new", monospace;
+  text-align: center;
+  padding: 5px 0;
+}
 #spb_element_selector {
   border: 3px dashed #666;
   position: absolute;

@@ -41,3 +41,25 @@ subtlepatterns_bookmarklet_overlay = """
     <img class="preload" style="display: none;" />
 </div>
 """
+
+subtlepatterns_bookmarklet_body_html = """
+<div id="spb_element_selector"></div>
+<div id="subtlepatterns_bookmarklet_keyboard_shortcuts">
+    <h3>Keyboard Shortcuts</h3>
+    <hr>
+    <table>
+        <tr>
+            <th>t</th>
+            <td>Toggle between active and original pattern</td>
+        </tr>
+        <tr>
+            <th>r</th>
+            <td>Change to a random pattern</td>
+        </tr>
+        <tr>
+            <th>?</th>
+            <td>Bring up this dialog (press again to close)</td>
+        </tr>
+    </table>
+</div>
+"""

@@ -45,7 +45,7 @@ class SubtlePatternsBookmarklet
         @el.hide().appendTo(@parent)
         @show()
 
-        $('<div id="spb_element_selector"></div>').appendTo("body")
+        $(subtlepatterns_bookmarklet_body_html).appendTo("body")
 
 
     current_pattern: ->
@@ -130,17 +130,32 @@ class SubtlePatternsBookmarklet
             @revert_background()
 
 
+    toggle_keyboard_shortcuts_dialog: =>
+        $("#subtlepatterns_bookmarklet_keyboard_shortcuts").fadeToggle()
+
+    show_keyboard_shortcuts_dialog: =>
+        $("#subtlepatterns_bookmarklet_keyboard_shortcuts").fadeIn()
+
+    hide_keyboard_shortcuts_dialog: =>
+        $("#subtlepatterns_bookmarklet_keyboard_shortcuts").fadeOut()
+
     setup_events: ->
         ###
         Setup event handlers for all different actions
         ###
 
         $(document).keydown (e) =>
+
+            if e.keyCode == 191 and e.shiftKey
+                @toggle_keyboard_shortcuts_dialog()
+                return
+
             switch e.keyCode
+                when 27 then @hide_keyboard_shortcuts_dialog() # escape key
                 when 37 then @previous() # left arrow key
                 when 39 then @next()     # right arrow key
-                when 82 then @random()    # "r" key
-                when 84 then @toggle()    # "t" key
+                when 82 then @random()   # "r" key
+                when 84 then @toggle()   # "t" key
 
         @el.find(".menu .menu_icon").click (e) =>
             e.stopPropagation()
@@ -148,6 +163,7 @@ class SubtlePatternsBookmarklet
 
         $("html").click (e) =>
             @el.find(".menu .submenu").fadeOut()
+            @hide_keyboard_shortcuts_dialog()
 
         @el.find(".previous").click (e) =>
             e.preventDefault()
