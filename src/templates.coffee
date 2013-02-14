@@ -68,7 +68,7 @@ template_body = """
         </tr>
     </table>
     <a href="javascript:void(0)" class="close_button">
-        <img src="/subtle-patterns-bookmarklet/static/img/delete_white.png" />
+        <img src="http://bradjasper.com/subtle-patterns-bookmarklet/static/img/delete_white.png" />
     </a>
 </div>
 """
