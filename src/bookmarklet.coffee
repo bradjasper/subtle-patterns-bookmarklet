@@ -41,11 +41,11 @@ class SubtlePatternsBookmarklet
         ###
 
         # Grab HTML from other file
-        @el = $(subtlepatterns_bookmarklet_overlay).addClass(@klass)
+        @el = $(template_bookmarklet).addClass(@klass)
         @el.hide().appendTo(@parent)
         @show()
 
-        $(subtlepatterns_bookmarklet_body_html).appendTo("body")
+        $(template_body).appendTo("body")
 
 
     current_pattern: ->
@@ -131,13 +131,16 @@ class SubtlePatternsBookmarklet
 
 
     toggle_keyboard_shortcuts_dialog: =>
-        $("#subtlepatterns_bookmarklet_keyboard_shortcuts").fadeToggle()
+        $("#spb_keyboard_shortcuts").fadeToggle()
 
     show_keyboard_shortcuts_dialog: =>
-        $("#subtlepatterns_bookmarklet_keyboard_shortcuts").fadeIn()
+        $("#spb_keyboard_shortcuts").fadeIn()
 
     hide_keyboard_shortcuts_dialog: =>
-        $("#subtlepatterns_bookmarklet_keyboard_shortcuts").fadeOut()
+        $("#spb_keyboard_shortcuts").fadeOut()
+
+    close_settings_menu: =>
+        @el.find(".menu .submenu").fadeOut()
 
     setup_events: ->
         ###
@@ -155,6 +158,7 @@ class SubtlePatternsBookmarklet
                 when 37 then @previous() # left arrow key
                 when 39 then @next()     # right arrow key
                 when 82 then @random()   # "r" key
+                when 83 then @start_element_selector()   # "s" key
                 when 84 then @toggle()   # "t" key
 
         @el.find(".menu .menu_icon").click (e) =>
@@ -162,8 +166,13 @@ class SubtlePatternsBookmarklet
             @el.find(".menu .submenu").fadeToggle()
 
         $("html").click (e) =>
-            @el.find(".menu .submenu").fadeOut()
+            @close_settings_menu()
             @hide_keyboard_shortcuts_dialog()
+
+        @el.find(".show_keyboard_shortcuts").click (e) =>
+            @show_keyboard_shortcuts_dialog()
+            @close_settings_menu()
+            e.stopPropagation()
 
         @el.find(".previous").click (e) =>
             e.preventDefault()
@@ -187,42 +196,50 @@ class SubtlePatternsBookmarklet
 
         @el.find(".change_selector").click (e) =>
             e.preventDefault()
+            @start_element_selector()
 
-            @element_selector = new ElementSelector
-                over: (e) =>
-                    target = $(e.target)
 
-                    offset = target.offset()
+    start_element_selector: ->
 
-                    $("#spb_element_selector").show().css
-                      top: offset.top
-                      left: offset.left
-                      width: target.outerWidth() - 6
-                      height: target.outerHeight() - 6
+        # element selector is already running
+        return if @element_selector
 
-                out: (e) =>
-                    target = $(e.target)
-                    $("#spb_element_selector").hide()
+        @element_selector = new ElementSelector
+            over: (e) =>
+                target = $(e.target)
 
-                click: (e) =>
-                    @element_selector.out(e)
-                    @element_selector.stop()
+                offset = target.offset()
 
-                    # Only update the selector if they didn't click the cancel change selector link
-                    if e.target != @el.find(".cancel_change_selector").get(0)
-                        @update_selector($(e.target))
+                $("#spb_element_selector").show().css
+                  top: offset.top
+                  left: offset.left
+                  width: target.outerWidth() - 6
+                  height: target.outerHeight() - 6
 
-                start: =>
-                  $("#spb_element_selector").show()
-                  @el.find(".menu").fadeOut =>
-                      @el.find(".cancel_change_selector").fadeIn()
+            out: (e) =>
+                target = $(e.target)
+                $("#spb_element_selector").hide()
 
-                stop: =>
-                  $("#spb_element_selector").hide()
-                  @el.find(".cancel_change_selector").fadeOut =>
-                      @el.find(".menu").fadeIn()
+            click: (e) =>
+                @element_selector.out(e)
+                @element_selector.stop()
 
-            @element_selector.start()
+                # Only update the selector if they didn't click the cancel change selector link
+                if e.target != @el.find(".cancel_change_selector").get(0)
+                    @update_selector($(e.target))
+
+            start: =>
+              $("#spb_element_selector").show()
+              @el.find(".menu").fadeOut =>
+                  @el.find(".cancel_change_selector").fadeIn()
+
+            stop: =>
+              $("#spb_element_selector").hide()
+              @el.find(".cancel_change_selector").fadeOut =>
+                  @el.find(".menu").fadeIn()
+              @element_selector = null
+
+        @element_selector.start()
 
 
     revert_background: =>

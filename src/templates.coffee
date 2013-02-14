@@ -1,4 +1,4 @@
-subtlepatterns_bookmarklet_overlay = """
+template_bookmarklet = """
 <div id="subtlepatterns_bookmarklet">
     <div class="wrapper">
         <span class="title">
@@ -30,6 +30,8 @@ subtlepatterns_bookmarklet_overlay = """
                   <li>
                     <a href="javascript:void(0)" class="change_selector">Change background selector</a>
                   </li>
+                  <li><a href="javascript:void(0)" class="show_keyboard_shortcuts">Keyboard Shortcuts</a></li>
+                  <li class="divider"></li>
                   <li><a href="javascript:void(0)" class="close_bookmarklet">Close Bookmarklet</a></li>
                 </ul>
               </li>
@@ -42,9 +44,9 @@ subtlepatterns_bookmarklet_overlay = """
 </div>
 """
 
-subtlepatterns_bookmarklet_body_html = """
+template_body = """
 <div id="spb_element_selector"></div>
-<div id="subtlepatterns_bookmarklet_keyboard_shortcuts">
+<div id="spb_keyboard_shortcuts">
     <h3>Keyboard Shortcuts</h3>
     <hr>
     <table>
@@ -57,9 +59,16 @@ subtlepatterns_bookmarklet_body_html = """
             <td>Change to a random pattern</td>
         </tr>
         <tr>
+            <th>s</th>
+            <td>Open background selector tool</td>
+        </tr>
+        <tr>
             <th>?</th>
-            <td>Bring up this dialog (press again to close)</td>
+            <td>Toggle keyboard shortcuts dialog (this dialog)</td>
         </tr>
     </table>
+    <a href="javascript:void(0)" class="close_button">
+        <img src="/subtle-patterns-bookmarklet/static/img/delete_white.png" />
+    </a>
 </div>
 """

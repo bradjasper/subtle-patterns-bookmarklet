@@ -202,12 +202,12 @@
 }
 #subtlepatterns_bookmarklet .menu_wrapper {
   position: absolute;
-  top: 0;
+  top: -1px;
   right: 0;
 }
 #subtlepatterns_bookmarklet .menu_wrapper .menu {
   list-style: none;
-  padding: 3px !important;
+  padding: 0 3px !important;
   margin: 0 !important;
   line-height: 15px !important;
 }
@@ -248,27 +248,40 @@
   font-size: 11px;
   margin-right: 3px;
 }
-#subtlepatterns_bookmarklet_keyboard_shortcuts {
+#spb_keyboard_shortcuts {
   background: #fff;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   position: absolute;
-  top: 35%;
-  left: 35%;
-  right: 35%;
-  bottom: 35%;
+  left: 0;
+  right: 0;
+  top: 300px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 99;
   background: #000;
+  color: #fff;
+  padding: 25px;
+  /*    display: none;*/
+
   opacity: 0.8;
   filter: alpha(opacity=80);
-  color: #fff;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  padding: 10px 25px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-#subtlepatterns_bookmarklet_keyboard_shortcuts table th {
+#spb_keyboard_shortcuts .close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#spb_keyboard_shortcuts h3 {
+  line-height: 20px;
+  margin: 0;
+}
+#spb_keyboard_shortcuts table th {
   width: 30px;
   color: #dd0;
   font-family: "courier new", monospace;

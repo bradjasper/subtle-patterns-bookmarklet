@@ -9,7 +9,7 @@ all: coffeescript less
 
 coffeescript:
 	coffee --output ${JS_DIR} --compile app.coffee ${SRC_DIR}/loader.coffee
-	coffee --join ${JS_DIR}/bookmarklet.js --compile ${SRC_DIR}/overlay.coffee \
+	coffee --join ${JS_DIR}/bookmarklet.js --compile ${SRC_DIR}/templates.coffee \
 													 ${SRC_DIR}/utils.coffee \
 													 ${SRC_DIR}/subtlepatterns.coffee \
 													 ${SRC_DIR}/element_selector.coffee \

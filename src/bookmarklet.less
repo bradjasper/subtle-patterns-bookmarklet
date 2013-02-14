@@ -85,12 +85,12 @@
 
     .menu_wrapper {
         position: absolute;
-        top: 0;
+        top: -1px;
         right: 0;
 
         .menu {
           list-style: none;
-          padding: 3px !important;
+          padding: 0 3px !important;
           margin: 0 !important;
           line-height: 15px !important;
 
@@ -138,20 +138,34 @@
     }
 }
 
-#subtlepatterns_bookmarklet_keyboard_shortcuts {
+#spb_keyboard_shortcuts {
     background: #fff;
-    .box-shadow();
     position: absolute;
-    top: 35%;
-    left: 35%;
-    right: 35%;
-    bottom: 35%;
+    left: 0;
+    right: 0;
+    top: 300px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     z-index: 99;
     background: #000;
-    .opacity(80);
     color: #fff;
+    padding: 25px;
+/*    display: none;*/
+    .opacity(80);
     .border-radius(10px);
-    padding: 10px 25px;
+    .box-shadow();
+
+    .close_button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    h3 {
+        line-height: 20px;
+        margin: 0;
+    }
 
     table {
         th {
