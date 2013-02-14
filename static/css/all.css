@@ -261,8 +261,7 @@
   background: #000;
   color: #fff;
   padding: 25px;
-  /*    display: none;*/
-
+  display: none;
   opacity: 0.8;
   filter: alpha(opacity=80);
   -webkit-border-radius: 10px;
