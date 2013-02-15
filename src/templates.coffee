@@ -28,9 +28,9 @@ template_bookmarklet = """
                 </a>
                 <ul class="submenu dropdown-menu">
                   <li>
-                    <a href="javascript:void(0)" class="change_selector">Change background selector</a>
+                    <a href="javascript:void(0)" class="change_selector">Change Background Selector</a>
                   </li>
-                  <li><a href="javascript:void(0)" class="show_keyboard_shortcuts">Show keyboard shortcuts</a></li>
+                  <li><a href="javascript:void(0)" class="show_keyboard_shortcuts">Show Keyboard Shortcuts</a></li>
                   <li class="divider"></li>
                   <li><a href="javascript:void(0)" class="close_bookmarklet">Close</a></li>
                 </ul>
@@ -51,12 +51,12 @@ template_body = """
     <hr>
     <table>
         <tr>
-            <th>⟵</th>
-            <td>Go to previous pattern</td>
-        </tr>
-        <tr>
             <th>⟶</th>
             <td>Go to next pattern</td>
+        </tr>
+        <tr>
+            <th>⟵</th>
+            <td>Go to previous pattern</td>
         </tr>
         <tr>
             <th>t</th>

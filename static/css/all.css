@@ -150,13 +150,13 @@
   position: relative;
 }
 #subtlepatterns_bookmarklet .title {
-  padding: 22px 0 6px 0;
+  padding: 16px 0 6px 0;
   display: block;
 }
-#subtlepatterns_bookmarklet .title a {
+#subtlepatterns_bookmarklet a {
   color: #222;
 }
-#subtlepatterns_bookmarklet .title .name {
+#subtlepatterns_bookmarklet .name {
   font-weight: bold;
   font-size: 16px;
 }
@@ -235,11 +235,13 @@
 #subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li {
   text-align: left;
   font-size: 12px;
-  color: #666 !important;
   width: auto !important;
 }
 #subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li a {
   text-decoration: none !important;
+}
+#subtlepatterns_bookmarklet .menu_wrapper .menu > li > ul > li a:hover {
+  color: white;
 }
 #subtlepatterns_bookmarklet .menu_wrapper .cancel_change_selector {
   display: none;
