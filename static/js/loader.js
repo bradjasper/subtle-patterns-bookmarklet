@@ -18,7 +18,7 @@ This script is the master controller, it kicks everything off
   };
 
   if (window.SUBTLEPATTERNS) {
-    load_css("http://bradjasper.com/subtle-patterns-bookmarklet/static/css/bookmarklet.css?cb=" + (Math.random()));
+    load_css("https://d2ueh8f0j2xol3.cloudfront.net/subtle-patterns-bookmarklet/static/css/bookmarklet.css?cb=" + (Math.random()));
     overlay = new SubtlePatternsBookmarklet();
     overlay.setup({
       patterns: SUBTLEPATTERNS

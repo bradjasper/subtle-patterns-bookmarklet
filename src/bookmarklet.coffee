@@ -72,7 +72,8 @@ class SubtlePatternsBookmarklet
 
         pattern_link = "#{pattern.link}?utm_source=SubtlePatternsBookmarklet&utm_medium=web&utm_campaign=SubtlePatternsBookmarklet"
 
-        description = "#{pattern.description} (#{pattern.categories.join('/')})"
+        categories = pattern.categories.join('/')
+        description = "#{pattern.description} (#{pattern.image_dimensions} - #{pattern.image_size} - #{categories})"
         @el.find(".title .name").attr("href", pattern_link).attr("title", description).html(pattern.title)
 
         @events.after_update() if @events.after_update
@@ -151,6 +152,9 @@ class SubtlePatternsBookmarklet
 
             if e.keyCode == 191 and e.shiftKey
                 @toggle_keyboard_shortcuts_dialog()
+                return
+
+            if e.altKey or e.ctrlKey or e.shiftKey
                 return
 
             switch e.keyCode

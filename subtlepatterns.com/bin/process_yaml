@@ -6,15 +6,33 @@ import sys
 import os
 import yaml
 import json
+from PIL import Image
+
+import hurry.filesize
 
 PATTERN_URL = "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/"
+PATTERN_DIR = "/Users/brad/Projects/SubtlePatternsBookmarklet/patterns/"
+
+def get_image_dimensions(image):
+    dim = Image.open(image).size
+    return "%dx%d" % (dim[0], dim[1])
+
+def get_image_size(image):
+    return hurry.filesize.size(os.stat(image).st_size)
 
 def transform_pattern(pattern):
     # relative path -> fully qualified path
     # we host our own patterns to lighten the burden on SubtlePatterns.com servers
-    pattern["mirror_image"] = "%s%s" % (PATTERN_URL, os.path.basename(pattern["image"]))
+    image_name = os.path.basename(pattern["image"])
+    image_path = os.path.join(PATTERN_DIR, image_name)
+    assert os.path.exists(image_path)
+
+    pattern["mirror_image"] = "%s%s" % (PATTERN_URL, image_name)
+    pattern["image_size"] = get_image_size(image_path)
+    pattern["image_dimensions"] = get_image_dimensions(image_path)
+
     return pattern
 
 patterns = yaml.load(sys.stdin.read())
 transformed_patterns = map(transform_pattern, patterns)
-sys.stdout.write("var SUBTLEPATTERNS = %s;" % json.dumps(transformed_patterns))
+sys.stdout.write("window.SUBTLEPATTERNS = %s;" % json.dumps(transformed_patterns))
