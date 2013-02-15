@@ -15,8 +15,13 @@ coffeescript:
 													 ${SRC_DIR}/element_selector.coffee \
 													 ${SRC_DIR}/bookmarklet.coffee
 
-	cat ${JS_DIR}/jquery.min.js ${JS_DIR}/bookmarklet.js ${JS_DIR}/loader.js | jsmin > ${JS_DIR}/all.js
-	cat ${JS_DIR}/jquery.min.js ${JS_DIR}/bookmarklet.js ${JS_DIR}/app.js | jsmin > ${JS_DIR}/app.min.js
+	for bundle in app loader; do \
+		cat ${JS_DIR}/jquery.min.js ${JS_DIR}/bookmarklet.js ${JS_DIR}/$$bundle.js \
+		| jsmin > ${JS_DIR}/$$bundle.min.js; \
+	done
+
+	# all.js is the entry point for our application
+	cp ${JS_DIR}/loader.min.js ${JS_DIR}/all.js
 
 
 less:
