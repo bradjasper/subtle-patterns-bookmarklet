@@ -252,7 +252,7 @@
 }
 #spb_keyboard_shortcuts {
   background: #fff;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 300px;

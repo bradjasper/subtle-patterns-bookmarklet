@@ -61,26 +61,52 @@
           </div>
 
           <div class="information">
-          <h3>What is this?</h3>
-            <p>Finding good background patterns for your website can be a pain. <a href="http://subtlepatterns.com">SubtlePatterns.com</a> is a great website that makes this a lot easier by offering free patterns you can use. This bookmarklet lets you preview these patterns directly on your website, so you can quickly find the best one for your needs.
+            <h3>What is this? Why is it useful?</h3>
+            <p>Finding a good background pattern for your website can be a pain. Fortunately, <a href="http://subtlepatterns.com">SubtlePatterns</a> offers hundreds of great patterns you can use on your website for free.</p>
+            <p>This bookmarklet lets you preview all those background patterns directly on your website very quickly. This makes selecting a background for your website even easier!</p>
+
+            <br />
+
+            <h3>What's a bookmarklet?</h3>
+
+            <p>A bookmarklet is a special kind of bookmark that can perform a special ability. In this case it opens a small widget (like the one above) that lets you change the current websites background.</p>
+
+            <br />
+
+            <h3>Can I change where the pattern is applied?</h3>
+            <p>Yes, by default the background pattern is applied to the &lt;body&gt; element. You can use the <em>Background Selector</em> tool to change this (access this tool via the settings popup or by pressing the "s" key on your keyboard).</p>
+
+            <br />
+
+            <h3>Can I use this on the iPad?</h3>
+            <p>
+            Yes (with some exceptions). Copy and paste the code below into one of your bookmarks.</p>
+
+
+            <code>javascript:(function()%7Bvar%20newscript%3Ddocument.createElement(%27script%27)%3Bnewscript.type%3D%27text/javascript%27%3Bnewscript.async%3Dtrue%3Bnewscript.src%3D%27https://d2ueh8f0j2xol3.cloudfront.net/subtle-patterns-bookmarklet/static/js/all.js%3Fcb%3D%27%20%2B%20Math.random()%3B(document.getElementsByTagName(%27head%27)%5B0%5D%7C%7Cdocument.getElementsByTagName(%27body%27)%5B0%5D).appendChild(newscript)%3B%7D)()%3B</code>
+
             <br />
             <br />
-              <strong>Tip:</strong> Use your left and right arrow keys to navigate between patterns (you can try it right now)
+            <p>Visit <a href="http://iosbookmarklets.com/tutorials/subtle-patterns-bookmarklet-ipad/" rel="nofollow">iOS Bookmarklets</a> for more info.</p>
+
+            <br />
+
+            <h3>Can I use keyboard shortcuts?</h3>
+            <p>Yes you can! Type a question mark (shift + /) to open the keyboard shortcuts dialog. For starters, you can use your left and right arrow keys to navigate between patterns (and you can try it right now on this page too).
             </p>
+
           </div>
 
           <div class="footer">
-          <p class="pull-left">
-            Made by <a href="http://bradjasper.com">Brad Jasper</a><br />
-            Code on <a href="https://github.com/bradjasper/subtle-patterns-bookmarklet">GitHub</a>
-
-            <br /><br />
-            Check out another project I made that helps you <a href="http://domaingroovy.com/?utm_source=bradjasper.com&utm_campaign=SubtlePatternsBookmarklet">find an available domain name</a>.
-
-          </p>
-          <p class="pull-right">
-            Patterns from <a href="http://subtlepatterns.com">SubtlePatterns</a>
-          </p>
+            <ul class="pull-left">
+              <li>Created by <a href="https://twitter.com/bradjasper">@bradjasper</a></li>
+              <li>Opened sourced at <a href="https://github.com/bradjasper/subtle-patterns-bookmarklet">GitHub</a></li>
+            </ul>
+            <ul class="pull-right">
+              <li>Patterns from <a href="http://subtlepatterns.com">SubtlePatterns</a></li>
+            </ul>
+            <div class="clear"></div>
+            <p>Check out another project I made that helps you <a href="http://domaingroovy.com/?utm_source=bradjasper.com&utm_campaign=SubtlePatternsBookmarklet">find an available domain name</a></p>
           </div>
         </div>
 
