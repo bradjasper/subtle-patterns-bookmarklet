@@ -25,14 +25,21 @@ def transform_pattern(pattern):
     # we host our own patterns to lighten the burden on SubtlePatterns.com servers
     image_name = os.path.basename(pattern["image"])
     image_path = os.path.join(PATTERN_DIR, image_name)
-    assert os.path.exists(image_path)
 
     pattern["mirror_image"] = "%s%s" % (PATTERN_URL, image_name)
-    pattern["image_size"] = get_image_size(image_path)
-    pattern["image_dimensions"] = get_image_dimensions(image_path)
+
+    if os.path.exists(image_path):
+        pattern["image_size"] = get_image_size(image_path)
+        pattern["image_dimensions"] = get_image_dimensions(image_path)
 
     return pattern
 
 patterns = yaml.load(sys.stdin.read())
-transformed_patterns = map(transform_pattern, patterns)
+transformed_patterns = []
+pattern_names = []
+for pattern in patterns:
+    if pattern["title"] not in pattern_names:
+        transformed_patterns.append(transform_pattern(pattern))
+        pattern_names.append(pattern["title"])
+
 sys.stdout.write("window.SUBTLEPATTERNS = %s;" % json.dumps(transformed_patterns))

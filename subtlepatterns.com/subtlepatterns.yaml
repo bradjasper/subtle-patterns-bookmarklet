@@ -1,3 +1,87 @@
+- author: Tia Newbury
+  categories:
+  - light
+  description: Super tiny dots and all sorts of great stuff.
+  download: /patterns/squairy_light.zip
+  image: /patterns/squairy_light.png
+  link: http://subtlepatterns.com/squairy/
+  title: Squairy
+- author: Tia Newbury
+  categories:
+  - light
+  description: Light gray version of the Binding pattern. A bit like fabric.
+  download: /patterns/binding_light.zip
+  image: /patterns/binding_light.png
+  link: http://subtlepatterns.com/binding-light/
+  title: Binding light
+- author: Tia Newbury
+  categories:
+  - dark
+  description: This works great as-is, or you can tone it down even more.
+  download: /patterns/binding_dark.zip
+  image: /patterns/binding_dark.png
+  link: http://subtlepatterns.com/binding-dark/
+  title: Binding dark
+- author: <a href="http://www.gluszczenko.com" target="_blank">Gluszczenko</a>
+  categories:
+  - light
+  description: This one is so simple, yet so good. And you know it. Has to be in the
+    collection.
+  download: /patterns/ps_neutral.zip
+  image: /patterns/ps_neutral.png
+  link: http://subtlepatterns.com/ps-neutral/
+  title: PS Neutral
+- author: <a href="http://www.domainsinfo.org/" target="_blank">DomainsInfo</a>
+  categories:
+  - light
+  description: "Submitted by DomainsInfo \u2013 wtf, right? But hey, a free pattern."
+  download: /patterns/wavegrid.zip
+  image: /patterns/wavegrid.png
+  link: http://subtlepatterns.com/wave-grind/
+  title: Wave Grind
+- author: <a href="http://stephen.io" target="_blank">Stephen Gilbert</a>
+  categories:
+  - light
+  - paper
+  description: You know I love paper patterns. Here is one from Stephen. Say thank
+    you!
+  download: /patterns/textured_paper.zip
+  image: /patterns/textured_paper.png
+  link: http://subtlepatterns.com/textured-paper/
+  title: Textured Paper
+- author: <a href="http://www.sagive.co.il" target="_blank">Sagive SEO</a>
+  categories:
+  - dark
+  - linen
+  description: This is a semi-dark pattern, sort of linen-y.
+  download: /patterns/grey_wash_wall.zip
+  image: /patterns/grey_wash_wall.png
+  link: http://subtlepatterns.com/grey-washed-wall/
+  title: Grey Washed Wall
+- author: <a href="http://www.epictextures.com/" target="_blank">Dima Shiper</a>
+  categories:
+  - light
+  description: And finally, number 6. Enjoy.
+  download: /patterns/p6.zip
+  image: /patterns/p6.png
+  link: http://subtlepatterns.com/p6/
+  title: P6
+- author: <a href="http://www.epictextures.com/" target="_blank">Dima Shiper</a>
+  categories:
+  - light
+  description: Number five from the same submitter, makes my job easy.
+  download: /patterns/p5.zip
+  image: /patterns/p5.png
+  link: http://subtlepatterns.com/p5/
+  title: P5
+- author: <a href="http://www.epictextures.com/" target="_blank">Dima Shiper</a>
+  categories:
+  - light
+  description: "I skipped number 3, cause it wasn\u2019t all that great. Sorry."
+  download: /patterns/p4.zip
+  image: /patterns/p4.png
+  link: http://subtlepatterns.com/p4/
+  title: P4
 - author: Ste Patten
   categories:
   - dark
@@ -1172,6 +1256,88 @@
   image: http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/cream_dust.png
   link: http://subtlepatterns.com/cream_dust/
   title: Cream Dust
+- author: <a href="http://venam.1.ai" target="_blank">Venam</a>
+  categories:
+  - dark
+  description: "I have no idea what this is, but it\u2019s tiny and it tiles. Whey!"
+  download: /patterns/slash_it.zip
+  image: /patterns/slash_it.png
+  link: http://subtlepatterns.com/slash-it/
+  title: Slash it
+- author: <a href="http://venam.1.ai" target="_blank">Venam</a>
+  categories:
+  - dark
+  description: "Tiny lines going both ways \u2013 not the way you think, silly."
+  download: /patterns/simple_dashed.zip
+  image: /patterns/simple_dashed.png
+  link: http://subtlepatterns.com/simple-dashed/
+  title: Simple Dashed
+- author: <a href="http://venam.1.ai" target="_blank">Venam</a>
+  categories:
+  - dark
+  description: No relation to Moulin Rouge, but still sexy.
+  download: /patterns/moulin.zip
+  image: /patterns/moulin.png
+  link: http://subtlepatterns.com/moulin/
+  title: Moulin
+- author: <a href="http://venam.1.ai" target="_blank">Venam</a>
+  categories:
+  - dark
+  description: Looks a bit like little bugs, but they are harmless.
+  download: /patterns/dark_exa.zip
+  image: /patterns/dark_exa.png
+  link: http://subtlepatterns.com/dark-exa/
+  title: Dark Exa
+- author: <a href="http://venam.1.ai" target="_blank">Venam</a>
+  categories:
+  - dark
+  - dots
+  description: Dark dots never go out of fashion, do they? Nope.
+  download: /patterns/dark_dotted2.zip
+  image: /patterns/dark_dotted2.png
+  link: http://subtlepatterns.com/dark-dotted-2/
+  title: Dark Dotted 2
+- author: Ste Patten
+  categories:
+  - dark
+  description: A comeback for you, the populare Escheresque now in black.
+  download: /patterns/escheresque_ste.zip
+  image: /patterns/escheresque_ste.png
+  link: http://subtlepatterns.com/escheresque-dark/
+  title: Escheresque dark
+- author: <a href="http://www.listvetra.ru" target="_blank">Listvetra.</a
+  categories:
+  - dark
+  description: Not the most subtle one, but a nice pattern still.
+  download: /patterns/black_lozenge.zip
+  image: /patterns/black_lozenge.png
+  link: http://subtlepatterns.com/%d0%b2lack-lozenge/
+  title: "\u0412lack lozenge"
+- author: <a href="http://www.peax-webdesign.com" target="_blank">Graphiste.</a
+  categories:
+  - light
+  description: A nice one indeed, but I got a feeling we have it already? If you spot
+    a copy, let me know on Twitter .
+  download: /patterns/kindajean.zip
+  image: /patterns/kindajean.png
+  link: http://subtlepatterns.com/kinda-jean/
+  title: Kinda Jean
+- author: <a href="http://about.me/heliodor" target="_blank">Heliodor jalba.</a
+  categories:
+  - light
+  description: Just what the name says, paper fibers. Always good to have.
+  download: /patterns/paper_fibers.zip
+  image: /patterns/paper_fibers.png
+  link: http://subtlepatterns.com/paper-fibers/
+  title: Paper Fibers
+- author: "<a href=\"http://www.petrsulc.com\" target=\"_blank\">Petr \u0160ulc.</a"
+  categories:
+  - dark
+  description: It almost looks a bit blurry, but then again so are fishes.
+  download: /patterns/dark_fish_skin.zip
+  image: /patterns/dark_fish_skin.png
+  link: http://subtlepatterns.com/dark-fish-skin/
+  title: Dark Fish Skin
 - author: <a href="http://www.wearepixel8.com" target="_blank">We Are Pixel8</a>
   categories:
   - grid
@@ -2367,6 +2533,87 @@
   image: http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/subtle_dots.png
   link: http://subtlepatterns.com/subtle-dots/
   title: Subtle Dots
+- author: <a href="http://www.peax-webdesign.com" target="_blank">Peax.</a
+  categories:
+  - light
+  description: Just like the black maze, only in light gray. Duh.
+  download: /patterns/pw_maze_white.zip
+  image: /patterns/pw_maze_white.png
+  link: http://subtlepatterns.com/maze-white/
+  title: Maze white
+- author: <a href="http://www.peax-webdesign.com" target="_blank">Peax.</a
+  categories:
+  - dark
+  description: Classy little maze for you, in two colors even.
+  download: /patterns/pw_maze_black.zip
+  image: /patterns/pw_maze_black.png
+  link: http://subtlepatterns.com/maze-black/
+  title: Maze black
+- author: <a href="http://www.merxplat.com" target="_blank">Merrin Macleod.</a
+  categories:
+  - light
+  description: Super simple but very nice indeed. Gray with vertical stripes.
+  download: /patterns/satinweave.zip
+  image: /patterns/satinweave.png
+  link: http://subtlepatterns.com/satin-weave/
+  title: Satin weave
+- author: <a href="http://www.peax-webdesign.com" target="_blank">Graphiste.</a
+  categories:
+  - light
+  description: Almost like little fish shells, or dragon skin.
+  download: /patterns/ecailles.zip
+  image: /patterns/ecailles.png
+  link: http://subtlepatterns.com/ecailles/
+  title: Ecailles
+- author: <a href="http://breezi.com" target="_blank">Breezi.</a
+  categories:
+  - light
+  description: A heavy hitter at 400x400px, but lovely still.
+  download: /patterns/subtle_grunge.zip
+  image: /patterns/subtle_grunge.png
+  link: http://subtlepatterns.com/subtle-grunge/
+  title: Subtle grunge
+- author: <a href="http://www.blof.dk" target="_blank">Alex M. Balling.</a
+  categories:
+  - hexagon
+  - light
+  description: First off in 2013, a mid-gray hexagon pattern.
+  download: /patterns/honey_im_subtle.zip
+  image: /patterns/honey_im_subtle.png
+  link: http://subtlepatterns.com/honey-im-subtle/
+  title: "Honey I\u2019m subtle"
+- author: <a href="http://mr.pn" target="_blank">Omur Uluask.</a
+  categories:
+  - light
+  description: Yummy, this is one good looking pattern. Grab it!
+  download: /patterns/gray_jean.zip
+  image: /patterns/gray_jean.png
+  link: http://subtlepatterns.com/grey-jean/
+  title: Grey Jean
+- author: <a href="http://www.tight.no" target="_blank">Gjermund Gustavsen.</a
+  categories:
+  - light
+  description: "I know there already is one here, but shit \u2013 this is sexy!"
+  download: /patterns/linedpaper.zip
+  image: /patterns/linedpaper.png
+  link: http://subtlepatterns.com/lined-paper-2/
+  title: Lined paper
+- author: <a href="http://www.hybridixstudio.com" target="_blank">Hybridixstudio.</a
+  categories:
+  - dark
+  description: Blach is the new Black.
+  download: /patterns/blackorchid.zip
+  image: /patterns/blackorchid.png
+  link: http://subtlepatterns.com/blach-orchid/
+  title: Blach Orchid
+- author: <a href="https://corabbit.com" target="_blank">Yuji Honzawa.</a
+  categories:
+  - light
+  description: A new one called white wall, not by me this time.
+  download: /patterns/white_wall2.zip
+  image: /patterns/white_wall2.png
+  link: http://subtlepatterns.com/white-wall-2/
+  title: White wall 2
 - author: <a href="http://www.werk.sk" target="_blank">Dominik Kiss</a>
   categories:
   - light

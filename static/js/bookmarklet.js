@@ -14,6 +14,96 @@
 
   window.SUBTLEPATTERNS = [
     {
+      link: "http://subtlepatterns.com/squairy/",
+      description: "Super tiny dots and all sorts of great stuff.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/squairy_light.png",
+      author: "Tia Newbury",
+      download: "/patterns/squairy_light.zip",
+      image: "/patterns/squairy_light.png",
+      title: "Squairy",
+      categories: ["light"]
+    }, {
+      link: "http://subtlepatterns.com/binding-light/",
+      description: "Light gray version of the Binding pattern. A bit like fabric.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/binding_light.png",
+      author: "Tia Newbury",
+      download: "/patterns/binding_light.zip",
+      image: "/patterns/binding_light.png",
+      title: "Binding light",
+      categories: ["light"]
+    }, {
+      link: "http://subtlepatterns.com/binding-dark/",
+      description: "This works great as-is, or you can tone it down even more.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/binding_dark.png",
+      author: "Tia Newbury",
+      download: "/patterns/binding_dark.zip",
+      image: "/patterns/binding_dark.png",
+      title: "Binding dark",
+      categories: ["dark"]
+    }, {
+      link: "http://subtlepatterns.com/ps-neutral/",
+      description: "This one is so simple, yet so good. And you know it. Has to be in the collection.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/ps_neutral.png",
+      author: "<a href=\"http://www.gluszczenko.com\" target=\"_blank\">Gluszczenko</a>",
+      download: "/patterns/ps_neutral.zip",
+      image: "/patterns/ps_neutral.png",
+      title: "PS Neutral",
+      categories: ["light"]
+    }, {
+      link: "http://subtlepatterns.com/wave-grind/",
+      description: "Submitted by DomainsInfo – wtf, right? But hey, a free pattern.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/wavegrid.png",
+      author: "<a href=\"http://www.domainsinfo.org/\" target=\"_blank\">DomainsInfo</a>",
+      download: "/patterns/wavegrid.zip",
+      image: "/patterns/wavegrid.png",
+      title: "Wave Grind",
+      categories: ["light"]
+    }, {
+      link: "http://subtlepatterns.com/textured-paper/",
+      description: "You know I love paper patterns. Here is one from Stephen. Say thank you!",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/textured_paper.png",
+      author: "<a href=\"http://stephen.io\" target=\"_blank\">Stephen Gilbert</a>",
+      download: "/patterns/textured_paper.zip",
+      image: "/patterns/textured_paper.png",
+      title: "Textured Paper",
+      categories: ["light", "paper"]
+    }, {
+      link: "http://subtlepatterns.com/grey-washed-wall/",
+      description: "This is a semi-dark pattern, sort of linen-y.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/grey_wash_wall.png",
+      author: "<a href=\"http://www.sagive.co.il\" target=\"_blank\">Sagive SEO</a>",
+      download: "/patterns/grey_wash_wall.zip",
+      image: "/patterns/grey_wash_wall.png",
+      title: "Grey Washed Wall",
+      categories: ["dark", "linen"]
+    }, {
+      link: "http://subtlepatterns.com/p6/",
+      description: "And finally, number 6. Enjoy.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/p6.png",
+      author: "<a href=\"http://www.epictextures.com/\" target=\"_blank\">Dima Shiper</a>",
+      download: "/patterns/p6.zip",
+      image: "/patterns/p6.png",
+      title: "P6",
+      categories: ["light"]
+    }, {
+      link: "http://subtlepatterns.com/p5/",
+      description: "Number five from the same submitter, makes my job easy.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/p5.png",
+      author: "<a href=\"http://www.epictextures.com/\" target=\"_blank\">Dima Shiper</a>",
+      download: "/patterns/p5.zip",
+      image: "/patterns/p5.png",
+      title: "P5",
+      categories: ["light"]
+    }, {
+      link: "http://subtlepatterns.com/p4/",
+      description: "I skipped number 3, cause it wasn’t all that great. Sorry.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/p4.png",
+      author: "<a href=\"http://www.epictextures.com/\" target=\"_blank\">Dima Shiper</a>",
+      download: "/patterns/p4.zip",
+      image: "/patterns/p4.png",
+      title: "P4",
+      categories: ["light"]
+    }, {
       image_size: "493B",
       link: "http://subtlepatterns.com/escheresque-dark/",
       description: "A comeback for you, the populare Escheresque now in black.",
@@ -1268,17 +1358,6 @@
       categories: ["broken", "dark", "grunge", "noise"],
       image_dimensions: "476x476"
     }, {
-      image_size: "14K",
-      link: "http://subtlepatterns.com/lined-paper/",
-      description: "The classic notebook paper with horizontal stripes.",
-      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/lined_paper.png",
-      author: "<a href=\"http://www.paranaiv.no\" target=\"_blank\">Are Sundnes</a>",
-      download: "http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/lined_paper.zip",
-      image: "http://subtlepatterns.com/patterns/lined_paper.png",
-      title: "Lined paper",
-      categories: ["light", "paper", "stripes"],
-      image_dimensions: "300x224"
-    }, {
       image_size: "153B",
       link: "http://subtlepatterns.com/gun-metal/",
       description: "With a name this awesome, how can I go wrong?",
@@ -1443,6 +1522,51 @@
       title: "Cream Dust",
       categories: ["light"],
       image_dimensions: "50x50"
+    }, {
+      link: "http://subtlepatterns.com/slash-it/",
+      description: "I have no idea what this is, but it’s tiny and it tiles. Whey!",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/slash_it.png",
+      author: "<a href=\"http://venam.1.ai\" target=\"_blank\">Venam</a>",
+      download: "/patterns/slash_it.zip",
+      image: "/patterns/slash_it.png",
+      title: "Slash it",
+      categories: ["dark"]
+    }, {
+      link: "http://subtlepatterns.com/simple-dashed/",
+      description: "Tiny lines going both ways – not the way you think, silly.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/simple_dashed.png",
+      author: "<a href=\"http://venam.1.ai\" target=\"_blank\">Venam</a>",
+      download: "/patterns/simple_dashed.zip",
+      image: "/patterns/simple_dashed.png",
+      title: "Simple Dashed",
+      categories: ["dark"]
+    }, {
+      link: "http://subtlepatterns.com/moulin/",
+      description: "No relation to Moulin Rouge, but still sexy.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/moulin.png",
+      author: "<a href=\"http://venam.1.ai\" target=\"_blank\">Venam</a>",
+      download: "/patterns/moulin.zip",
+      image: "/patterns/moulin.png",
+      title: "Moulin",
+      categories: ["dark"]
+    }, {
+      link: "http://subtlepatterns.com/dark-exa/",
+      description: "Looks a bit like little bugs, but they are harmless.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/dark_exa.png",
+      author: "<a href=\"http://venam.1.ai\" target=\"_blank\">Venam</a>",
+      download: "/patterns/dark_exa.zip",
+      image: "/patterns/dark_exa.png",
+      title: "Dark Exa",
+      categories: ["dark"]
+    }, {
+      link: "http://subtlepatterns.com/dark-dotted-2/",
+      description: "Dark dots never go out of fashion, do they? Nope.",
+      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/dark_dotted2.png",
+      author: "<a href=\"http://venam.1.ai\" target=\"_blank\">Venam</a>",
+      download: "/patterns/dark_dotted2.zip",
+      image: "/patterns/dark_dotted2.png",
+      title: "Dark Dotted 2",
+      categories: ["dark", "dots"]
     }, {
       image_size: "191B",
       link: "http://subtlepatterns.com/graphy/",
@@ -2015,17 +2139,6 @@
       title: "Dark leather",
       categories: ["dark"],
       image_dimensions: "398x484"
-    }, {
-      image_size: "438B",
-      link: "http://subtlepatterns.com/triangles/",
-      description: "Dark and hard, just the way we like it. Embossed triangles makes a nice pattern.",
-      mirror_image: "http://bradjasper.com/subtle-patterns-bookmarklet/patterns/triangles.png",
-      author: "<a href=\"http://coggraphics.com\" target=\"_blank\">Ivan Ginev</a>",
-      download: "http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/triangles.zip",
-      image: "http://subtlepatterns.com/patterns/triangles.png",
-      title: "Triangles",
-      categories: ["dark"],
-      image_dimensions: "33x36"
     }, {
       image_size: "5K",
       link: "http://subtlepatterns.com/robots/",

@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd"><html
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:og="http://ogp.me/ns#"
+xmlns:fb="http://www.facebook.com/2008/fbml"
+lang="en-US"	  xmlns:fb="http://ogp.me/ns/fb#"
+><head
+profile="http://gmpg.org/xfn/11"><link
+rel="stylesheet" type="text/css" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/wp-content/w3tc/min/c2d6fa8a.5b3e1a.css" media="all" /><script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script><meta
+http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Subtle Patterns | Free textures for your next web project</title><link
+href="http://feeds.feedburner.com/SubtlePatterns" title="Subtle Patterns" type="application/rss+xml" rel="alternate"/><meta
+property="og:title" content="Subtle Patterns"/><meta
+property="og:type" content="website"/><meta
+property="og:url" content="http://www.subtlepatterns.com"/><meta
+property="og:image" content="http://www.subtlepatterns.com/fb_icon2.jpg"/><meta
+property="og:site_name" content="Subtle Patterns"/><meta
+property="fb:admins" content="876565056"/><meta
+property="og:description"
+content="Free high quality patterns for your next web project."/><meta
+name=”keywords” content=”Web design patterns, patterns, textures, web design resource, free patterns, free textures, photoshop pattern, subtle patterns, subtle textures, seamless pattern, subtle textures, seamless” /><script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script><link
+rel="pingback" href="http://subtlepatterns.com/xmlrpc.php" /><script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script><div
+id="adpack"><div
+id="bsap_1261948" class="bsarocks bsap_9f312e2fb58162a96d306fd3a9354e54"></div> <a
+href="http://adpacks.com" id="bsap_aplink">Ads via Ad Packs</a></div><link
+rel="alternate" type="application/rss+xml" title="Subtle Patterns &raquo; Feed" href="http://subtlepatterns.com/feed/" /><link
+rel="alternate" type="application/rss+xml" title="Subtle Patterns &raquo; Comments Feed" href="http://subtlepatterns.com/comments/feed/" /><link
+rel="EditURI" type="application/rsd+xml" title="RSD" href="http://subtlepatterns.com/xmlrpc.php?rsd" /><link
+rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://subtlepatterns.com/wp-includes/wlwmanifest.xml" /><meta
+name="generator" content="WordPress 3.5.1" /><style type="text/css">
+		.site-title {
+			padding:20px 0 0;
+			margin: 0;
+			line-height:42px;
+		}
+		.site-description {
+			padding: 0;
+			line-height:15px;
+			font-style:italic;
+		}
+				.site-title a:link,
+		.site-title a:visited,
+		.site-title a:hover,
+		.site-title a:focus,
+		.site-title a:active,
+		 .site-description {
+			color:#;
+		}
+				</style><!--[if lt IE 7.]><script defer type="text/javascript" src="http://subtlepatterns.com/js/pngfix.js"></script><![endif]--><script type="text/javascript">/* CloudFlare analytics upgrade */
+</script><script>
+  $(document).ready(function(){
+
+      $('.download').bind('click', function(){
+          _gaq.push(['_trackEvent', 'button', 'download', $(this).attr("href")]);
+      })
+
+
+  })
+</script><script>
+
+  function isRetina() {
+    if ('devicePixelRatio' in window) {
+      return window.devicePixelRatio > 1;
+    } else if('matchMedia' in window) {
+      return !matchMedia("(-moz-device-pixel-ratio:1.0)").matches
+    } else {
+      return false;
+    }
+  }
+
+  var is_retina = isRetina();
+
+  function retinaImagePath(path) {
+    if (is_retina) {
+      // Split the file extension off the image path,
+      // and put it back together with @2x before the extension.
+      // "/path/to/image.png" => "/path/to/image@2x.png"
+      var path_segments           = path.split('.');
+      var path_without_extension  = path_segments.slice(0, (path_segments.length - 1)).join(".");
+      var extension               = path_segments[path_segments.length - 1];
+      var at_2x_path              = path_without_extension + "_@2X." + extension;
+      return at_2x_path;
+
+    } else {
+      return path;
+    }
+  }
+
+  $.fn.getBgImage = function(callback) {
+    var height = 0;
+    var path = $(this).css('background-image').replace('url', '').replace('(', '').replace(')', '').replace('"', '').replace('"', '');
+    var tempImg = $('<img />');
+    tempImg.hide(); //hide image
+    tempImg.bind('load', callback);
+    $('body').append(tempImg); // add to DOM before </body>
+    tempImg.attr('src', path);
+    $('#tempImg').remove(); //remove from DOM
+  };
+
+
+	$(document).ready(function(){
+
+    if (is_retina) {
+      $('.patternpreview').each(function() {
+        var $pattern_preview = $(this);
+
+        $(this).getBgImage(function() {
+          at_1x_image = $pattern_preview.css('background-image');
+          at_2x_image = retinaImagePath(at_1x_image);
+          $pattern_preview.css('background-image', at_2x_image);
+          var size_string = $(this).width() + 'px ' + $(this).height() + 'px';
+          $pattern_preview.css('background-size', size_string);
+        });
+      });
+    }
+
+		$('.preview').each(function(){
+			$(this).bind('click', function(e){
+				var default_background = 'url(http://subtlepatterns.com/images/bgnoise.png)';
+        var $preview = $(e.target).closest('.entry-content').find('.patternpreview');
+				var preview_background = $preview.css('background-image')
+
+				// Turn on preview
+				if($(this).text() == 'Preview'){
+					$('.preview').text('Preview')
+					$(this).text('Stop preview')
+					$('body').css('background', preview_background)
+          if (is_retina) {
+            $('body').css('background-size', $preview.css('background-size'));
+          }
+					if($(this).parents(".post").hasClass("tag-dark"))
+					{
+						$("body").addClass("dark-background");
+					}
+					else
+					{
+						$('body').removeClass("dark-background");
+					}
+				// Turn off preview
+				}else if($(this).text() == 'Stop preview'){
+					console.log("Disable");
+					$(this).text('Preview');
+					$('body').css('background', default_background);
+          if (is_retina) { $('body').css('background-size','') }
+					$('body').removeClass("dark-background");
+				}
+			})
+		})
+	})
+
+</script><script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-117495-6']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+/* ]]> */
+</script>
+</head><body
+class="home blog paged paged-23"><div
+id="header"><div
+class="inner-header"><div
+class="toplogo"> <a
+href="/">Subtle patterns</a></div><div
+id="topmenu"><div
+class="menu"><div
+class="menu-main-container"><ul
+id="menu-main" class="menu"><li
+id="menu-item-918" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-home menu-item-918"><a
+href="http://subtlepatterns.com/">Home</a></li><li
+id="menu-item-1350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1350"><a
+href="http://subtlepatterns.com/snacks/">Snacks</a></li><li
+id="menu-item-1351" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1351"><a
+href="http://subtlepatterns.com/submitpattern/">Submit</a></li><li
+id="menu-item-1349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1349"><a
+href="http://subtlepatterns.com/about/">About &#038; FAQ</a></li></ul></div></div></div><div
+id="submenu"><div
+id="topSearch"><div
+class="search"><form
+method="get" class="searchform" id="searchform-1" action="http://subtlepatterns.com/"><div> <input
+class="searchtext" type="text" name="s" id="searchtext-1" value="Tip: Search for light or dark" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" /> <input
+type="submit" class="searchsubmit" name="submit" id="searchsubmit-1" value="Search" /></div></form></div></div></div><ul
+id="socialbar"><li
+class="facebook"><a
+href="http://www.facebook.com/subtlepatterns">Facebook</a></li><li
+class="twitter"><a
+href="http://www.twitter.com/subtlepattern">Twitter</a></li><li
+class="rss"><a
+href="http://feeds.feedburner.com/SubtlePatterns">RSS</a></li></ul></div></div><div
+id="wrapper"><div
+id="container"><div
+id="content"><div
+id="view-toggle-wrapper"><div
+class="viewer-toggle-nav"> <span>View as</span><div
+class="menu-viewer-toggle-container"><ul
+id="menu-viewer-toggle" class="menu"><li
+id="menu-item-919" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-home menu-item-919"><a
+href="http://subtlepatterns.com">List</a></li><li
+id="menu-item-1352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1352"><a
+href="http://subtlepatterns.com/thumbnail-view/">Thumbnails</a></li></ul></div></div><div
+id="pattern-counter"><div
+class="countertext">Counting 316 patterns.</div></div></div><div
+class="post-778 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-778"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/little-knobs/" rel="bookmark" title="Permalink to Little knobs">Little knobs</a></h2></div><div
+class="entry-meta"><p>October 27, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/littleknobs.png)"></div><p>White little knobs, coming in at 10x10px. Sweet!</p><p>Made by <a
+href="http://www.freepx.net" target="_blank">Amos</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/littleknobs.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-774 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-774"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/dotnoise-light-grey/" rel="bookmark" title="Permalink to Dotnoise light grey">Dotnoise light grey</a></h2></div><div
+class="entry-meta"><p>October 24, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/bgnoise_lg.png)"></div><p>Sort of like the back of a wooden board. Light, subtle and stylish just the way we like it!</p><p>Made by Nikolalek.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/bgnoise_lg.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-772 post type-post status-publish format-standard hentry category-patterns tag-dark loop" id="post-772"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/dark-circles/" rel="bookmark" title="Permalink to Dark circles">Dark circles</a></h2></div><div
+class="entry-meta"><p>October 23, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/dark_circles.png)"></div><p>People seem to enjoy dark patterns, so here is one with some circles.</p><p>Made by <a
+href="http://atlemo.com" target="_blank">Atle Mo</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/dark_circles.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-770 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-770"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/light-aluminum/" rel="bookmark" title="Permalink to Light aluminum">Light aluminum</a></h2></div><div
+class="entry-meta"><p>October 18, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/light_alu.png)"></div><p>Used correctly, this could be nice. Used in a bad way, all Hell will break loose.</p><p>Made by <a
+href="http://atlemo.com" target="_blank">Atle Mo</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/light_alu.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-767 post type-post status-publish format-standard hentry category-patterns tag-dark loop" id="post-767"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/squares/" rel="bookmark" title="Permalink to Squares">Squares</a></h2></div><div
+class="entry-meta"><p>October 17, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/squares.png)"></div><p>Dark, square, clean and tidy. What more can you ask for?</p><p>Made by <a
+href="http://www.toshtak.com/" target="_blank">Jaromír Kavan</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/squares.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-764 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-764"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/felt/" rel="bookmark" title="Permalink to Felt">Felt</a></h2></div><div
+class="entry-meta"><p>October 12, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/felt.png)"></div><p>Got some felt in my mailbox today, so I scanned it for you to use.</p><p>Made by <a
+href="http://atlemo.com" target="_blank">Atle Mo</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/felt.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-762 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-762"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/transparent-square-tiles/" rel="bookmark" title="Permalink to Transparent Square Tiles">Transparent Square Tiles</a></h2></div><div
+class="entry-meta"><p>October 12, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/square_bg.png)"></div><p>The first pattern on here using opacity. Try it on a site with a colored background, or even using mixed colors.</p><p>Made by <a
+href="http://nspady.com" target="_blank">Nathan Spady</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/square_bg.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-760 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-760"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/paven/" rel="bookmark" title="Permalink to Paven">Paven</a></h2></div><div
+class="entry-meta"><p>October 12, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/paven.png)"></div><p>A subtle shadowed checkered pattern. Increase the lightness for even more subtle sexyness.</p><p>Made by <a
+href="http://emailcoder.net" target="_blank">Josh Green</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/paven.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-758 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-758"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/stucco/" rel="bookmark" title="Permalink to Stucco">Stucco</a></h2></div><div
+class="entry-meta"><p>October 9, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/stucco.png)"></div><p>A nice and simple gray stucco material. Great on it&#8217;s own, or as a base for a new pattern.</p><p>Made by <a
+href="http://twitter.com/#!/simek" target="_blank">Bartosz Kaszubowski</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/stucco.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="post-754 post type-post status-publish format-standard hentry category-patterns tag-light loop" id="post-754"><div
+class="entry-content"><div
+class="entry-title"><h2><a
+href="http://subtlepatterns.com/r-i-p-steve-jobs/" rel="bookmark" title="Permalink to R.I.P Steve Jobs">R.I.P Steve Jobs</a></h2></div><div
+class="entry-meta"><p>October 6, 2011</p></div><div
+class="patternpreview" style="background-image: url(http://subtlepatterns.com/patterns/rip_jobs.png)"></div><p>He influenced us all.<br
+/> &#8220;Don&#8217;t be sad because it&#8217;s over. Smile because it happened.&#8221;<br
+/> <br
+/>- Dr. Seuss</p><p>Made by <a
+href="http://atlemo.com" target="_blank">Atle Mo</a>.</p><p><a
+class="download" href="http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/rip_jobs.zip">Download</a></p><div
+id="preview-box"> <a
+class="preview" href="javascript://">Preview</a></div></div></div><div
+class="page-navi"><div
+class='wp-pagenavi'> <span
+class='pages'>Page 23 of 32</span><a
+href='http://subtlepatterns.com/' class='first'>« First</a><a
+href='http://subtlepatterns.com/page/22/' class='previouspostslink'>«</a><a
+href='http://subtlepatterns.com/page/12/' class='smaller page'>12</a><span
+class='extend'>...</span><a
+href='http://subtlepatterns.com/page/18/' class='page smaller'>18</a><a
+href='http://subtlepatterns.com/page/19/' class='page smaller'>19</a><a
+href='http://subtlepatterns.com/page/20/' class='page smaller'>20</a><a
+href='http://subtlepatterns.com/page/21/' class='page smaller'>21</a><a
+href='http://subtlepatterns.com/page/22/' class='page smaller'>22</a><span
+class='current'>23</span><a
+href='http://subtlepatterns.com/page/24/' class='page larger'>24</a><a
+href='http://subtlepatterns.com/page/25/' class='page larger'>25</a><a
+href='http://subtlepatterns.com/page/26/' class='page larger'>26</a><a
+href='http://subtlepatterns.com/page/27/' class='page larger'>27</a><a
+href='http://subtlepatterns.com/page/28/' class='page larger'>28</a><a
+href='http://subtlepatterns.com/page/29/' class='page larger'>29</a><a
+href='http://subtlepatterns.com/page/24/' class='nextpostslink'>»</a><a
+href='http://subtlepatterns.com/page/32/' class='last'>Last »</a></div></div></div></div></div></div><div
+id="footer-container"><div
+id="footer-bottom"><div
+class="footer-top clearfix"><div
+class="one-third clearfix"><h2>My lovely sponsors</h2><p>Rock solid hosting and content delivery by:</p> <a
+href="http://www.mediatemple.net/#a_aid=4ffc75a023b77" class="mt"></a><a
+href="http://www.maxcdn.com/" class="maxcon"></a></div><div
+class="one-third"><h2>Top Tags</h2><ul
+class="tagclouds clearfix"><li><a
+href="http://subtlepatterns.com/tag/light/">light</a></li><li><a
+href="http://subtlepatterns.com/tag/dark/">dark</a></li><li><a
+href="http://subtlepatterns.com/tag/paper/">paper</a></li><li><a
+href="http://subtlepatterns.com/tag/stripes/">stripes</a></li><li><a
+href="http://subtlepatterns.com/tag/wall/">wall</a></li><li><a
+href="http://subtlepatterns.com/tag/fabric/">fabric</a></li><li><a
+href="http://subtlepatterns.com/tag/noise/">noise</a></li><li><a
+href="http://subtlepatterns.com/tag/diamond/">diamond</a></li><li><a
+href="http://subtlepatterns.com/tag/grid/">grid</a></li><li><a
+href="http://subtlepatterns.com/tag/carbon/">carbon</a></li></ul></div><div
+class="one-third last"><h2>Photoshop .pat file</h2><p>The Photoshop pattern file containing all the patterns on this site can now be found on GitHub.</p> <br> <a
+class="github" href="http://github.com/subtlepatterns/SubtlePatterns", "target="_blank">Get it on GitHub</a></div></div><div
+class="footer-bottom clearfix"><div
+class="one-half"><h2>Information &amp; Copyright</h2><p><span
+xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Subtle Patterns</span> by <a
+xmlns:cc="http://creativecommons.org/ns#" href="http://subtlepatterns.com" property="cc:attributionName" rel="cc:attributionURL">Subtle Patterns</a> is licensed under a <a
+rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.<br
+/>Based on work at <a
+xmlns:dct="http://purl.org/dc/terms/" href="http://subtlepatterns.com" rel="dct:source">subtlepatterns.com</a>.<br
+/>Permissions beyond the scope of this license may be available upon <a
+href="http://www.cloudflare.com/email-protection#beddd1d0cadfddcafecdcbdccad2dbcedfcacadbccd0cd90ddd1d3">contact.</a><br/> A project by <a
+href="http://atlemo.com">Atle Mo.</a></p><p><span>Subtle Patterns and <a
+href="#">www.subtlepatterns.com</a> &copy; 2013 Atle Mo.</span></p></div><div
+class="one-half alt"><h2>Follow &amp; Love Subtle Patterns</h2><div
+class="sociables"><ul
+class="clearfix"><li><a
+href="http://www.facebook.com/subtlepatterns" class="facebook"> <span
+class="icon"> &nbsp;</span> <span
+class="inner"><strong>Facebook</strong> <br
+/>16 560</span> </a></li><li><a
+href="http://twitter.com/subtlepattern" class="twitter"> <span
+class="icon"> &nbsp;</span> <span
+class="inner"><strong>Twitter</strong> <br
+/>8 084</span> </a></li><li><a
+href="http://feeds.feedburner.com/SubtlePatterns" class="rss"> <span
+class="icon"> &nbsp;</span> <span
+class="inner"><strong>RSS</strong> <br
+/>2 501</span> </a></li></ul></div></div></div></div></div><script type="text/javascript">
+var _sf_async_config={uid:38291,domain:"subtlepatterns.com"};
+(function(){
+  function loadChartbeat() {
+    window._sf_endpt=(new Date()).getTime();
+    var e = document.createElement('script');
+    e.setAttribute('language', 'javascript');
+    e.setAttribute('type', 'text/javascript');
+    e.setAttribute('src',
+       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+       "js/chartbeat.js");
+    document.body.appendChild(e);
+  }
+  var oldonload = window.onload;
+  window.onload = (typeof window.onload != 'function') ?
+     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+})();
+
+</script><script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/3668.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script><script type="text/javascript">
+  (function() {
+    window._pa = window._pa || {};
+    // _pa.orderId = "atlemo@gmail.com"; // OPTIONAL: include your user's email address or order ID
+    // _pa.revenue = "19.99"; // OPTIONAL: include dynamic purchase value for the conversion
+    // _pa.onLoadEvent = "sign_up"; // OPTIONAL: name of segment/conversion to be fired on script load
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/506c1c45d62705000200000c.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+</script><script type="text/javascript">
+/* <![CDATA[ */
+(function(){try{var s,a,i,j,r,c,l=document.getElementsByTagName("a"),t=document.createElement("textarea");for(i=0;l.length-i;i++){try{a=l[i].getAttribute("href");if(a&&"www.cloudflare.com/email-protection"==a.substr(7 ,35)){s='';j=43;r=parseInt(a.substr(j,2),16);for(j+=2;a.length-j&&a.substr(j,1)!='X';j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}j+=1;s+=a.substr(j,a.length-j);t.innerHTML=s.replace(/</g,"&lt;").replace(/>/g,"&gt;");l[i].setAttribute("href","mailto:"+t.value);}}catch(e){}}}catch(e){}})();
+/* ]]> */
+</script>
+</body></html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Minified using disk: basic
+Page Caching using disk: basic
+Database Caching using disk: basic
+Content Delivery Network via subtlepatterns.subtlepatterns.netdna-cdn.com
+
+Served from: subtlepatterns.com @ 2013-01-29 23:39:44 -->
