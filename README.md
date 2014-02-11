@@ -19,6 +19,9 @@ Run a static HTTP server one level up with
     python -m SimpleHTTPServer
 
 
-## About
-Created by Brad Jasper
-Thanks to SubtlePatterns.com for the awesome background patterns
+
+## Contact
+
+Web: http://bradjasper.com<br>
+Twitter: <a href="https://twitter.com/bradjasper">@bradjasper</a><br>
+Email: <a href="mailto:contact@bradjasper.com">contact@bradjasper.com</a><br>
